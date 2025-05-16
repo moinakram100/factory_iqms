@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0"
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="IQMS.VEHICLE_CREATE_SRV" xml:lang="en" sap:schema-version="1"
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="header_veh" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Vehicle"/>
+                </Key>
+                <Property Name="Vehicle" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Vehicle Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="VehType" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Vehicle type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="VehId" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="Ext. identifier" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="VehNrtus" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Number of TUs" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="VolUom" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Vol.UoM" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+                <Property Name="WgtUom" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Weight UoM" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+                <Property Name="DimUom" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Dimension UoM" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+                <Property Name="VehMaxwgt" Type="Edm.Double" sap:unicode="false" sap:label="Maximum weight" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="VehMaxvol" Type="Edm.Double" sap:unicode="false" sap:label="Maximum volume" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CreDate" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Created On" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CreName" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Created by" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ChaDate" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Last Change" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ChaName" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Changed by" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="head_toItems" Relationship="IQMS.VEHICLE_CREATE_SRV.head_item" FromRole="FromRole_head_item" ToRole="ToRole_head_item"/>
+                <NavigationProperty Name="head_toheadItem" Relationship="IQMS.VEHICLE_CREATE_SRV.head_headItem" FromRole="FromRole_head_headItem" ToRole="ToRole_head_headItem"/>
+            </EntityType>
+            <EntityType Name="headItem" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Vehicle"/>
+                </Key>
+                <Property Name="Language" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Language" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Vehicle" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Vehicle Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="VehText" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Vehicle text" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Items_veh" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Vehicle"/>
+                </Key>
+                <Property Name="Vehicle" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Vehicle Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TuNumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Transport unit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SeqNmbr" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Seq.no." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CreDate" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Created On" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CreName" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Created by" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ChaDate" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Last Change" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ChaName" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Changed by" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TuText" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Tr. unit text" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TuNrcomps" Type="Edm.Byte" sap:unicode="false" sap:label="Nr.compartments" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TuMaxwgt" Type="Edm.Double" sap:unicode="false" sap:label="Maximum weight" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TuMaxvol" Type="Edm.Double" sap:unicode="false" sap:label="Maximum volume" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Updateflag" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Indicator" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <Association Name="head_item" sap:content-version="1">
+                <End Type="IQMS.VEHICLE_CREATE_SRV.header_veh" Multiplicity="1" Role="FromRole_head_item"/>
+                <End Type="IQMS.VEHICLE_CREATE_SRV.Items_veh" Multiplicity="*" Role="ToRole_head_item"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_head_item">
+                        <PropertyRef Name="Vehicle"/>
+                    </Principal>
+                    <Dependent Role="ToRole_head_item">
+                        <PropertyRef Name="Vehicle"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="head_headItem" sap:content-version="1">
+                <End Type="IQMS.VEHICLE_CREATE_SRV.header_veh" Multiplicity="1" Role="FromRole_head_headItem"/>
+                <End Type="IQMS.VEHICLE_CREATE_SRV.headItem" Multiplicity="1" Role="ToRole_head_headItem"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_head_headItem">
+                        <PropertyRef Name="Vehicle"/>
+                    </Principal>
+                    <Dependent Role="ToRole_head_headItem">
+                        <PropertyRef Name="Vehicle"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="IQMS_VEHICLE_CREATE_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="header_vehSet" EntityType="IQMS.VEHICLE_CREATE_SRV.header_veh" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="headItemSet" EntityType="IQMS.VEHICLE_CREATE_SRV.headItem" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="Items_vehSet" EntityType="IQMS.VEHICLE_CREATE_SRV.Items_veh" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <AssociationSet Name="head_headItemSet" Association="IQMS.VEHICLE_CREATE_SRV.head_headItem" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="header_vehSet" Role="FromRole_head_headItem"/>
+                    <End EntitySet="headItemSet" Role="ToRole_head_headItem"/>
+                </AssociationSet>
+                <AssociationSet Name="head_itemSet" Association="IQMS.VEHICLE_CREATE_SRV.head_item" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="header_vehSet" Role="FromRole_head_item"/>
+                    <End EntitySet="Items_vehSet" Role="ToRole_head_item"/>
+                </AssociationSet>
+            </EntityContainer>
+            <atom:link rel="self" href="http://ingenxsrv:8001/sap/opu/odata/iqms/VEHICLE_CREATE_SRV/$metadata"
+                xmlns:atom="http://www.w3.org/2005/Atom"/>
+                <atom:link rel="latest-version" href="http://ingenxsrv:8001/sap/opu/odata/iqms/VEHICLE_CREATE_SRV/$metadata"
+                    xmlns:atom="http://www.w3.org/2005/Atom"/>
+                </Schema>
+            </edmx:DataServices>
+        </edmx:Edmx>

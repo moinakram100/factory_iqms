@@ -1,0 +1,18 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+    <SelectDialog
+        id="VehicleDialog"
+        noDataText="No Data"
+        title="Select Vehicle Type"
+        search="onVehicleTypeSearch"
+        confirm="onValueHelpCloseVehicle"
+        cancel="onValueHelpCloseVehicle"
+        items="{/VehicleTypeDefinition}">
+        <StandardListItem id="vehiclelist"
+            title="{VehicleDefinition}"
+            iconDensityAware="false"
+            iconInset="false"
+            type="Active" />
+    </SelectDialog>
+</core:FragmentDefinition>

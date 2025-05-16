@@ -1,0 +1,20 @@
+<mvc:View controllerName="com.ingenx.qms.billingcreation.controller.Home"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:tnt="sap.tnt"
+    xmlns="sap.m">
+     <Page id="statusHomePageId" showHeader="false">
+  
+        <content>
+            <GenericTile id="statusParkingTile" class="sapUiSmallMarginBegin sapUiSmallMarginTop tileLayout" header="Goods Issue" press="onGoodsIssue">
+                <TileContent id="statusParkingContentId">
+                    <ImageContent id="statusParkingIconId" src="sap-icon://BusinessSuiteInAppSymbols/icon-gate" />
+                </TileContent>
+            </GenericTile>
+            <GenericTile id="statusVehicleTile" class="sapUiSmallMarginBegin sapUiSmallMarginTop tileLayout" header="Billing" press="onBilling">
+                <TileContent id="statusVehicleContentId">
+                    <ImageContent id="statusVehicleIconId" src="sap-icon://BusinessSuiteInAppSymbols/icon-checklist-item" />
+                </TileContent>
+            </GenericTile>
+</content>
+            </Page>
+</mvc:View>

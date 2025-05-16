@@ -1,0 +1,25 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    
+ 
+    <SelectDialog
+        id="CustomerCodeDialog"
+        title="Select Customer"
+        liveChange="onCustomerSearch"
+        search="onCustomerSearch"
+        confirm="onCustomerConfirm"
+        items="{/xIQMSxcustomer_n}"
+        draggable="true"
+         >
+         
+        <StandardListItem id="CustomerCodeListItam"
+            title="{Kunnr}"
+            iconDensityAware="false"
+            iconInset="false"
+            type="Active" 
+            description="{Name1}"
+            info="{Ort01}"
+            wrapping="true"/>
+    </SelectDialog>
+</core:FragmentDefinition>

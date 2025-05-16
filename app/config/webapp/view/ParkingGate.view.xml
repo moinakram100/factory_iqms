@@ -1,0 +1,126 @@
+<mvc:View
+    xmlns:widgets="sap.ui.integration.widgets"
+    controllerName="com.ingenx.qms.config.controller.ParkingGate"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt"
+    xmlns:t="sap.ui.table"
+    xmlns:f="sap.f"
+    xmlns:card="sap.f.cards"
+>
+    <tnt:ToolHeader
+        id="ParkingGate_ToolHeader"
+        class="sapUiTinyMarginTop sapUiTinyMarginEnd sapUiTinyMarginBegin"
+    >
+        <HBox
+            justifyContent="Center"
+            width="100%"
+        >
+            <Title
+                text="Vehicle Tracking System"
+                wrapping="true"
+                id="ParkingGate_header"
+                level="H4"
+                textAlign="Center"
+            />
+        </HBox>
+    </tnt:ToolHeader>
+
+    <FlexBox class="cssContainer" wrap="Wrap" direction="Row">
+    <!-- Card for Parking Gate -->
+    <f:Card width="600px" class="cssCard">
+        <f:content>
+            <VBox alignItems="Start" width="100%">
+                <FlexBox alignItems="Center" justifyContent="SpaceBetween">
+                    <Title text="Add Parking Gate"  class="sapUiSmallMargin" />
+                    <ToolbarSpacer width="280px"></ToolbarSpacer>
+                    <FlexBox>
+                        <Button id="addParkingGate" text="Add" press="onAddParkingGate" class="sapUiTinyMarginEnd" />
+                        <Button id="deleteParkingGate" text="Delete" press="onDeleteParkingGate" class="sapUiSmallMarginBegin" />
+                        <Button id="ConfirmParkGate" text="Confirm" press="onConfirmDeleteParkingGate" visible="false" />
+                        <Button id="cancelParkingGate" text="Cancel" press="onCancelParkingGate" visible="false" class="sapUiSmallMarginBegin" />
+                    </FlexBox>
+                </FlexBox>
+
+                <t:Table
+                    id="tableParkingGate"
+                    rows="{/AddParkingGate}"
+                    visibleRowCount="8"
+                    selectionMode="None"
+                 class="responsiveTable">
+                    <t:columns>
+                  
+
+                        <t:Column width="10rem">
+                            <t:label>
+                                <Label text="Gate No." />
+                            </t:label>
+                            <t:template>
+                                <Text text="{Gate_no}" textAlign="Right" />
+                            </t:template>
+                        </t:Column>
+
+                        <t:Column>
+                            <t:label>
+                                <Label text="Description" />
+                            </t:label>
+                            <t:template>
+                                <Text text="{Description}" textAlign="Right" />
+                            </t:template>
+                        </t:Column>
+                    </t:columns>
+                </t:Table>
+            </VBox>
+        </f:content>
+    </f:Card>
+
+    <!-- Card for Parking Area -->
+    <f:Card width="600px" class="cssCard">
+        <f:content>
+            <VBox alignItems="Start" width="100%">
+                <FlexBox alignItems="Center" justifyContent="SpaceBetween">
+                    <Title text="Add Parking Area" class="sapUiSmallMargin" />
+                    <ToolbarSpacer width="280px"></ToolbarSpacer>
+                    <FlexBox>
+                        <Button id="addParkingArea" text="Add" press="onAddParkingArea" />
+                        <Button id="deleteParkingArea" text="Delete" press="onDeleteAreaMap" class="sapUiSmallMarginBegin" />
+                        <Button id="ConfirmDeleteParkArea" text="Confirm" press="onConfirmDeleteParkingArea" visible="false" />
+                        <Button id="cancelParkArea" text="Cancel" press="onCancelParkingArea" visible="false" class="sapUiSmallMarginBegin" />
+                    </FlexBox>
+                </FlexBox>
+
+                <t:Table
+                    id="tableParkingArea"
+                    rows="{/AddParkingArea}"
+                    visibleRowCount="8"
+                    selectionMode="None" class="responsiveTable">
+                    <t:columns>
+                    
+
+                        <t:Column width="10rem">
+                            <t:label>
+                                <Label text="Area No." />
+                            </t:label>
+                            <t:template>
+                                <Text text="{Area_no}" textAlign="Right" />
+                            </t:template>
+                        </t:Column>
+
+                        <t:Column>
+                            <t:label>
+                                <Label text="Description" />
+                            </t:label>
+                            <t:template>
+                                <Text text="{Description}" textAlign="Right" />
+                            </t:template>
+                        </t:Column>
+                    </t:columns>
+                </t:Table>
+            </VBox>
+        </f:content>
+    </f:Card>
+</FlexBox>
+
+</mvc:View>

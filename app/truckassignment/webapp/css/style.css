@@ -1,0 +1,74 @@
+/* Enter your custom styles here */
+.customPageHeader{
+    margin-top: 0px !important;
+}
+.customPageHeader .sapMPageHeader {
+    position: fixed;
+    top: 0;
+    padding: 5px 5px 2px;
+    border-radius: 8px 8px; /* Rounded corners for top */
+    width: 99% !important;   
+
+}
+.MainPage .sapMPageHeader{
+    padding-left: 5px !important;
+    margin-top: 6px !important;
+    height: 42px !important;
+
+}
+.sapUiSizeCompact .sapMListNoData {
+    min-height: 3rem !important;
+}
+
+/* Ensure Page content scrolls while Header stays fixed */
+.customPageHeader .sapMPage {
+    overflow: hidden;
+    height: 100%;
+    scrollbar-width: none !important;
+
+}
+
+.alignCss{
+    display: flex;
+    gap: 8rem;
+    padding: 10px 10px 10px 150px;
+
+}
+
+.align{
+    display: flex;
+    flex-direction: column;
+}
+
+._hboxBtn{
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+.QRVboxclass{
+    display: flex;
+    align-items: center;
+    margin: 2%;
+}
+
+.QRIMAGEID {
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+.mailbtn{
+    margin: 3% 10%;
+}
+.Printbtn{
+    margin: 3% 10%;
+}
+
+.simpleForm{
+    width:98.5% !important
+}
+.icontab1{
+    border-radius: 5%;
+}
+.icontab1 .sapMITH{
+    background-color: transparent;
+}

@@ -1,0 +1,61 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:t="sap.ui.table"
+>
+    <Dialog
+        title="Update License"
+        id="updateLicenseDialog"
+    
+    >
+        <FlexBox
+            id="_IDGenFBox1"
+            class="css36"
+            width="30rem"
+        >
+            <Table id="updateLicenseTable" fixedLayout="false" class="customTa" items="{dataModels>/data}" width="100%">
+                <columns>
+                    <Column>
+                        <Label text="Type" />
+                    </Column>
+                    <Column>
+                        <Label text="Licence Number" />
+                    </Column>
+                    <Column>
+                        <Label text="Valid From" />
+                    </Column>
+                    <Column>
+                        <Label text="Valid To" />
+                    </Column>
+                    <Column>
+                        <Button icon="sap-icon://add" press="onPressAddLicence" />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                            <Input />
+                            <Input />
+                            <Input />
+                            <Input />
+                        </cells>
+                    </ColumnListItem>
+                
+                </items>
+            </Table>
+        </FlexBox>
+
+        <FlexBox
+            id="_IDGenFlxBox2"
+        >
+            <Button
+                id="_IDGenBton1"
+                text="Back"
+                icon="sap-icon://nav-back"
+                press = "OnUpdateLicenseClose"
+                class = "sapUiSmallMarginBegin"
+            />
+            <Button text = "Update" class= "sapUiSmallMarginBegin"></Button>
+        </FlexBox>
+    </Dialog>
+</core:FragmentDefinition>

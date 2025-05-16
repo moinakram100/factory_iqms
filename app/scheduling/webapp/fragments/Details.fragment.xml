@@ -1,0 +1,25 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+    <ResponsivePopover id="detailsPopover"   title="{= ${calanderdata>DocType} === 'SO' 
+        ? 'Sales Order: ' + ${calanderdata>SalesOrder} 
+        : 'Stock Transfer: ' + ${calanderdata>Stockorder} }" class="sapUiResponsivePadding--header" placement="Auto">
+        <!-- <beginButton>
+            <Button text="Edit" type="Emphasized" press="handleEditButton"/>
+        </beginButton> -->
+        <endButton>
+            <Button type="Emphasized" text="Delete" press="handlePopoverDeleteButton"/>
+        </endButton>
+        <f:SimpleForm id="appointmentEditForm" editable="false" layout="ResponsiveGridLayout" singleContainerFullSize="false">
+            <Label text="Material" labelFor="moreInfo"/>
+            <Text id="moreInfoText" text="{calanderdata>Material}"/>
+
+            <Label text="Bay" labelFor="appType"/>
+            <Text id="appTypeText" text="{path: 'calanderdata>Calendertype', formatter: '._typeFormatter'}"/>
+
+            <Label text="From" labelFor="startDate"/>
+            <Text text="{path: 'calanderdata>startDate', formatter: '.formatDate'}"/>
+
+            <Label text="To" labelFor="endDate"/>
+            <Text text="{path: 'calanderdata>endDate', formatter: '.formatDate'}"/>
+        </f:SimpleForm>
+    </ResponsivePopover>
+</core:FragmentDefinition>

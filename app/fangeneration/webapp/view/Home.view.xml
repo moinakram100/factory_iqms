@@ -1,0 +1,69 @@
+<mvc:View controllerName="com.ingenx.qms.fangeneration.controller.Home"
+    xmlns:mvc="sap.ui.core.mvc"
+     xmlns:tnt="sap.tnt"
+    xmlns="sap.m">
+    
+
+       <Page
+        id="fanGenerationPage"
+        showHeader="false"
+    >
+        <content>
+            <GenericTile
+                id="fanGenerationTile"
+                class="sapUiSmallMarginBegin sapUiSmallMarginTop tileLayout"
+                header="FAN Generation - Solid"
+                press="onSolidFanGenerationTile"
+            >
+                <TileContent id="SolidFanGenerationTileContent">
+                    <ImageContent
+                        id="SolidFanGenerationImage"
+                        src="sap-icon://decision"
+                    />
+                </TileContent>
+            </GenericTile>
+
+            <GenericTile
+                id="liquidFanGenerationTile"
+                class="sapUiSmallMarginBegin sapUiSmallMarginTop tileLayout"
+                header="FAN Generation - Liquid"
+                press="onliquidFanGenerationTile"
+            >
+                <TileContent id="liquidFanGenerationTileContent">
+                    <ImageContent
+                        id="liquidFanGenerationImage"
+                        src="sap-icon://edit"
+                    />
+                </TileContent>
+            </GenericTile>
+
+            <GenericTile
+                id="gasFanGenerationTile"
+                class="sapUiSmallMarginBegin sapUiSmallMarginTop tileLayout"
+                header="FAN Generation - Gas"
+                press="onGasFanGenerationTile"
+            >
+                <TileContent id="gasFanGenerationTileContent">
+                    <ImageContent
+                        id="gasFanGenerationImage"
+                        src="sap-icon://manager-insight"
+                    />
+                </TileContent>
+            </GenericTile>
+
+            <GenericTile
+                id="MaterialFanGenerationTile"
+                class="sapUiSmallMarginBegin sapUiSmallMarginTop tileLayout"
+                header="FAN Generation - Material"
+                press="onMaterialFanGenerationTile"
+            >
+                <TileContent id="MaterialFanGenerationTileContent">
+                    <ImageContent
+                        id="materialFanGenerationImage"
+                        src="sap-icon://manager-insight"
+                    />
+                </TileContent>
+            </GenericTile>
+        </content>
+    </Page>
+</mvc:View>

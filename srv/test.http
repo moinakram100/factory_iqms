@@ -1,0 +1,18 @@
+POST http://localhost:4004/odata/v4/factory/ScheduleFacSet
+Content-Type: application/json
+
+{
+  "Bayno": "Bay 1",
+  "Cleaner": "",
+  "Driver": "",
+  "Enddate": "2025-05-15T00:00:00Z",
+  "Endtime": "19:00:00",
+  "SalesOrder": "",
+  "Startdate": "2025-05-15T00:00:00Z",
+  "Starttime": "18:00:00",
+  "Stockorder": "4500000745",
+  "Vehicleno": ""
+}
+
+###
+GET http://localhost:4004/odata/v4/factory/ScheduleFacSet

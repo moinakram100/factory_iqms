@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0"
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="IQMS.STO_DELIVERY_SRV" xml:lang="en" sap:schema-version="1"
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="CreatedItems" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="RefDoc"/>
+                </Key>
+                <Property Name="RefDoc" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Reference doc." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RefItem" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="Reference item" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DelivNumb" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Delivery" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DelivItem" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="Item" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DlvQty" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unicode="false" sap:unit="SalesUnit" sap:label="Delivery Qty" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SalesUnit" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Sales unit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+                <Property Name="SalesUnitIso" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="ISO sales unit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MaterialExternal" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MaterialGuid" Type="Edm.String" Nullable="false" MaxLength="32" sap:unicode="false" sap:label="GUID (External)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MaterialVersion" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Version Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MaterialLong" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Deliveries" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="DelivNumb"/>
+                </Key>
+                <Property Name="DelivNumb" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Delivery" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Return" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Type"/>
+                </Key>
+                <Property Name="Type" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Message type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Id" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Message Class" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Number" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Message Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Message" Type="Edm.String" Nullable="false" MaxLength="220" sap:unicode="false" sap:label="Message Text" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LogNo" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Log number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LogMsgNo" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="Message no." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MessageV1" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="Message Variable" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MessageV2" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="Message Variable" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MessageV3" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="Message Variable" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MessageV4" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="Message Variable" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Parameter" Type="Edm.String" Nullable="false" MaxLength="32" sap:unicode="false" sap:label="Parameter Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Row" Type="Edm.Int32" Nullable="false" sap:unicode="false" sap:label="Parameter line" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Field" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Field name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="System" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Logical system" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="StockTransItems" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="RefDoc"/>
+                </Key>
+                <Property Name="RefDoc" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Reference doc." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RefItem" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="Reference item" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DlvQty" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unicode="false" sap:unit="SalesUnit" sap:label="Delivery Qty" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SalesUnit" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Sales unit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+                <Property Name="SalesUnitIso" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="ISO sales unit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DelivNumb" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Delivery" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="stodelivery" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Delivery"/>
+                </Key>
+                <Property Name="DebugFlg" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Debugging flag" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DueDate" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Delivery Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="NoDequeue" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Single-Character Flag" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ShipPoint" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Shipping Point" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Delivery" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Delivery" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="NumDeliveries" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Created docs" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="sto_headitem" Relationship="IQMS.STO_DELIVERY_SRV.sto_headitem" FromRole="FromRole_sto_headitem" ToRole="ToRole_sto_headitem"/>
+                <NavigationProperty Name="sto_toreturn" Relationship="IQMS.STO_DELIVERY_SRV.sto_toreturn" FromRole="FromRole_sto_toreturn" ToRole="ToRole_sto_toreturn"/>
+            </EntityType>
+            <Association Name="sto_toreturn" sap:content-version="1">
+                <End Type="IQMS.STO_DELIVERY_SRV.stodelivery" Multiplicity="1" Role="FromRole_sto_toreturn"/>
+                <End Type="IQMS.STO_DELIVERY_SRV.Return" Multiplicity="*" Role="ToRole_sto_toreturn"/>
+            </Association>
+            <Association Name="sto_headitem" sap:content-version="1">
+                <End Type="IQMS.STO_DELIVERY_SRV.stodelivery" Multiplicity="1" Role="FromRole_sto_headitem"/>
+                <End Type="IQMS.STO_DELIVERY_SRV.StockTransItems" Multiplicity="*" Role="ToRole_sto_headitem"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_sto_headitem">
+                        <PropertyRef Name="Delivery"/>
+                    </Principal>
+                    <Dependent Role="ToRole_sto_headitem">
+                        <PropertyRef Name="DelivNumb"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="IQMS_STO_DELIVERY_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="CreatedItemsSet" EntityType="IQMS.STO_DELIVERY_SRV.CreatedItems" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="DeliveriesSet" EntityType="IQMS.STO_DELIVERY_SRV.Deliveries" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ReturnSet" EntityType="IQMS.STO_DELIVERY_SRV.Return" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="StockTransItemsSet" EntityType="IQMS.STO_DELIVERY_SRV.StockTransItems" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="stodeliverySet" EntityType="IQMS.STO_DELIVERY_SRV.stodelivery" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <AssociationSet Name="sto_toreturnSet" Association="IQMS.STO_DELIVERY_SRV.sto_toreturn" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="stodeliverySet" Role="FromRole_sto_toreturn"/>
+                    <End EntitySet="ReturnSet" Role="ToRole_sto_toreturn"/>
+                </AssociationSet>
+                <AssociationSet Name="sto_headitemSet" Association="IQMS.STO_DELIVERY_SRV.sto_headitem" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="stodeliverySet" Role="FromRole_sto_headitem"/>
+                    <End EntitySet="StockTransItemsSet" Role="ToRole_sto_headitem"/>
+                </AssociationSet>
+            </EntityContainer>
+            <atom:link rel="self" href="http://ingenxsrv:8001/sap/opu/odata/iqms/STO_DELIVERY_SRV/$metadata"
+                xmlns:atom="http://www.w3.org/2005/Atom"/>
+                <atom:link rel="latest-version" href="http://ingenxsrv:8001/sap/opu/odata/iqms/STO_DELIVERY_SRV/$metadata"
+                    xmlns:atom="http://www.w3.org/2005/Atom"/>
+                </Schema>
+            </edmx:DataServices>
+        </edmx:Edmx>

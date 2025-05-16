@@ -1,0 +1,377 @@
+<mvc:View
+    controllerName="com.ingenx.qms.inventory.controller.Dashboard"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:layout="sap.ui.layout"
+    xmlns:cards="sap.f.cards"
+    xmlns:core="sap.ui.core"
+    xmlns:custom="queueapp.controller.customControls"
+    xmlns:f="sap.f"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:c="sap.suite.ui.commons"
+    xmlns:tnt="sap.tnt"
+>
+
+    <Page
+        id="page"
+        showHeader="false"
+        enableScrolling="false"
+        
+    >
+     <tnt:ToolHeader
+        id="ParkingGate_ToolHeader"
+        class="sapUiTinyMarginTop sapUiTinyMarginEnd sapUiTinyMarginBegin"
+    >
+        <HBox
+            justifyContent="Center"
+            width="100%"
+        >
+            <Title
+                text="iQMS - Dashboard"
+                wrapping="true"
+                id="ParkingGate_header"
+                level="H3"
+                textAlign="Center"
+            />
+        </HBox>
+    </tnt:ToolHeader>
+        <VBox>
+
+                <ScrollContainer
+                            id="DashBoard_ScrollContainer1"
+                            width="100%"
+                            height="calc(100vh - 100px)"
+                            horizontal="false"
+                            vertical="true"
+                            
+                        >
+        <layout:BlockLayout
+            id="_IDGenBlockLayout1"
+            background="Dashboard"
+        >
+        
+            <layout:BlockLayoutRow id="_IDGenBlockLayoutRow1">
+                <layout:BlockLayoutCell id="_IDGenBlockLayoutCell1">
+                    <layout:HorizontalLayout
+                        id="_IDGenHorizontalLayout2"
+                        allowWrapping="true"
+                    >
+                        <!-- <f:Card
+                            id="card2"
+                            width="300px"
+                            class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom"
+                        >
+                            <f:header>
+                                <cards:Header
+                                    id="cardHeader12"
+                                    iconAlt="sap-icon://horizontal-grip"
+                                    iconBackgroundColor="Accent8"
+                                    iconDisplayShape="Circle"
+                                    iconSrc="sap-icon://accept"
+                                    iconVisible="true"
+                                    statusText="Active"
+                                    subtitle="{countModel>/securityClearedCount}"
+                                    subtitleMaxLines="2"
+                                    title="Security Clearance"
+                                    titleMaxLines="30"
+                                    press="onPressClear"
+                                    customData="{status: 'Clear'}"
+                                />
+                            </f:header>
+                        </f:Card> -->
+                        
+                        <f:Card
+                            id="card1"
+                            width="250px"
+                            class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom"
+                        >
+                            <f:header>
+                                <cards:Header
+                                    id="_IDGenHeader12"
+                                    iconAlt="sap-icon://horizontal-grip"
+                                    iconBackgroundColor="Accent1"
+                                    iconDisplayShape="Circle"
+                                    iconSrc="sap-icon://pending"
+                                    iconVisible="true"
+                                    statusText="Active"
+                                    subtitle="1"
+                                    subtitleMaxLines="2"
+                                    press="onPressPending"
+                                    title="Security Pending"
+                                    titleMaxLines="30"
+                                />
+                            </f:header>
+                        </f:Card>
+
+                        <f:Card
+                            id="card3"
+                            width="250px"
+                            class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom"
+                        >
+                            <f:header>
+                                <cards:Header
+                                    id="cardHeader3"
+                                    iconAlt="sap-icon://decline"
+                                    iconBackgroundColor="Accent2"
+                                    iconDisplayShape="Circle"
+                                    iconSrc="sap-icon://status-in-process"
+                                    iconVisible="true"
+                                    statusText="Active"
+                                    subtitle="2"
+                                    subtitleMaxLines="2"
+                                    press="onPressFailed"
+                                    title="Security Failed"
+                                    titleMaxLines="30"
+                                />
+                            </f:header>
+                        </f:Card>
+                        <f:Card
+                            id="card4"
+                            width="250px"
+                            class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom"
+                        >
+                            <f:header>
+                                <cards:Header
+                                    id="cardHeader4"
+                                    iconAlt="sap-icon://overview-chart"
+                                    iconBackgroundColor="Accent5"
+                                    iconDisplayShape="Circle"
+                                    iconSrc="sap-icon://shipping-status"
+                                    iconVisible="true"
+                                    statusText="Active"
+                                    subtitle="5"
+                                    subtitleMaxLines="2"
+                                    press="onPressAll"
+                                    title="Bay Allocation"
+                                    titleMaxLines="30"
+                                />
+                            </f:header>
+                        </f:Card>
+                        <f:Card
+                            id="card5"
+                            width="250px"
+                            class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom"
+                        >
+                            <f:header>
+                                <cards:Header
+                                    id="cardHeader5"
+                                    iconAlt="sap-icon://overview-chart"
+                                    iconBackgroundColor="Accent5"
+                                    iconDisplayShape="Circle"
+                                    iconSrc="sap-icon://shipping-status"
+                                    iconVisible="true"
+                                    statusText="Active"
+                                    subtitle="1"
+                                    subtitleMaxLines="2"
+                                    press="onPressAll"
+                                    title="Loaded"
+                                    titleMaxLines="30"
+                                />
+                            </f:header>
+                        </f:Card>
+                    </layout:HorizontalLayout>
+                </layout:BlockLayoutCell>
+            </layout:BlockLayoutRow>
+
+            <!-- code for parking area -->
+           
+            <layout:BlockLayoutRow id="row1">
+                <!-- <layout:BlockLayoutCell
+                    id="_IDGenBlockLayoutCell5"
+                    width="40%"
+                    title="Parking Space"
+                >
+                    <FlexBox
+                        id="_IDGenVBox1"
+                        width="100%"
+                        direction="Row"
+                        wrap="Wrap"
+                        justifyContent="SpaceAround"
+                        class="customButtonFlexBox"
+                    />
+                    
+                </layout:BlockLayoutCell> -->
+
+                <!-- this part for visulaization of parking vehicle -->
+                <layout:BlockLayoutCell
+                    id="_IDGenBlockLayoutCell6"
+                    class="graphContainer"
+                    width="60%"
+                >
+                    <!-- <custom:vehicleShape id="vehicleShape" data="{/data}" /> -->
+
+                    <HBox
+                        class="header"
+                        id="header"
+                    >
+                        <VBox
+                            id="yellow"
+                            class="yellowHeader"
+                        />
+                        <Text
+                            id="_IDGenText10"
+                            text="Bay allocated"
+                            class="header_text yellow sapUiSmallMarginBegin"
+                        />
+                        <VBox
+                            id="yellow1"
+                            class="greenHeader sapUiLargeMarginBegin"
+                        />
+                        <Text
+                            id="_IDGenText11"
+                            text="Under Loading"
+                            class="header_text green sapUiSmallMarginBegin"
+                        />
+                        <VBox
+                            id="yellow2"
+                            class="redHeader sapUiLargeMarginBegin"
+                        />
+                        <Text
+                            id="_IDGenText12"
+                            text="Bay empty"
+                            class="header_text red sapUiSmallMarginBegin"
+                        />
+
+                        
+                    </HBox>
+
+                    <ScrollContainer
+                        id="scroll"
+                        width="100%"
+                        height="450px"
+                        horizontal="false"
+                        vertical="true"
+                        focusable="true"
+                        class="vFlexContainer"
+                    >
+                        <FlexBox
+                            id="vehicle_layout"
+                            direction="Row"
+                            wrap="Wrap"
+                            height="100%"
+                            width="1000px"
+                        />
+                        <!-- <FlexBox
+                            id="vehicle_layout1"
+                            direction="Row"
+                            wrap="Wrap"
+                            height="100%"
+                        >
+                            <Text text="vanhaj agarwal"/>
+                        </FlexBox> -->
+                         
+                    </ScrollContainer>
+                    <Button text="Refresh" press="onRefreshPress" />
+                </layout:BlockLayoutCell>
+            </layout:BlockLayoutRow>
+
+            <!-- code for vehicle details table -->
+            <layout:BlockLayoutRow id="row2" visible="false">
+                <layout:BlockLayoutCell
+                    id="_IDGenBlockLayoutCell7"
+                    title="Vehicle Details"
+                >
+                    <Table
+                        id="vehicleDetailsTable"
+                        autoPopinMode="true"
+                        contextualWidth="Auto"
+                        alternateRowColors="true"
+                        inset="true"
+                        fixedLayout="true"
+                        width="auto"
+                        sticky="ColumnHeaders"
+                        items="{newModel>/}"
+                    >
+                        <columns>
+                            <Column id="_IDGenColumn1">
+                                <Label
+                                    id="_IDGenLabel1"
+                                    text="Parking ID"
+                                />
+                            </Column>
+
+                            <Column id="_IDGenColumn2">
+                                <Label
+                                    id="_IDGenLabel2"
+                                    text="Parking gate"
+                                />
+                            </Column>
+                            <Column id="_IDGenColumn3">
+                                <Label
+                                    id="_IDGenLabel3"
+                                    text="Vehicle No"
+                                />
+                            </Column>
+                            <Column id="_IDGenColumn4">
+                                <Label
+                                    id="_IDGenLabel4"
+                                    text="Product"
+                                />
+                            </Column>
+                            <Column
+                                id="_IDGenColumn7"
+                                demandPopin="true"
+                                hAlign="Center"
+                                minScreenWidth="phone"
+                            >
+                                <Label
+                                    id="_IDGenLabel7"
+                                    text="Status"
+                                />
+                            </Column>
+                            <Column id="_IDGenColumn6">
+                                <Label
+                                    id="_IDGenLabel6"
+                                    text="Date"
+                                />
+                            </Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem
+                                id="_IDGenColumnListItem1"
+                                type="Navigation"
+                                press="toBiddingDetail"
+                            >
+                                <cells>
+                                    <Text
+                                        id="_IDGenText1"
+                                        text="{newModel>Id}"
+                                    />
+                                    <Text
+                                        id="_IDGenText7"
+                                        text="{newModel>parkingGate}"
+                                    />
+                                    <Text
+                                        id="_IDGenText8"
+                                        text="{newModel>vehicleNumber}"
+                                    />
+                                    <Text
+                                        id="_IDGenText9"
+                                        text="{newModel>product}"
+                                    />
+                                    <!-- <Text id="_IDGenText10" text="{Status}"/> -->
+                                    <ObjectStatus
+                                        id="_IDGenObjectStatus1"
+                                        text="{
+                                            path: 'newModel>Status',
+                                            formatter: '.formatStatus'
+                                        }"
+                                    />
+                                    <Text
+                                        id="_IDGenText21"
+                                        text="{newModel>Date}"
+                                    />
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </layout:BlockLayoutCell>
+            </layout:BlockLayoutRow>
+            
+        </layout:BlockLayout>
+        </ScrollContainer>
+            </VBox>
+    </Page>
+</mvc:View>

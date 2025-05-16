@@ -1,0 +1,23 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+
+    <SelectDialog
+        id="ParkingNo"
+        noDataText="No Data"
+        title="Select Parking No."
+        liveChange="onParkingNoSearch"
+        confirm="onParkingNoClose"
+        cancel="onParkingNoClose"
+        items="{/Park_headerSet2}"
+        growing="false"
+        >
+        <StandardListItem id="ParkingNoListItam"
+            title="{ParkingNo}"
+            iconDensityAware="false"
+            iconInset="false"
+            type="Active"
+            wrapping="true"
+             />
+    </SelectDialog>
+</core:FragmentDefinition>

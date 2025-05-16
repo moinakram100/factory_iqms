@@ -1,0 +1,25 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+ 
+    <SelectDialog
+        id="PlantCodeDialog"
+
+        title="Select Plant"
+        search="onPlantSearch"
+        liveChange="onPlantSearch"
+        confirm="onPlantClose"
+        cancel="onPalntClose"
+        items="{/xIQMSxPlants}">
+        <StandardListItem id="PlantCodeListItam"
+            title="{Plant}"
+            iconDensityAware="false"
+            iconInset="false"
+            type="Active"
+            description="{Plant_text}"
+            wrapping="true"
+             
+            
+             />
+    </SelectDialog>
+</core:FragmentDefinition>

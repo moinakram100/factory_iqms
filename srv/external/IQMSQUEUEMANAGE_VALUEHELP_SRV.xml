@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0"
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="http://ingenxsrv:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://ingenxsrv:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://ingenxsrv:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://ingenxsrv:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://ingenxsrv:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="IQMS.QUEUEMANAGE_VALUEHELP_SRV" xml:lang="en" sap:schema-version="1"
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="xIQMSxcustomer_nType" sap:label="customer qms" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Kunnr"/>
+                </Key>
+                <Property Name="Kunnr" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Customer" sap:quickinfo="Customer Number"/>
+                <Property Name="Land1" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Country" sap:quickinfo="Country Key"/>
+                <Property Name="Name1" Type="Edm.String" MaxLength="35" sap:label="Name" sap:quickinfo="Name 1"/>
+                <Property Name="Name2" Type="Edm.String" MaxLength="35" sap:label="Name 2"/>
+                <Property Name="Ort01" Type="Edm.String" MaxLength="35" sap:label="City"/>
+            </EntityType>
+            <EntityType Name="xIQMSxfetch_soType" sap:label="Fetch SalesOrder" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Vbeln"/>
+                    <PropertyRef Name="Posnr"/>
+                </Key>
+                <Property Name="Vbeln" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Sales document" sap:quickinfo="Sales Document"/>
+                <Property Name="Posnr" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="NonNegative" sap:label="Sales Document Item"/>
+                <Property Name="Matnr" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Material Number"/>
+                <Property Name="uom" Type="Edm.String" MaxLength="3" sap:label="Target Quantity UoM" sap:semantics="unit-of-measure"/>
+                <Property Name="Lfsta" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Delivery Status" sap:quickinfo="Delivery Status (Item)"/>
+                <Property Name="CmtdDelivDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Committed Deliv.Date" sap:quickinfo="Delivery Date that the Supplier Has Committed To"/>
+                <Property Name="CmtdDelivCreadate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Cmtd Deliv.Crtn Date" sap:quickinfo="Deliv. Creation Date in Order to Meet Committed Deliv. Date"/>
+                <Property Name="OidShip" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Ship-to party"/>
+                <Property Name="quantity" Type="Edm.Decimal" Precision="15" Scale="3" sap:label="Order Quantity" sap:quickinfo="Cumulative order quantity in sales units"/>
+            </EntityType>
+            <EntityType Name="xIQMSxfetch_stoType" sap:label="fetch open sto" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Sto"/>
+                </Key>
+                <Property Name="Sto" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Purchasing Document" sap:quickinfo="Purchasing Document Number"/>
+                <Property Name="delivery" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Material Document" sap:quickinfo="Number of Material Document"/>
+                <Property Name="Material" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Material Number"/>
+                <Property Name="Plant" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/>
+                <Property Name="Quantity" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="Unit" sap:label="Order Quantity" sap:quickinfo="Purchase Order Quantity"/>
+                <Property Name="Unit" Type="Edm.String" MaxLength="3" sap:label="Order Unit" sap:quickinfo="Purchase Order Unit of Measure" sap:semantics="unit-of-measure"/>
+            </EntityType>
+            <EntityType Name="xIQMSxMaterial_nType" sap:label="qms Material" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="matnr"/>
+                </Key>
+                <Property Name="matnr" Type="Edm.String" Nullable="false" MaxLength="40" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Material Number"/>
+                <Property Name="spart" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Division"/>
+                <Property Name="vkorg" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Sales Organization"/>
+                <Property Name="matkl" Type="Edm.String" MaxLength="9" sap:display-format="UpperCase" sap:label="Material Group"/>
+                <Property Name="mtart" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Material type"/>
+                <Property Name="maktx" Type="Edm.String" MaxLength="40" sap:label="Material description"/>
+                <Property Name="vtweg" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Distribution Channel"/>
+            </EntityType>
+            <EntityType Name="xIQMSxPlantsType" sap:label="Plant for QMS" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Plant"/>
+                </Key>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/>
+                <Property Name="Plant_text" Type="Edm.String" MaxLength="30" sap:label="Name 1" sap:quickinfo="Name"/>
+            </EntityType>
+            <EntityType Name="xIQMSxschfac_fetchType" sap:label="scheduling cds for factory" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SalesOrder"/>
+                    <PropertyRef Name="Stockorder"/>
+                </Key>
+                <Property Name="SalesOrder" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Sales document" sap:quickinfo="Sales and Distribution Document Number"/>
+                <Property Name="Stockorder" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="STOCKTRAN" sap:quickinfo="StockOrder"/>
+                <Property Name="Bayno" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="BAYNO" sap:quickinfo="BayNo"/>
+                <Property Name="Startdate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Startdate" sap:quickinfo="StartDate"/>
+                <Property Name="Enddate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="ENDDATE" sap:quickinfo="EndDate"/>
+                <Property Name="Starttime" Type="Edm.Time" Precision="0" sap:label="startTime" sap:quickinfo="Start time"/>
+                <Property Name="Endtime" Type="Edm.Time" Precision="0" sap:label="ENDTIME" sap:quickinfo="EndTime"/>
+                <Property Name="Vehicleno" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Vehicle"/>
+                <Property Name="Driver" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Driver"/>
+                <Property Name="Cleaner" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Cleaner"/>
+                <Property Name="Createdby" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="CREABY" sap:quickinfo="CreatedBy"/>
+                <Property Name="Createddate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="CREATEDT" sap:quickinfo="CreatedDate"/>
+                <Property Name="Createdtime" Type="Edm.Time" Precision="0" sap:label="CREATIME" sap:quickinfo="CreatedTime"/>
+                <Property Name="Changedby" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="CHANGEBY" sap:quickinfo="ChangedBy"/>
+                <Property Name="Changeddate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="CHANGEDT" sap:quickinfo="ChangedDate"/>
+                <Property Name="Changedtime" Type="Edm.Time" Precision="0" sap:label="" sap:quickinfo="ChangedTime"/>
+            </EntityType>
+            <EntityType Name="xIQMSxshipTas_valuehelpType" sap:label="ship tas" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Shipment"/>
+                </Key>
+                <Property Name="Shipment" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Shipment Number"/>
+                <Property Name="Material" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Material Number"/>
+                <Property Name="Truckno" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Vehicle"/>
+                <Property Name="Tochkey" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="" sap:quickinfo="Touch Key"/>
+                <Property Name="Rfid" Type="Edm.Int16" sap:label="" sap:quickinfo="RFID"/>
+                <Property Name="Bayno" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="BAYNO" sap:quickinfo="BayNo"/>
+                <Property Name="Newdate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Startdate" sap:quickinfo="StartDate"/>
+                <Property Name="Newtime" Type="Edm.Time" Precision="0" sap:label="startTime" sap:quickinfo="Start time"/>
+                <Property Name="Errorcode" Type="Edm.Int16" sap:label="" sap:quickinfo="Error Code"/>
+                <Property Name="Errordefin" Type="Edm.String" MaxLength="50" sap:display-format="UpperCase" sap:label="" sap:quickinfo="Error description"/>
+                <Property Name="Createdby" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="CREABY" sap:quickinfo="CreatedBy"/>
+                <Property Name="Createddate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="CREATEDT" sap:quickinfo="CreatedDate"/>
+                <Property Name="Createdtime" Type="Edm.Time" Precision="0" sap:label="CREATIME" sap:quickinfo="CreatedTime"/>
+                <Property Name="Changedby" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="CHANGEBY" sap:quickinfo="ChangedBy"/>
+                <Property Name="Changeddate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="CHANGEDT" sap:quickinfo="ChangedDate"/>
+                <Property Name="Changedtime" Type="Edm.Time" Precision="0" sap:label="" sap:quickinfo="ChangedTime"/>
+            </EntityType>
+            <EntityType Name="xIQMSxstodelivType" sap:label="sto delivery" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="sto"/>
+                    <PropertyRef Name="Ebelp"/>
+                </Key>
+                <Property Name="sto" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Purchasing Document" sap:quickinfo="Purchasing Document Number"/>
+                <Property Name="Ebelp" Type="Edm.String" Nullable="false" MaxLength="5" sap:display-format="NonNegative" sap:label="Item" sap:quickinfo="Item Number of Purchasing Document"/>
+                <Property Name="Zekkn" Type="Edm.String" MaxLength="2" sap:display-format="NonNegative" sap:label="Account Assgmt No." sap:quickinfo="Sequential Number of Account Assignment"/>
+                <Property Name="Vgabe" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Trans./event type" sap:quickinfo="Transaction/event type, purchase order history"/>
+                <Property Name="Gjahr" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative" sap:label="Material Doc. Year" sap:quickinfo="Material Document Year"/>
+                <Property Name="Delivery" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Material Document" sap:quickinfo="Number of Material Document"/>
+            </EntityType>
+            <EntityType Name="xIQMSxTransport_nType" sap:label="Transport proj" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Lifnr"/>
+                </Key>
+                <Property Name="Lifnr" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Vendor" sap:quickinfo="Account Number of Vendor or Creditor"/>
+                <Property Name="Land1" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Country" sap:quickinfo="Country Key"/>
+                <Property Name="Name1" Type="Edm.String" MaxLength="35" sap:label="Name" sap:quickinfo="Name 1"/>
+                <Property Name="Name2" Type="Edm.String" MaxLength="35" sap:label="Name 2"/>
+                <Property Name="Name3" Type="Edm.String" MaxLength="35" sap:label="Name 3"/>
+                <Property Name="Name4" Type="Edm.String" MaxLength="35" sap:label="Name 4"/>
+                <Property Name="Ort01" Type="Edm.String" MaxLength="35" sap:label="City"/>
+            </EntityType>
+            <EntityType Name="xIQMSxvehiclemasterType" sap:label="Vehicle master" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Vehicle"/>
+                </Key>
+                <Property Name="Vehicle" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Vehicle Number" sap:quickinfo="TD Vehicle Number"/>
+                <Property Name="TuNumber" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Transport unit" sap:quickinfo="TD transport unit number"/>
+                <Property Name="SeqNmbr" Type="Edm.String" MaxLength="3" sap:display-format="NonNegative" sap:label="Sequence number" sap:quickinfo="TD master data sequence number"/>
+                <Property Name="trquant" Type="Edm.Double" sap:label="Compartment max.vol." sap:quickinfo="TD compartment maximum volume"/>
+                <Property Name="VehType" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Vehicle type" sap:quickinfo="TD vehicle type"/>
+                <Property Name="VehId" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="TD misc.vehicle ID" sap:quickinfo="TD vehicle identifier"/>
+                <Property Name="Carrier" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Carrier" sap:quickinfo="TD carrier (vendor account number)"/>
+                <Property Name="VehNrtus" Type="Edm.String" MaxLength="2" sap:display-format="NonNegative" sap:label="Number of TUs" sap:quickinfo="Number of transport units on vehicle (TD)"/>
+                <Property Name="VolUom" Type="Edm.String" MaxLength="3" sap:label="Volume UoM" sap:quickinfo="TD volume unit of measure" sap:semantics="unit-of-measure"/>
+                <Property Name="WgtUom" Type="Edm.String" MaxLength="3" sap:label="Weight UoM" sap:quickinfo="TD weight unit of measure" sap:semantics="unit-of-measure"/>
+                <Property Name="DimUom" Type="Edm.String" MaxLength="3" sap:label="Dimension UoM" sap:quickinfo="TD dimension unit of measure" sap:semantics="unit-of-measure"/>
+                <Property Name="VehMaxwgt" Type="Edm.Double" sap:label="Vehicle max.weight" sap:quickinfo="TD vehicle maximum weight"/>
+                <Property Name="VehUnlwgt" Type="Edm.Double" sap:label="Vehicle unl.weight" sap:quickinfo="TD vehicle unladen weight"/>
+                <Property Name="VehMaxvol" Type="Edm.Double" sap:label="Vehicle maximum vol." sap:quickinfo="TD vehicle maximum volume"/>
+                <Property Name="EquipNr" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="Equipment" sap:quickinfo="Equipment Number"/>
+                <Property Name="VehHeight" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="DimUom" sap:label="Vehicle height"/>
+                <Property Name="VehWidth" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="DimUom" sap:label="Vehicle width" sap:quickinfo="TD width"/>
+                <Property Name="VehLength" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="DimUom" sap:label="Vehicle length"/>
+                <Property Name="Route" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="Vehicle route" sap:quickinfo="TD-F vehicle route"/>
+                <Property Name="Tzone" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="Time Zone"/>
+                <Property Name="RegOwner" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Registered Owner" sap:quickinfo="TD-Vehicle Registered Owner"/>
+                <Property Name="GrpId" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="BerthCmpGrp" sap:quickinfo="TD-Vehicle Berth Compatibility Group ID"/>
+                <Property Name="OwnFlag" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Own Vehicle" sap:quickinfo="TD-Vehicle Own Flag"/>
+                <Property Name="Ballcap" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="CapUom" sap:label="BalCap" sap:quickinfo="TD-Vehicle Ballast Capacity"/>
+                <Property Name="FlBnkCapa" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="CapUom" sap:label="FuelBnkCapacity" sap:quickinfo="TD-Vehicle Fuel Bunker Capacity"/>
+                <Property Name="DslBnkCapa" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="CapUom" sap:label="Diesel Bunker Cap" sap:quickinfo="TD-Vehicle Diesel Bunker Capacity"/>
+                <Property Name="CapUom" Type="Edm.String" MaxLength="3" sap:label="BnkCapacityUoM" sap:quickinfo="UoM of TD-Vehicle Bunker Capacity" sap:semantics="unit-of-measure"/>
+                <Property Name="WtUom" Type="Edm.String" MaxLength="3" sap:label="Draft Wt. UoM" sap:quickinfo="UoM of TD-Vehicle(For Draft)" sap:semantics="unit-of-measure"/>
+                <Property Name="AverageSpeed" Type="Edm.Decimal" Precision="6" Scale="2" sap:unit="AvrSpeedUom" sap:label="Average Speed"/>
+                <Property Name="AvrSpeedUom" Type="Edm.String" MaxLength="3" sap:label="Speed UoM" sap:quickinfo="Average Speed UoM" sap:semantics="unit-of-measure"/>
+                <Property Name="DeckCapacity" Type="Edm.Decimal" Precision="6" Scale="2" sap:unit="DeckCapUom" sap:label="Deck Capacity"/>
+                <Property Name="DeckCapUom" Type="Edm.String" MaxLength="3" sap:label="Deck Capacity UoM" sap:semantics="unit-of-measure"/>
+                <Property Name="ArrivalBuffer" Type="Edm.Decimal" Precision="11" Scale="0" sap:label="Arrival Buffer"/>
+                <Property Name="DepartureBuffer" Type="Edm.Decimal" Precision="11" Scale="0" sap:label="Departure Buffer"/>
+                <Property Name="VehMail" Type="Edm.String" MaxLength="241" sap:label="E-Mail Address"/>
+                <Property Name="VehPhone" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Phone" sap:quickinfo="Vehicle Phone"/>
+                <Property Name="Tppoint" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="TransportPlanningPt" sap:quickinfo="Transportation planning point"/>
+                <Property Name="VehStatus" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Vehicle status" sap:quickinfo="TD vehicle status"/>
+            </EntityType>
+            <EntityContainer Name="IQMS_QUEUEMANAGE_VALUEHELP_SRV_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="xIQMSxcustomer_n" EntityType="IQMS.QUEUEMANAGE_VALUEHELP_SRV.xIQMSxcustomer_nType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="xIQMSxfetch_so" EntityType="IQMS.QUEUEMANAGE_VALUEHELP_SRV.xIQMSxfetch_soType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="xIQMSxfetch_sto" EntityType="IQMS.QUEUEMANAGE_VALUEHELP_SRV.xIQMSxfetch_stoType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="xIQMSxMaterial_n" EntityType="IQMS.QUEUEMANAGE_VALUEHELP_SRV.xIQMSxMaterial_nType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="xIQMSxPlants" EntityType="IQMS.QUEUEMANAGE_VALUEHELP_SRV.xIQMSxPlantsType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="xIQMSxschfac_fetch" EntityType="IQMS.QUEUEMANAGE_VALUEHELP_SRV.xIQMSxschfac_fetchType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="xIQMSxshipTas_valuehelp" EntityType="IQMS.QUEUEMANAGE_VALUEHELP_SRV.xIQMSxshipTas_valuehelpType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="xIQMSxstodeliv" EntityType="IQMS.QUEUEMANAGE_VALUEHELP_SRV.xIQMSxstodelivType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="xIQMSxTransport_n" EntityType="IQMS.QUEUEMANAGE_VALUEHELP_SRV.xIQMSxTransport_nType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="xIQMSxvehiclemaster" EntityType="IQMS.QUEUEMANAGE_VALUEHELP_SRV.xIQMSxvehiclemasterType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+            </EntityContainer>
+            <Annotations Target="IQMS.QUEUEMANAGE_VALUEHELP_SRV.IQMS_QUEUEMANAGE_VALUEHELP_SRV_Entities"
+                xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Aggregation.ApplySupported">
+                    <Record>
+                        <PropertyValue Property="Transformations">
+                            <Collection>
+                                <String>aggregate</String>
+                                <String>groupby</String>
+                                <String>filter</String>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Rollup" EnumMember="None"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="http://ingenxsrv:8001/sap/opu/odata/iqms/QUEUEMANAGE_VALUEHELP_SRV/$metadata"
+                xmlns:atom="http://www.w3.org/2005/Atom"/>
+                <atom:link rel="latest-version" href="http://ingenxsrv:8001/sap/opu/odata/iqms/QUEUEMANAGE_VALUEHELP_SRV/$metadata"
+                    xmlns:atom="http://www.w3.org/2005/Atom"/>
+                </Schema>
+            </edmx:DataServices>
+        </edmx:Edmx>

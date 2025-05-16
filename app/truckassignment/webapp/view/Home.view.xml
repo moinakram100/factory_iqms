@@ -1,0 +1,426 @@
+<mvc:View
+    controllerName="com.ingenx.qms.truckassignment.controller.Home"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout"
+    xmlns:t="sap.ui.table"
+    xmlns="sap.m"
+    xmlns:u="sap.ui.unified"
+     xmlns:tnt="sap.tnt"
+>
+    <SplitApp id="_IDGenSplitApp1"
+        initialDetail="detail"
+        initialMaster="master"
+    >
+        <detailPages >
+            <Page
+                
+                id="detail"
+                class="sapUiSmallMarginTop sapUiSmallMarginEnd sapUiSmallMarginBottom customPageHeader"
+                showHeader="true"
+                title="Truck Assignment"
+            >
+            <VBox id="_IDGenVBox" >
+
+           
+
+                 <ScrollContainer id="_IDGenScrollContainer"
+                    height="calc(100vh - 60px)"  
+                    width="100%"
+                    vertical="true"
+                    horizontal="false"
+                    class="sapUiSmallMarginTop"
+                > 
+          
+            <form:SimpleForm
+                id="_IDGenSimpleForm1"
+                class="simpleForm sapUiTinyMargin"
+                layout="ResponsiveGridLayout"
+                columnsXL="2"
+                columnsL="2"
+                columnsM="2"
+                labelSpanXL="4"
+                labelSpanL="4"
+                labelSpanM="4"
+                adjustLabelSpan="false"
+                emptySpanXL="0"
+                emptySpanL="0"
+                emptySpanM="0"
+            >
+            <form:content>
+                    <core:Title text=""   />
+
+                    <Label id="Doc_label" text="Sales Order No" required="true" design="Bold" class="sapUiTinyMarginTop" />
+                    <Input id="Doc_id" width="70%" editable="false" />
+
+                    <Label text="Ship To Party" design="Bold" class="sapUiTinyMarginTop" />
+                    <Input id="STP_id" width="70%" editable="false" />
+
+                    <Label id="Destination_label" text="Sold To Party" design="Bold" class="sapUiTinyMarginTop" />
+                    <Input id="STPOrPlant_id" width="70%" editable="false" />
+                    <!-- <Input id="Plant_id"  editable="false" visible="false" /> -->
+
+                    <Label text="Material" design="Bold" class="sapUiTinyMarginTop" />
+                    <Input id="Mat_id" width="70%" editable="false" />
+
+                    <Label text="Qty" design="Bold" class="sapUiTinyMarginTop" />
+                    <Input id="Qty_id" width="70%" editable="false" />
+
+                    <core:Title text=""  />
+
+                    <Label text="Reporting Date" design="Bold" class="sapUiTinyMarginTop" />
+                    <Input id="startDate_id" width="70%" editable="false" />
+
+                    <Label text="Reporting Time" design="Bold" class="sapUiTinyMarginTop" />
+                    <Input id="reportTime_id" width="70%" editable="false" />
+
+                    <Label text="Assign Vehicle No" required="true" design="Bold" class="sapUiTinyMarginTop" />
+                    <Input id="truck_id" width="70%" />
+
+                    <Label text="Driver Name" required="true" design="Bold" class="sapUiTinyMarginTop" />
+                    <Input id="DriName_id" width="70%" />
+
+                    <Label text="Cleaner Name" required="true" design="Bold" class="sapUiTinyMarginTop" />
+                    <Input id="Cleaner_id" width="70%" />
+                </form:content>
+
+                </form:SimpleForm>
+
+                <HBox id="_IDGenHBox8" class="_hboxBtn">
+                    <Button
+                        id="_IDGenButton1"
+                        text="Submit"
+                        class="sapUiSmallMargin"
+                        press="onSubmit"
+                        width="120px"
+                        ariaHasPopup="Dialog"
+                        type="Emphasized"
+                    />
+                    <Button
+                        id="_IDGenButton2"
+                        icon="sap-icon://print"
+                        text="Print"
+                        class="sapUiSmallMargin"
+                        press="onGeneratePDF"
+                        width="120px"
+                        ariaHasPopup="Dialog"
+                        type="Emphasized"
+                    />
+                    <Button
+                        id="_IDGenButton3"
+                        icon="sap-icon://qr-code"
+                        text="Generate QR"
+                        class="sapUiSmallMargin"
+                        press="onGenerateQR"
+                        width="120px"
+                        ariaHasPopup="Dialog"
+                        type="Emphasized"
+                    />
+
+                    <Dialog
+                        id="qrCodeDialog"
+                        title="QR Code"
+                        class="sapUiResponsivePadding"
+                        draggable="true"
+                        resizable="true"
+                
+                    >
+                        <endButton>
+                            <Button id="_IDGenButton"
+                                text="Close"
+                                press="onCloseDialog"
+                                type="Transparent"
+                            />
+                        </endButton>
+                        <VBox id="_IDGenVBox1"
+                            alignItems="Center"
+                            class="QRVboxclass"
+                        >
+                            <Image
+                                id="qrCodeImage"
+                                src=""
+                                width="200px"
+                                height="200px"
+                                class="QRIMAGEID"
+                            />
+                        </VBox>
+                        <Button id="_IDGenButton4"
+                            text="Print the QR"
+                            press="onPrintQR"
+                            type="Emphasized"
+                            class="Printbtn"
+                        />
+                        <Button id="_IDGenButton5"
+                            text="Send QR Mail"
+                            press="onSendMail"
+                            type="Emphasized"
+                            class="mailbtn"
+                        />
+                        <!-- <endButton>
+        <Button icon="sap-icon://decline" press="onCloseDialog" type="Transparent" />
+    </endButton> -->
+                    </Dialog>
+
+                    <!-- <Button
+                        id="_IDGenButton3"
+                        icon="sap-icon://qr-code"
+                        text="Generate QR"
+                        class="sapUiSmallMargin"
+                        press="onSubmit"
+                        width="120px"
+                        ariaHasPopup="Dialog"
+                        type="Emphasized"
+                    /> -->
+                </HBox>
+                <VBox
+                    id="tab"
+                    class="_VBoxDetailBottom"
+                    width="100%"
+                    height="auto"
+                >
+                    <IconTabBar
+                        id="_idIconTabBar"
+                        tabDensityMode="Compact"
+                        class="icontab1"
+                    >
+                        <items>
+                            <IconTabFilter id="_IDGenIconTabFilter"
+                                text="Security Clearance Checklist"
+                                key="info"
+                                
+                            >
+                                <Panel
+                                    id="p1"
+                                    height="auto"
+                                    width="100%"
+                                    class="sapUiMediumMarginBottom"
+                                >
+                                    <Table
+                                        id="myTable2"
+                                        inset="false"
+                                        mode="None"
+                                    >
+                                        <columns>
+                                            <Column id="_IDGenColumn"
+                                                vAlign="Middle"
+                                                width="100%"
+                                            >
+                                                <header>
+                                                    <Text id="_IDGenText" text="Checklist" />
+                                                </header>
+                                            </Column>
+                                        </columns>
+                                        <items>
+                                            <ColumnListItem id="_IDGenColumnListItem">
+                                                <cells>
+                                                    <Text id="_IDGenText1"
+                                                        text="Valid PUC Certificate"
+                                                    />
+                                                </cells>
+                                            </ColumnListItem>
+                                            <ColumnListItem id="_IDGenColumnListItem1">
+                                                <cells>
+                                                    <Text id="_IDGenText2"
+                                                        text="Valid Driving License"
+                                                    />
+                                                </cells>
+                                            </ColumnListItem>
+                                            <ColumnListItem id="_IDGenColumnListItem2">
+                                                <cells>
+                                                    <Text id="_IDGenText3"
+                                                        text="Valid CCOE License from CCOE"
+                                                    />
+                                                </cells>
+                                            </ColumnListItem>
+                                            <ColumnListItem id="_IDGenColumnListItem3">
+                                                <cells>
+                                                    <Text id="_IDGenText4"
+                                                        text="Master Switch In Working Condition"
+                                                    />
+                                                </cells>
+                                            </ColumnListItem>
+                                            <ColumnListItem id="_IDGenColumnListItem4">
+                                                <cells>
+                                                    <Text id="_IDGenText5"
+                                                        text="Valid Registration Book"
+                                                    />
+                                                </cells>
+                                            </ColumnListItem>
+                                            <ColumnListItem id="_IDGenColumnListItem5">
+                                                <cells>
+                                                    <Text id="_IDGenText6"
+                                                        text="Valid Insurance Certificate"
+                                                    />
+                                                </cells>
+                                            </ColumnListItem>
+                                            <ColumnListItem id="_IDGenColumnListItem6">
+                                                <cells>
+                                                    <Text id="_IDGenText7"
+                                                        text="Valid Fitness Certificate"
+                                                    />
+                                                </cells>
+                                            </ColumnListItem>
+                                            <ColumnListItem id="_IDGenColumnListItem7">
+                                                <cells>
+                                                    <Text id="_IDGenText8"
+                                                        text="Spark Arrestor Fitted - Standard Type , C"
+                                                    />
+                                                </cells>
+                                            </ColumnListItem>
+                                        </items>
+                                    </Table>
+                                </Panel>
+                            </IconTabFilter>
+                            <IconTabFilter id="_IDGenIconTabFilter1"
+                                text="License Document"
+                                key="info1"
+                            >
+                                <Panel
+                                    id="p2"
+                                    height="200px"
+                                    width="100%"
+                                    class="sapUiMediumMarginBottom"
+                                >
+                                    <!-- <l:VerticalLayout id="_IDGenVerticalLayout2"> -->
+                                    <Table
+                                        id="myTable"
+                                        fixedLayout="false"
+                                        class="customTa"
+                                        
+                                    >
+                                        <columns>
+                                            <Column id="_IDGenColumn1">
+                                                <Label id="_IDGenLabel4" text="Type" />
+                                            </Column>
+                                            <Column id="_IDGenColumn2">
+                                                <Label id="_IDGenLabel8" text="Licence Number" />
+                                            </Column>
+                                            <Column id="_IDGenColumn3">
+                                                <Label id="_IDGenLabel10" text="Valid From" />
+                                            </Column>
+                                            <Column id="_IDGenColumn4">
+                                                <Label id="_IDGenLabel11" text="Valid To" />
+                                            </Column>
+                                            <Column id="_IDGenColumn5">
+                                                <!-- <Button icon="sap-icon://add" press="onCreatePress" /> -->
+                                            </Column>
+                                        </columns>
+                                        <items>
+                                            <ColumnListItem id="_IDGenColumnListItem8">
+                                                <cells>
+                                                    <Input id="_IDGenInput" />
+                                                    <Input id="_IDGenInput1" />
+                                                    <DatePicker id="_IDGenDatePicker" />
+                                                    <DatePicker id="_IDGenDatePicker1" />
+                                                </cells>
+                                            </ColumnListItem>
+                                        </items>
+                                    </Table>
+                                </Panel>
+                            </IconTabFilter>
+                            <IconTabFilter id="_IDGenIconTabFilter2"
+                                text="Document Upload"
+                                key="info2"
+                            >
+                                <Panel
+                                    id="p3"
+                                    height="200px"
+                                    width="100%"
+                                    class="sapUiMediumMarginBottom"
+                                >
+                                    <l:VerticalLayout
+                                        id="_IDGenVerticalLayout1"
+                                    >
+                                <l:HorizontalLayout id="_IDGenHorizontalLayout1">
+                                    <Input
+                                        id="fileinput"
+                                        width="250px"
+                                        placeholder="Description of file"
+                                        liveChange="Fileinputchange"
+                                        class="sapUiMarginTinyEnd"
+                                    />
+                                    <u:FileUploader
+                                        id="fileUploader"
+                                        uploadUrl="odata/v4/i-qmsservice/FileuploadSet"
+                                        sendXHR="true"
+                                        httpRequestMethod="Post"
+                                        change="handleValueChangeUpload"
+                                        tooltip="Upload your file to the local server"
+                                        buttonText="Choose File"
+                                        icon="sap-icon://value-help"
+                                        fileType="pdf"
+                                        typeMissmatch="handleTypeMissmatch"
+                                         class="sapUiTinyMarginEnd"
+                                    />
+                                    <Button id="_IDGenButton6"
+                                        text="Upload File"
+                                        press="handleUploadPress"
+                                         class="sapUiTinyMarginEnd"
+                                    />
+                                    <Button id="_IDGenButton7"
+                                        icon="sap-icon://delete"
+                                        type="Reject"
+                                        press="OnfileUploadDelete"
+                                    />
+                                    <Button id="_IDGenButton8"
+                                        icon="sap-icon://message-success"
+                                        visible="false"
+                                    />
+                                </l:HorizontalLayout>
+                                   <Button id="_IDGenButton9"
+                                    text="Add Row"
+                                    press="onAddRowFileUpload"
+                                    type="Emphasized"
+                                />
+                                    </l:VerticalLayout>
+                                </Panel>
+                            </IconTabFilter>
+                        </items>
+                    </IconTabBar>
+                </VBox>
+        </ScrollContainer>
+
+            </VBox>
+            </Page>
+        </detailPages>
+
+        <masterPages>
+            <Page
+                id="master"
+                title="Document List"
+                backgroundDesign="Standard"
+                icon="sap-icon://action"
+                class="MainPage"
+            >
+                <List
+                    id="idList"
+                    items="{schedulingArray>/}"
+                    growing="true"
+                    growingThreshold="50"
+                    includeItemInSelection="false"
+                >
+                    <!-- <infoToolbar>
+                        <OverflowToolbar
+                            visible="false"
+                            id="idInfoToolbar"
+                        >
+                            <Label id="idFilterLabel" />
+                        </OverflowToolbar>
+                    </infoToolbar> -->
+
+                    <StandardListItem
+                        id="listItem"
+                        title="{ parts: [{path: 'schedulingArray>SalesOrder'}, {path: 'schedulingArray>Stockorder'},{path: 'schedulingArray>Material'}], formatter: '.formatTitle' }"
+                        description="{= ${schedulingArray>DocType} === 'SO' ? 'Cust: ' + ${schedulingArray>Soldtoparty} : 'Plant: ' + ${schedulingArray>Plant} }"
+                        type="Navigation"
+                       info="{ parts: [{ path: 'schedulingArray>Quantity' }, { path: 'schedulingArray>Uom' }], formatter: '.formatQuantityInfo' }"
+
+                        press="onUpdateClick"
+                    />
+                </List>
+            </Page>
+        </masterPages>
+    </SplitApp>
+</mvc:View>

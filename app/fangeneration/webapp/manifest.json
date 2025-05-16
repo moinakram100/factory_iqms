@@ -1,0 +1,161 @@
+{
+  "_version": "1.65.0",
+  "sap.app": {
+    "id": "com.ingenx.qms.fangeneration",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.17.5",
+      "toolsId": "5b365e9b-2b61-4a00-a7b2-345106846d14"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/odata/v4/factory/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "odataVersion": "4.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.135.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "com.ingenx.qms.fangeneration.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "transition": "slide",
+        "type": "View",
+        "viewType": "XML",
+        "path": "com.ingenx.qms.fangeneration.view",
+        "async": true,
+        "viewPath": "com.ingenx.qms.fangeneration.view"
+      },
+      "routes": [
+        {
+          "name": "RouteHome",
+          "pattern": ":?query:",
+          "target": [
+            "TargetHome"
+          ]
+        },
+        {
+          "name": "RouteSolidFanGeneration",
+          "pattern": "solid",
+          "target": [
+            "TargetSolidFanGeneration"
+          ]
+        },
+        {
+          "name": "RouteLiquidFanGeneration",
+          "pattern": "liquid",
+          "target": [
+            "TargetLiquidFanGeneration"
+          ]
+        },
+        {
+          "name": "RouteGasFanGeneration",
+          "pattern": "gas",
+          "target": [
+            "TargetGasFanGeneration"
+          ]
+        },
+        {
+          "name": "RouteMaterialFanGeneration",
+          "pattern": "material",
+          "target": [
+            "TargetMaterialFanGeneration"
+          ]
+        }
+      ],
+      "targets": {
+        "TargetHome": {
+          "id": "Home",
+          "name": "Home"
+        },
+        "TargetSolidFanGeneration": {
+          "id": "Solid",
+          "name": "Solid"
+        },
+        "TargetLiquidFanGeneration": {
+          "id": "Liquid",
+          "name": "Liquid"
+        },
+        "TargetGasFanGeneration": {
+          "id": "Gas",
+          "name": "Gas"
+        },
+        "TargetMaterialFanGeneration": {
+          "id": "Material",
+          "name": "Material"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "com.ingenx.qms.fangeneration.view.App",
+      "type": "XML",
+      "id": "App",
+      "async": true
+    }
+  }
+}

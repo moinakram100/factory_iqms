@@ -1,0 +1,360 @@
+<mvc:View
+    controllerName="com.ingenx.qms.parking.controller.CreateParking"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:f="sap.f"
+    xmlns:core="sap.ui.core"
+    xmlns:ndc="sap.ndc"
+>
+    <tnt:ToolHeader
+        id="_IDGenToolHeader1"
+        class="sapUiTinyMarginTop sapUiTinyMarginEnd sapUiTinyMarginBegin"
+    >
+        <HBox
+            justifyContent="Center"
+            width="100%"
+        >
+            <Title
+                id="_IDGenText1"
+                text="Create Parking for Factory"
+                level="H3"
+                textAlign="Center"
+                class="headerTitle"
+            />
+        </HBox>
+    </tnt:ToolHeader>
+    
+        <FlexBox
+            id="_IDGenVBox1"
+            class="headerFlexBox"
+        >
+            <HBox class="customHBox">
+                <FlexBox
+                    id="_IDGenFlexBox12"
+                    direction="Column"
+                    alignItems="End"
+                >
+                    <Label
+                        id="_IDGenLabel5"
+                        text="Parking Gate :"
+                        design="Bold"
+                        class="parkGateText"
+                        required="true"
+                    />
+                    <Label
+                        id="_IDGenLabel"
+                        text="Parking Area :"
+                        design="Bold"
+                        class="parkAreaText"
+                        required="true"
+                    />
+                </FlexBox>
+
+                <FlexBox
+                    id="_IDGenFlexBox6"
+                    direction="Column"
+                    alignItems="End"
+                >
+                    <Select
+                        id="_IDGenSelect2"
+                        forceSelection="false"
+                        items="{/AddParkingGate}"
+                        width="85px"
+                        change="onSelectChange"
+                    >
+                        <core:Item
+                            id="_IDGenItem"
+                            key="{Gate_no}"
+                            text="{Gate_no}"
+                        />
+                    </Select>
+
+                    <Select
+                        id="_IDGenSelect3"
+                        forceSelection="false"
+                        items="{/AddParkingArea}"
+                        width="85px"
+                        change="onSelectChange"
+                    >
+                        <core:Item
+                            id="_IDGenItem12"
+                            key="{Area_no}"
+                            text="{Area_no}"
+                        />
+                    </Select>
+                </FlexBox>
+            </HBox>
+            <HBox
+                class="customHBox"
+                wrap="Wrap"
+            >
+                <FlexBox
+                    id="_IDGenFlexBox14"
+                    direction="Column"
+                    alignItems="End"
+                >
+                    <Label
+                        id="_IDGenLabel11"
+                        text="Vehicle Number :"
+                        design="Bold"
+                        class="parkGateText"
+                        required="true"
+                    />
+                    <Label
+                        id="_IDGenLabel12"
+                        text="Parking Number :"
+                        design="Bold"
+                        class="parkAreaText"
+                    />
+                </FlexBox>
+
+                <FlexBox
+                    id="_IDGenFlexBox15"
+                    direction="Column"
+                    alignItems="End"
+                >
+                    <Input
+                        id="vehicle_id"
+                        width="160px"
+                        submit="onVehicleSubmit"
+                    />
+
+                    <Input
+                        id="parking_id"
+                        width="160px"
+                        editable="false"
+                    />
+                </FlexBox>
+
+                <FlexBox
+                    id="_IDGenFleBox12"
+                    direction="Column"
+                    alignItems="End"
+                >
+                    <Input
+                        id="vehicleDescription_id"
+                        width="280px"
+                        editable="false"
+                    />
+                </FlexBox>
+            </HBox>
+            <HBox class="customHBox">
+                <FlexBox
+                    id="_IDGenFlexox12"
+                    direction="Column"
+                    alignItems="End"
+                >
+                    <Label
+                        id="_IDGenLbel5"
+                        text="Driver Name :"
+                        design="Bold"
+                        class="parkGateText"
+                        required="true"
+                    />
+                    <Label
+                        id="_IDGenabel"
+                        text="Cleaner Name :"
+                        design="Bold"
+                        class="parkAreaText"
+                        required="true"
+                    />
+                </FlexBox>
+
+                <FlexBox
+                    id="_IDGenFlxBox6"
+                    direction="Column"
+                >
+                    <Input
+                        id="_IDGenInut5"
+                        width="160px"
+                    />
+
+                    <Input
+                        id="_IDGeInput6"
+                        width="160px"
+                    />
+                </FlexBox>
+            </HBox>
+        </FlexBox>
+
+        <FlexBox
+            id="_IDGenFlexBox7"
+            class="BottoFlexBox"
+        >
+            <FlexBox
+                id="_IDGenFlexBox8"
+                direction="Column"
+                class="radioButton"
+            >
+                <RadioButtonGroup
+                    id="GroupA"
+                    select="onRadioBtnChange"
+                >
+                    <RadioButton
+                        id="_IDGenRadioButton1"
+                        text="Loading"
+                    />
+                    <RadioButton
+                        id="_IDGenRadioButton2"
+                        text="Unloading"
+                    />
+                </RadioButtonGroup>
+            </FlexBox>
+
+            <FlexBox
+                id="_IDGenFlexBox9"
+                class="css7"
+            >
+                <FlexBox
+                    id="_IDGenFlexBox10"
+                    alignItems="Center"
+                    direction="Column"
+                    class="css5"
+                >
+                    <Label
+                        text="DocType : "
+                        design="Bold"
+                        class="transportCode"
+                    />
+                    <Label
+                        id="_IDLabelTransporter"
+                        text="Transporter Code :"
+                        design="Bold"
+                    />
+                    <Label
+                        id="_IDLabelCustomer"
+                        text="Destination :"
+                        design="Bold"
+                    />
+                    <Label
+                        id="_IDLabelPlant"
+                        text="Plant Code :"
+                        design="Bold"
+                        visible="false"
+                    />
+                    <Label
+                        id="_IDLabelProduct"
+                        text="Material :"
+                        design="Bold"
+                    />
+                </FlexBox>
+
+                <FlexBox
+                    id="_IDGenFlxBox11"
+                    alignItems="Center"
+                    direction="Column"
+                    class="css11"
+                >
+                    <Select
+                        id="transactionType"
+                        width="200px"
+                        change="onDocumentChange"
+                    >
+                        <core:Item
+                            id="_IDGeIem1"
+                            key="SO"
+                            text="Sales Order"
+                        />
+
+                        <core:Item
+                            id="_IDGeItem2"
+                            key="STO"
+                            text="Stock Transfer"
+                        />
+                    </Select>
+                    <Input
+                        id="TransporterInput"
+                        width="200px"
+                        showValueHelp="true"
+                        valueHelpRequest="onTransportCode"
+                        valueHelpOnly="true"
+                    />
+
+                    <Input
+                        id="CustomerInput"
+                        width="200px"
+                        showValueHelp="true"
+                        valueHelpRequest="onCustomerCode"
+                        valueHelpOnly="true"
+                    />
+
+                    <Input
+                        id="plantInput"
+                        width="200px"
+                        showValueHelp="true"
+                        valueHelpRequest="onPlantCodeValueHelp"
+                        valueHelpOnly="true"
+                        visible="false"
+                    />
+                    <Select
+                        id="ID_MaterialSelect"
+                        items="{/MaterialTypeDefinition}"
+                        width="200px"
+                        forceSelection="false"
+                        change="onSelectChangeMaterial"
+                    >
+                        <!-- key Should be Material  -->
+                        <core:Item
+                            id="_IDGenIem1"
+                            key="{Material}"
+                            text="{MaterialDefinition}"
+                        />
+                    </Select>
+                </FlexBox>
+            </FlexBox>
+
+            <FlexBox
+                id="_IDGenFlexBox17"
+                direction="Column"
+                alignItems="Center"
+            >
+                <RadioButtonGroup
+                    id="_IDGenRadioButtonGroup1"
+                    columns="2"
+                    select="onRadioSelect"
+                    buttons="{/VehicleTypeDefinition}"
+                >
+                    <buttons>
+                        <RadioButton
+                            id="_IDGenRadioButton4"
+                            text="{VehicleDefinition}"
+                            class="radioButtonWithGap"
+                        />
+                    </buttons>
+                </RadioButtonGroup>
+            </FlexBox>
+
+            <FlexBox
+                id="_IDGenFlexBox11"
+                direction="Row"
+            >
+                <Button
+                    id="_IDGenButton1"
+                    text="Submit"
+                    class="sapUiTinyMarginEnd"
+                    press="onSubmit"
+                    type="Emphasized"
+                />
+
+                <VBox class="scantext">
+                    <Label
+                        id="ScanID"
+                        text="Scan QR :"
+                    />
+                </VBox>
+
+                <ndc:BarcodeScannerButton
+                    width="10%"
+                    id="sampleBarcodeScannerButton"
+                    scanSuccess="onScanSuccess"
+                    scanFail="onScanError"
+                    inputLiveUpdate="onScanLiveupdate"
+                    dialogTitle="Barcode Scanner Result"
+                />
+            </FlexBox>
+        </FlexBox>
+    
+</mvc:View>

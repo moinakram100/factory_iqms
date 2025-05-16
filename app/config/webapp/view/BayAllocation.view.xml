@@ -1,0 +1,227 @@
+<mvc:View
+    controllerName="com.ingenx.qms.config.controller.BayAllocation"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:tnt="sap.tnt"
+    xmlns:core="sap.ui.core"
+>
+    <Page
+        id="BayAllocation_Page"
+        showHeader="false"
+    >
+        <tnt:ToolHeader
+            id="BayAllocation_ToolHeader"
+            class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiSmallMarginTop"
+        >
+            
+            <Title
+                id="BayAllocation_TitleGantry"
+                text="Enter Gantry Name :"
+                textAlign="Center"
+                class="sapUiSmallMargin"
+            />
+
+            <Input
+                id="gantry_id"
+                width="150px"
+            />
+            <Title
+                id="BayAllocation_TitleBays"
+                text="Enter Number Of Bays :"
+                textAlign="Center"
+                class="sapUiSmallMargin"
+            />
+            <Input
+                id="BayAllocation_id"
+                width="150px"
+                type="Number"
+                submit="onAddPress"
+            />
+            <ToolbarSpacer id="BayAllocation_ToolbarSpacer2" />
+            <HBox id="BayAllocation_HBox1">
+                <Button
+                    id="BayAllocation_Create"
+                    text="Add"
+                    width="100px"
+                    press="onAddPress"
+                    type="Emphasized"
+                    visible="true"
+                    class="sapUiTinyMarginEnd"
+                />
+                <Button
+                    id="BayAllocation_Submit"
+                    text="Submit"
+                    press="onSubmit"
+                    visible="false"
+                    type="Emphasized"
+                    width="100px"
+                    class="sapUiTinyMarginEnd"
+                />
+                <Button
+                    id="BayAllocation_Confirm"
+                    text="Confirm"
+                    width="100px"
+                    press="onConfirmDelete"
+                    type="Emphasized"
+                    visible="false"
+                    class="sapUiTinyMarginEnd"
+                />
+                <Button
+                    id="BayAllocation_Delete"
+                    text="Delete"
+                    width="100px"
+                    press="onPressDelete"
+                    type="Emphasized"
+                    visible="true"
+                />
+                <Button
+                    id="BayAllocation_Cancel"
+                    text="Cancel"
+                    width="100px"
+                    press="onPressCancel"
+                    type="Emphasized"
+                    visible="false"
+                />
+            </HBox>
+        </tnt:ToolHeader>
+
+        <l:VerticalLayout
+            id="BayAllocation_VerticalLayout1"
+            width="100%"
+        >
+            <l:BlockLayout
+                id="BayAllocation_BlockLayout1"
+                background="Dashboard"
+            >
+                <l:BlockLayoutRow id="BayAllocation_BlockLayoutRow1">
+                    <l:BlockLayoutCell
+                        id="BayAllocation_BlockLayoutCell1"
+                        width="90%"
+                    >
+                        <ScrollContainer
+                            id="BayAllocation_ScrollContainer1"
+                            width="100%"
+                            height="calc(100vh - 110px)"
+                            horizontal="false"
+                            vertical="true"
+                        >
+                            <Table
+                                id="tableMapping"
+                                mode="None"
+                                items="{bayModel>/tableData}"
+                                visible="false"
+                                class="sapUiTinyMarginTop sapUiTinyMarginEnd sapUiTinyMarginBegin"
+                                width="99%"
+                                sticky="ColumnHeaders"
+                            >
+                                <columns>
+                                    <Column>
+                                        <header>
+                                            <Label text="Bay Label" />
+                                        </header>
+                                    </Column>
+                                    <Column>
+                                        <header>
+                                            <Label text="Bay Id" />
+                                        </header>
+                                    </Column>
+                                    <Column>
+                                        <header>
+                                            <Label text="Material" />
+                                        </header>
+                                    </Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem
+                                        type="Active"
+                                        id="item0"
+                                    >
+                                        <cells>
+                                            <Text text="{bayModel>BayLabel}" />
+                                            <Input
+                                                value="{bayModel>BayId}"
+                                                width="250px"
+                                            />
+                                            <Select
+                                                items="{
+                                                    path: '/MaterialTypeDefinition',
+                                                    filters: [{
+                                                        path: 'MaterialType',
+                                                        operator: 'EQ',
+                                                        value1: 'Liquid'
+                                                    }]
+                                                }"
+                                                forceSelection="false"
+                                                width="250px"
+                                                selectedKey="{bayModel>Material}"
+                                            >
+                                                <core:Item
+                                                    key="{MaterialDefinition}"
+                                                    text="{MaterialDefinition}"
+                                                />
+                                            </Select>
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
+
+                            <Table
+                                id="tableMapping1"
+                                items="{
+                                    path: '/BayAllocation',
+                                    sorter: [
+                                        { path: 'GantryName', descending: false },
+                                        { path: 'BayLabel', descending: false }
+                                    ]
+                                }"
+                                class="customTable sapUiTinyMarginTop sapUiTinyMarginEnd sapUiTinyMarginBegin"
+                                width="99%"
+                                mode="None"
+                                sticky="ColumnHeaders"
+                            >
+                                <columns>
+                                    <Column
+                                        mergeDuplicates="true"
+                                        
+                                    >
+                                        <header>
+                                            <Label text="Gantry" />
+                                        </header>
+                                    </Column>
+                                    <Column>
+                                        <header>
+                                            <Label text="Bay Label" />
+                                        </header>
+                                    </Column>
+                                    <Column>
+                                        <header>
+                                            <Label text="Bay ID" />
+                                        </header>
+                                    </Column>
+                                    <Column>
+                                        <header>
+                                            <Label text="Material" />
+                                        </header>
+                                    </Column>
+                                </columns>
+
+                                <items>
+                                    <ColumnListItem>
+                                        <cells>
+                                            <Text text="{GantryName}" />
+                                            <Text text="{BayLabel}" />
+                                            <Text text="{BayId}" />
+                                            <Text text="{Material}" />
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
+                        </ScrollContainer>
+                    </l:BlockLayoutCell>
+                </l:BlockLayoutRow>
+            </l:BlockLayout>
+        </l:VerticalLayout>
+    </Page>
+</mvc:View>

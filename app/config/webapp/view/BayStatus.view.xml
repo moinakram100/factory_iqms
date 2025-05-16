@@ -1,0 +1,114 @@
+<mvc:View
+    controllerName="com.ingenx.qms.config.controller.BayStatus"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:tnt="sap.tnt"
+    xmlns:core="sap.ui.core"
+>
+    <Page
+        id="BayAllocation_StatusPage"
+        showHeader="false"
+    >
+        <tnt:ToolHeader
+            id="bayStatus_ToolHeader"
+            class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiTinyMarginTop"
+        >
+            <ToolbarSpacer id="bayStatus_ToolbarSpacer1" width="15px" />
+            <Title
+                id="bayStatus_Status"
+                text="Update Bay Status"
+                level="H4"
+            
+            />
+
+        </tnt:ToolHeader>
+
+        <l:VerticalLayout
+            id="bayStatus_VerticalLayout1"
+            width="100%"
+        >
+            <l:BlockLayout
+                id="bayStatus_BlockLayout1"
+                background="Dashboard"
+            >
+                <l:BlockLayoutRow id="bayStatus_BlockLayoutRow1">
+                    <l:BlockLayoutCell
+                        id="bayStatus_BlockLayoutCell1"
+                        width="90%"
+                    >
+                        <ScrollContainer
+                            id="bayStatus_ScrollContainer1"
+                            width="100%"
+                            height="calc(100vh - 110px)"
+                            horizontal="false"
+                            vertical="true"
+                        >
+                            <Table
+                                id="bayStatusTable"
+                                items="{
+                                    path: '/BayAllocation',
+                                    sorter: [
+                                        { path: 'GantryName', descending: false },
+                                        { path: 'BayLabel', descending: false }
+                                    ]
+                                }"
+                                class="sapUiTinyMarginTop sapUiTinyMarginEnd sapUiTinyMarginBegin"
+                                width="99%"
+                                mode="None"
+                                sticky="ColumnHeaders"
+                            >
+                                <columns>
+                                    <Column mergeDuplicates="true" >
+                                        <header>
+                                            <Label text="Gantry" />
+                                        </header>
+                                    </Column>
+                                    <Column>
+                                        <header>
+                                            <Label text="Bay Label" />
+                                        </header>
+                                    </Column>
+                                    <Column>
+                                        <header>
+                                            <Label text="Current Status" />
+                                        </header>
+                                    </Column>
+                                </columns>
+
+                                <items>
+                                    <ColumnListItem>
+                                        <cells>
+                                            <Text text="{GantryName}" />
+                                            <Text text="{BayLabel}" />
+                                            <Select
+                                                selectedKey="{Status}"
+                                                forceSelection="false"
+                                            >
+                                                <items>
+                                                    <core:Item
+                                                        key="Bay allocated"
+                                                        text="Bay Allocated"
+                                                    />
+                                                    <core:Item
+                                                        key="Bay Empty"
+                                                        text="Bay Empty"
+                                                    />
+                                                    <core:Item
+                                                        key="underloading"
+                                                        text="Underloading"
+                                                    />
+                                                </items>
+                                            </Select>
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
+                        </ScrollContainer>
+                    </l:BlockLayoutCell>
+                </l:BlockLayoutRow>
+            </l:BlockLayout>
+        </l:VerticalLayout>
+    </Page>
+</mvc:View>

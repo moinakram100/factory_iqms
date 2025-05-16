@@ -1,0 +1,380 @@
+/* Dashboard css */
+
+
+.sapTntToolHeader .sapMTitle {
+
+    font-family: "72-Bold", "72-Boldfull", "72", "72full", Arial, Helvetica, sans-serif !important;
+    color: black !important;
+    font-size: 1.5rem !important;
+
+}
+.sapTntToolHeader.sapMTB {
+    border-radius: 0.5rem;
+}
+
+ 
+.toolHeaderShadow {
+    box-shadow: 4px 8px 16px 4px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+}
+ 
+.toolHeaderShadow:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+#container-dashboard---Home--DashBoard_ScrollContainer1 {
+    scrollbar-width: none !important;
+}
+
+.tileLayout {
+    box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+    margin: 10px;
+}
+ 
+.tileLayout:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+
+
+.clearStatus .sapMBtnInner {
+    background-color: green !important;
+    color: white !important;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+}
+
+
+.pendingStatus .sapMBtnInner {
+    background-color: orange !important;
+    color: white !important;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.failedStatus .sapMBtnInner {
+    background-color: red !important;
+    color: white !important;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.defaultStatus .sapMBtnInner {
+    background-color: grey !important;
+    color: white !important;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.customButton {
+    margin-top: 20px !important;
+}
+
+.pendingStatus .sapMBtnIcon,
+.failedStatus .sapMBtnIcon,
+.clearStatus .sapMBtnIcon,
+.defaultStatus .sapMBtnIcon {
+    color: white !important;
+    font-size: 20px;
+}
+
+
+
+/* visualization code */
+.fButton,
+.sButton,
+.tButton,
+.ftButton {
+    /* background: linear-gradient(90deg, #753a88 50%, transparent 50%);
+    background-size: 200% 100%;
+    animation: flow 2s linear infinite; */
+    position: relative;
+
+    /* overflow: hidden; */
+}
+
+.fButton {
+    background-color: white;
+}
+
+.fButton::before,
+.sButton::before,
+.tButton::before,
+.ftButton::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, #753a88 10%, transparent 10%, transparent 20%, #753a88 20%, #753a88 30%, transparent 30%, transparent 45%, #753a88 40%, #753a88 50%, transparent 50%, transparent 60%, #753a88 60%, #753a88 70%, transparent 70%, transparent 80%, #753a88 80%, transparent 90%, #753a88 90%, transparent 100%, #753a88 100%);
+    background-size: 200% 100%;
+    animation: flow 5s linear infinite;
+}
+
+.head,
+.shead,
+.thead,
+.fthead {
+    background: linear-gradient(0deg, #753a88 50%, transparent 50%);
+    background-size: 100% 200%;
+    animation: flowVertical 2s linear infinite;
+    animation-delay: s;
+}
+
+.thead,
+.fthead {
+    animation: flowVerticalReverse 2s linear infinite;
+    animation-delay: s;
+}
+
+
+
+@keyframes flow {
+    0% {
+        background-position: -100% 0;
+    }
+
+    100% {
+        background-position: 100% 0;
+    }
+}
+
+@keyframes flowVertical {
+    0% {
+        background-position: 0 -100%;
+    }
+
+    100% {
+        background-position: 0 100%;
+    }
+}
+
+@keyframes flowVerticalReverse {
+    0% {
+        background-position: 0 100%;
+    }
+
+    100% {
+        background-position: 0 -100%;
+    }
+}
+
+/* style.css */
+/* webapp/css/style.css */
+
+/* .arrow{
+    margin-bottom: 20px;
+} */
+
+.arrow {
+    width: 40px;
+    height: 13px;
+    background-color: #2234AE;
+    position: relative;
+    margin-top: 140px;
+    padding-bottom: 20px;
+}
+
+.arrow2 {
+    width: 110px;
+    height: 13px;
+    background-color: #2234AE;
+    position: relative;
+    margin-top: 140px;
+    padding-bottom: 20px;
+}
+
+.arrow2:before {
+    content: '';
+    position: absolute;
+    height: 60px;
+    width: 15px;
+    background-color: #2234AE;
+    left: 50%;
+    top: 15px;
+}
+
+.arrow:after {
+    content: '';
+    position: absolute;
+    height: 60px;
+    width: 15px;
+    background-color: #2234AE;
+    left: 50%;
+    top: -55px;
+}
+
+
+.box_container {
+    margin-top: 10%;
+}
+
+.circle {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    position: absolute;
+    top: -78px;
+    left: 70%;
+    transform: translateX(-50%);
+}
+
+.circle2 {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    position: absolute;
+    top: 78px;
+    left: 58%;
+    transform: translateX(-50%);
+}
+
+.gantryNameTitle {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    border-bottom: 1px solid black;
+    
+}
+
+
+.circle3 {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: yellow;
+    position: absolute;
+    top: -78px;
+    left: 36%;
+    transform: translateX(-50%);
+}
+
+
+.header_text {
+    font-weight: bold;
+}
+
+.header {
+    margin-bottom: 10px;
+}
+
+.yellowHeader {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: yellow;
+}
+
+.greenHeader {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: green;
+}
+
+.redHeader {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: red;
+}
+
+.pending {
+    background-color: yellow !important;
+}
+
+.failed {
+    background-color: transparent;
+    font-size: 1.5rem;
+    color: yellow;
+}
+
+.clear {
+    background-color: red;
+    animation: blink .5s infinite;
+}
+
+.underloading {
+    background-color: transparent;
+    font-size: 1.5rem;
+    color: green;
+}
+
+
+@keyframes blink {
+    0% {
+        opacity: 0
+    }
+
+    50% {
+        opacity: 1
+    }
+
+    100% {
+        opacity: 0
+    }
+}
+
+.groupBoxMargin {
+    margin: 40px 40px 80px;
+
+}
+.bayLabelStyle1{
+    width: 100px;
+    height: 20px;
+    position: absolute;
+    top: -75px;
+    left: -20%;
+    transform: translateX(-50%);
+}
+.bayLabelStyle2{
+    width: 100px;
+    height: 20px;
+    position: absolute;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+
+/* Analytics page css */
+    
+  .sapUiBlockCellContent {
+    padding: 0.5rem !important;
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+  
+
+.cssDate{
+    margin-left: 20px;
+}
+
+.donutclass{
+    margin-left: 800px;
+}
+
+
+.button-spacing{
+    margin-left: 10px;
+}
+
+.csstitle {
+    margin-left : 10px
+}
+
+.customHeader .sapFCardHeaderStatus {
+    float: left !important; /* Moves the statusText to the left */
+}
+
+
+
+
+

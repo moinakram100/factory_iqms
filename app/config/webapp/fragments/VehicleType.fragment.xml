@@ -1,0 +1,19 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+
+    <SelectDialog
+        id="VehicleTypeDialog"
+        noDataText="No Data"
+        title="Select Vehicle Type"
+        liveChange="onVehicleTypeSearch"
+        confirm="onVehicleTypeClose"
+        cancel="onVehicleTypeClose"
+        items="{/fetchVehType}">
+        <StandardListItem id="_IDGenStadListItem8"
+            title="{VehType}"
+            iconDensityAware="false"
+            iconInset="false"
+            type="Active" />
+    </SelectDialog>
+</core:FragmentDefinition>

@@ -1,0 +1,39 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <Dialog
+        title="Assign Plant"
+        id="assignPlantDialog"
+    >
+        <FlexBox
+            alignItems="Center"
+            class="sapUiSmallMarginBegin"
+        >
+            <Label text="Plant Code :" />
+            <Input
+                width="150px"
+                valueHelpRequest="onPlantCode"
+                showValueHelp="true"
+                id="plantInput_id"
+                valueHelpOnly="true"
+            />
+        </FlexBox>
+
+        <footer>
+            <OverflowToolbar id="otbFooterPlant">
+                <ToolbarSpacer />
+                <Button
+                    type="Accept"
+                    text="Submit"
+                    press="onSubmitPlant"
+                />
+                <Button
+                    type="Reject"
+                    text="Close"
+                    press="onAssignPlantClose"
+                />
+            </OverflowToolbar>
+        </footer>
+    </Dialog>
+</core:FragmentDefinition>

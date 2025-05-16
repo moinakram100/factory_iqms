@@ -1,0 +1,146 @@
+<mvc:View
+    controllerName="com.ingenx.qms.config.controller.ChecklistCreation"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:tnt="sap.tnt"
+>
+    <Page
+        id="CheckCre_Page"
+        showHeader="false"
+    >
+        <tnt:ToolHeader
+            id="CheckCre_ToolHeader"
+            class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiSmallMarginTop"
+        >
+          
+            <Title
+                text="Select Vehicle Type :"
+                wrapping="true"
+                id="CheckCre_Title"
+                level="H3"
+            />
+              <Input
+                    id="CheckCre_VehicleType"
+                    showValueHelp="true"
+                    width="200px"
+                    valueHelpRequest="onVehicleType"
+                    valueHelpOnly="true"
+                    class="sapUiTinyMarginEnd"
+                />
+            <ToolbarSpacer id="CheckCre_ToolbarSpacer2" />
+            <HBox id="CheckCre_HBox1">
+              
+                <Button
+                    id="CheckCre_create"
+                    text="Create"
+                    width="100px"
+                    press="onCreate"
+                    type="Emphasized"
+                    visible="true"
+                    enabled="false"
+                      class="sapUiTinyMarginEnd"
+                />
+                <Button
+                    id="CheckCre_delete"
+                    text="Delete"
+                    width="100px"
+                    press="onPressDelete"
+                    type="Emphasized"
+                    visible="true"
+                    enabled="false"
+                />
+                <Button
+                    id="CheckCre_Confirm"
+                    text="Confirm"
+                    width="100px"
+                    press="onConfirmDelete"
+                    type="Emphasized"
+                    visible="false"
+                    class="sapUiTinyMarginEnd"
+                    
+                />
+                <Button
+                    id="CheckCre_Cancel"
+                    text="Cancel"
+                    width="100px"
+                    press="onPressCancel"
+                    type="Emphasized"
+                    visible="false"
+                />
+            </HBox>
+        </tnt:ToolHeader>
+
+        <l:VerticalLayout
+            id="CheckCre_VerticalLayout1"
+            width="100%"
+        >
+            <l:BlockLayout
+                id="CheckCre_BlockLayout1"
+                background="Dashboard"
+            >
+                <l:BlockLayoutRow id="CheckCre_BlockLayoutRow1">
+                    <l:BlockLayoutCell
+                        id="CheckCre_BlockLayoutCell1"
+                        width="90%"
+                    >
+                        <ScrollContainer
+                            id="CheckCre_scrollcont1"
+                            width="100%"
+                            height="calc(100vh - 110px)"
+                            horizontal="false"
+                            vertical="true"
+                        >
+                            <Table
+                                items="{checkListModel>/}"
+                                id="CheckCre_table"
+                                selectionChange="onSelectServiceProfile"
+                                mode="None"
+                                sticky="ColumnHeaders"
+                            >
+                                <columns>
+                                    <Column id="CheckCre_Col_Definition">
+                                        <header>
+                                            <Label
+                                                wrapping="true"
+                                                text="Vehicle Definition"
+                                            />
+                                        </header>
+                                    </Column>
+                                    <Column id="CheckCre_Col_Remarks">
+                                        <header>
+                                            <Label
+                                                wrapping="true"
+                                                text="Remarks"
+                                            />
+                                        </header>
+                                    </Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem
+                                        type="Active"
+                                        id="CheckCre_ColListItem1"
+                                    >
+                                        <cells>
+                                            <Text text="{checkListModel>VehicleType}" />
+                                            <Text text="{checkListModel>Remarks}" />
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                                <noData>
+                                    <IllustratedMessage
+                                        id="CheckCre_IllustratedMessage1"
+                                        enableVerticalResponsiveness="true"
+                                        title="No Data Found"
+                                        description="No Remark exists, create one."
+                                    />
+                                </noData>
+                            </Table>
+                        </ScrollContainer>
+                    </l:BlockLayoutCell>
+                </l:BlockLayoutRow>
+            </l:BlockLayout>
+        </l:VerticalLayout>
+    </Page>
+</mvc:View>

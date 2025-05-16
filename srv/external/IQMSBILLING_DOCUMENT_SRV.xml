@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0"
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="http://ingenxsrv:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://ingenxsrv:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://ingenxsrv:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://ingenxsrv:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://ingenxsrv:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="IQMS.BILLING_DOCUMENT_SRV" xml:lang="en" sap:schema-version="1"
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="deliverybillingdata" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Delivery"/>
+                </Key>
+                <Property Name="Delivery" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Parking" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Vehicleno" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="VehType" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Status" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Shipmentno" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="GoodIssue" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Invoice_header" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Fkart"/>
+                </Key>
+                <Property Name="Vbeln" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Billing Doc." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Fkart" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Billing Type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Fkdat" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Billing Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Invoice_item" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Vbeln"/>
+                </Key>
+                <Property Name="Vbeln" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Sales document" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Posnr" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="Item" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Invoice_create" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Vbeln"/>
+                </Key>
+                <Property Name="Vbeln" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Sales document" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Posnr" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="Item" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Msgid" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Message ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Msgty" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Message Type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="Main_Invoice" Relationship="IQMS.BILLING_DOCUMENT_SRV.Main_Invoice" FromRole="FromRole_Main_Invoice" ToRole="ToRole_Main_Invoice"/>
+                <NavigationProperty Name="to_items" Relationship="IQMS.BILLING_DOCUMENT_SRV.to_items" FromRole="FromRole_to_items" ToRole="ToRole_to_items"/>
+                <NavigationProperty Name="invoice_numSet" Relationship="IQMS.BILLING_DOCUMENT_SRV.to_invoicenum" FromRole="FromRole_to_invoicenum" ToRole="ToRole_to_invoicenum"/>
+            </EntityType>
+            <EntityType Name="invoice_num" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Vbeln"/>
+                </Key>
+                <Property Name="Vbeln" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Sales document" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="xIQMSxBilling_fetchType" sap:label="QMS billing fetch" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ParkingNo"/>
+                    <PropertyRef Name="VehicleNumber"/>
+                </Key>
+                <Property Name="ParkingNo" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="ParkingNo" sap:quickinfo="ParkingNumber"/>
+                <Property Name="VehicleNumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Vehicle"/>
+                <Property Name="SalesOrder" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Sales document" sap:quickinfo="Sales and Distribution Document Number"/>
+                <Property Name="DeliveryNo" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Deliveryno" sap:quickinfo="Delivery Number"/>
+                <Property Name="ShipmentNo" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Shipment Number"/>
+                <Property Name="status" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Shipment Status" sap:quickinfo="TD Shipment Status (Functional)"/>
+                <Property Name="quantity" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="Qty in unit of entry" sap:quickinfo="Quantity in unit of entry"/>
+                <Property Name="unit" Type="Edm.String" MaxLength="3" sap:label="Unit" sap:semantics="unit-of-measure"/>
+                <Property Name="vehicleType" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Vehicle type" sap:quickinfo="TD vehicle type"/>
+            </EntityType>
+            <EntityType Name="xIRMSxbilling_fetchType" sap:label="Billing fetch" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ParkingNo"/>
+                    <PropertyRef Name="VehicleNumber"/>
+                    <PropertyRef Name="mblnr"/>
+                </Key>
+                <Property Name="ParkingNo" Type="Edm.String" Nullable="false" MaxLength="7" sap:display-format="NonNegative" sap:label="Parking No."/>
+                <Property Name="VehicleNumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Vehicle No" sap:quickinfo="Vehicle Number"/>
+                <Property Name="mblnr" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Material Document" sap:quickinfo="Number of Material Document"/>
+                <Property Name="SalesOrder" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Sales document" sap:quickinfo="Sales and Distribution Document Number"/>
+                <Property Name="DeliveryNo" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Delivery No"/>
+                <Property Name="ShipmentNo" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Shipment Number"/>
+                <Property Name="status" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Shipment Status" sap:quickinfo="TD Shipment Status (Functional)"/>
+                <Property Name="unit" Type="Edm.String" MaxLength="3" sap:label="Unit of Entry" sap:quickinfo="Unit of entry" sap:semantics="unit-of-measure"/>
+                <Property Name="vehicleType" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Vehicle type" sap:quickinfo="TD vehicle type"/>
+                <Property Name="mjahr" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative" sap:label="Material Doc. Year" sap:quickinfo="Material Document Year"/>
+                <Property Name="zeile" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative" sap:label="Material Doc.Item" sap:quickinfo="Item in Material Document"/>
+                <Property Name="quantity" Type="Edm.Decimal" Precision="13" Scale="3"/>
+                <Property Name="msehi" Type="Edm.String" MaxLength="3" sap:label="Internal UoM" sap:quickinfo="Unit of Measurement" sap:semantics="unit-of-measure"/>
+            </EntityType>
+            <Association Name="to_items" sap:content-version="1">
+                <End Type="IQMS.BILLING_DOCUMENT_SRV.Invoice_create" Multiplicity="1" Role="FromRole_to_items"/>
+                <End Type="IQMS.BILLING_DOCUMENT_SRV.Invoice_item" Multiplicity="*" Role="ToRole_to_items"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_to_items">
+                        <PropertyRef Name="Vbeln"/>
+                    </Principal>
+                    <Dependent Role="ToRole_to_items">
+                        <PropertyRef Name="Vbeln"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="to_invoicenum" sap:content-version="1">
+                <End Type="IQMS.BILLING_DOCUMENT_SRV.Invoice_create" Multiplicity="1" Role="FromRole_to_invoicenum"/>
+                <End Type="IQMS.BILLING_DOCUMENT_SRV.invoice_num" Multiplicity="*" Role="ToRole_to_invoicenum"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_to_invoicenum">
+                        <PropertyRef Name="Vbeln"/>
+                    </Principal>
+                    <Dependent Role="ToRole_to_invoicenum">
+                        <PropertyRef Name="Vbeln"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="Main_Invoice" sap:content-version="1">
+                <End Type="IQMS.BILLING_DOCUMENT_SRV.Invoice_create" Multiplicity="1" Role="FromRole_Main_Invoice"/>
+                <End Type="IQMS.BILLING_DOCUMENT_SRV.Invoice_header" Multiplicity="1" Role="ToRole_Main_Invoice"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_Main_Invoice">
+                        <PropertyRef Name="Vbeln"/>
+                    </Principal>
+                    <Dependent Role="ToRole_Main_Invoice">
+                        <PropertyRef Name="Vbeln"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="IQMS_BILLING_DOCUMENT_SRV_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="xIQMSxBilling_fetch" EntityType="IQMS.BILLING_DOCUMENT_SRV.xIQMSxBilling_fetchType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="xIRMSxbilling_fetch" EntityType="IQMS.BILLING_DOCUMENT_SRV.xIRMSxbilling_fetchType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="deliverybillingdataSet" EntityType="IQMS.BILLING_DOCUMENT_SRV.deliverybillingdata" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="Invoice_headerSet" EntityType="IQMS.BILLING_DOCUMENT_SRV.Invoice_header" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="Invoice_itemSet" EntityType="IQMS.BILLING_DOCUMENT_SRV.Invoice_item" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="Invoice_createSet" EntityType="IQMS.BILLING_DOCUMENT_SRV.Invoice_create" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="invoice_numSet" EntityType="IQMS.BILLING_DOCUMENT_SRV.invoice_num" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <AssociationSet Name="Main_InvoiceSet" Association="IQMS.BILLING_DOCUMENT_SRV.Main_Invoice" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Invoice_createSet" Role="FromRole_Main_Invoice"/>
+                    <End EntitySet="Invoice_headerSet" Role="ToRole_Main_Invoice"/>
+                </AssociationSet>
+                <AssociationSet Name="to_itemsSet" Association="IQMS.BILLING_DOCUMENT_SRV.to_items" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Invoice_createSet" Role="FromRole_to_items"/>
+                    <End EntitySet="Invoice_itemSet" Role="ToRole_to_items"/>
+                </AssociationSet>
+                <AssociationSet Name="to_invoicenumSet" Association="IQMS.BILLING_DOCUMENT_SRV.to_invoicenum" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Invoice_createSet" Role="FromRole_to_invoicenum"/>
+                    <End EntitySet="invoice_numSet" Role="ToRole_to_invoicenum"/>
+                </AssociationSet>
+            </EntityContainer>
+            <Annotations Target="IQMS.BILLING_DOCUMENT_SRV.IQMS_BILLING_DOCUMENT_SRV_Entities"
+                xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Aggregation.ApplySupported">
+                    <Record>
+                        <PropertyValue Property="Transformations">
+                            <Collection>
+                                <String>aggregate</String>
+                                <String>groupby</String>
+                                <String>filter</String>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Rollup" EnumMember="None"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="http://ingenxsrv:8001/sap/opu/odata/iqms/BILLING_DOCUMENT_SRV/$metadata"
+                xmlns:atom="http://www.w3.org/2005/Atom"/>
+                <atom:link rel="latest-version" href="http://ingenxsrv:8001/sap/opu/odata/iqms/BILLING_DOCUMENT_SRV/$metadata"
+                    xmlns:atom="http://www.w3.org/2005/Atom"/>
+                </Schema>
+            </edmx:DataServices>
+        </edmx:Edmx>

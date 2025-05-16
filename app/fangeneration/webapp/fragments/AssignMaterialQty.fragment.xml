@@ -1,0 +1,95 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:mvc="sap.ui.core.mvc"
+>
+    <Dialog
+        id="assignMaterialQuantity_dialog"
+        title="Assign Unit and Quantity"
+        class="sapUiSmallMargin"
+    >
+        <VBox
+            id="materialQtyFragFBox"
+            class="sapUiContentPadding sapUiSmallMargin"
+        >
+            <Label
+                id="_IDnLabelMaterial"
+                text="Material: "
+                design="Bold"
+
+            />
+            <!-- <Input
+                id="matInput_frag_id"
+                width="280px"
+                editable="true"
+                
+            /> -->
+          <Select
+                id="_IdMaterialSelect"
+                width="280px"
+                forceSelection="false"
+                change="onMaterialChange1"
+                items="{
+                    path: '/MaterialTypeDefinition'
+                }"
+            >
+                <core:Item key="{Material}" text="{MaterialDefinition}" />
+            </Select>
+            <Label
+                id="_IDnLabelQty"
+                text="Quantity: "
+                design="Bold"
+                required="true"
+            />
+            <Input
+                id="qty_frag_id"
+                width="280px"
+                type="Number"
+                submit="onSubmitMaterialQty"
+                placeholder="e.g 1000"
+            />
+            <Label
+                id="_IDnLabelUom"
+                text="Unit: "
+                design="Bold"
+                required="true"
+            />
+            <Select
+                id="_IdUomSelect"
+                width="280px"
+                forceSelection="false"
+                change="onUomChange"
+            > <core:Item
+                    key="KL"
+                    text="KL"
+                />
+                <core:Item
+                    key="KG"
+                    text="KG"
+                />
+                <core:Item
+                    key="TON"
+                    text="TON"
+                />
+            </Select>
+        </VBox>
+
+        <footer>
+            <OverflowToolbar id="overflowbar">
+                <ToolbarSpacer />
+                <Button
+                    id="_IDGenButtonSubmit"
+                    type="Emphasized"
+                    text="Submit"
+                    press="onSubmitMaterialQty"
+                />
+                <Button
+                    id="_IDGenButtonClose"
+                    text="Close"
+                    press="onCloseMaterialQtyDialog"
+                />
+            </OverflowToolbar>
+        </footer>
+    </Dialog>
+</core:FragmentDefinition>

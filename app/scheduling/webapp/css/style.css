@@ -1,0 +1,18 @@
+/* Scheduling screen css */
+.sapUiSizeCompact .sapMPageWithHeader>section {
+    top: 2rem;
+}
+
+._hboxBtn {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+.titleMaster{
+    padding: 16px 0px !important;
+    /* border-radius: 10px !important; */
+}
+.customListScroll {
+	scrollbar-width: none !important;
+	overflow-y: auto;
+}

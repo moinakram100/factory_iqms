@@ -1,0 +1,380 @@
+{
+  "name": "factory_IQMS",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@cap-js/hana": "^1",
+    "@sap-cloud-sdk/http-client": "^4.0.2",
+    "@sap-cloud-sdk/resilience": "^4.0.2",
+    "@sap/cds": "^8.9.3",
+    "@sap/hana-client": "^2.24.24",
+    "express": "^4",
+    "nodemailer": "^7.0.3"
+  },
+  "devDependencies": {
+    "@cap-js/cds-types": "^0.6",
+    "@cap-js/sqlite": "^1",
+    "@sap/cds-dk": "^8"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "watch-factoryapp": "cds watch --open factoryapp/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-scheduling": "cds watch --open scheduling/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-truckassignment": "cds watch --open truckassignment/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-createparking": "cds watch --open createparking/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-config": "cds watch --open config/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-inventory": "cds watch --open inventory/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-billingcreation": "cds watch --open billingcreation/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-fangeneration": "cds watch --open fangeneration/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-parking": "cds watch --open parking/webapp/index.html?sap-ui-xx-viewCache=false"
+  },
+  "cds": {
+    "requires": {
+      "IQMSBILLING_DOCUMENT_SRV": {
+        "kind": "odata-v2",
+        "model": "srv/external/IQMSBILLING_DOCUMENT_SRV",
+        "[production]": {
+          "credentials": {
+            "destination": "Ingenx_OData_SAP",
+            "path": "/sap/opu/odata/iqms/BILLING_DOCUMENT_SRV"
+          }
+        },
+        "[development]": {
+          "credentials": {
+            "destination": "SandboxPO",
+            "path": "/sap/opu/odata/iqms/BILLING_DOCUMENT_SRV"
+          }
+        },
+        "csrf": true,
+        "csrfInBatch": true
+      },
+      "IQMSCREATE_DELIVERY_SRV": {
+        "kind": "odata-v2",
+        "model": "srv/external/IQMSCREATE_DELIVERY_SRV",
+        "[production]": {
+          "credentials": {
+            "destination": "Ingenx_OData_SAP",
+            "path": "/sap/opu/odata/iqms/CREATE_DELIVERY_SRV"
+          }
+        },
+        "[development]": {
+          "credentials": {
+            "destination": "SandboxPO",
+            "path": "/sap/opu/odata/iqms/CREATE_DELIVERY_SRV"
+          }
+        },
+        "csrf": true,
+        "csrfInBatch": true
+      },
+      "IQMSCREATE_SO_SRV": {
+        "kind": "odata-v2",
+        "model": "srv/external/IQMSCREATE_SO_SRV",
+        "[production]": {
+          "credentials": {
+            "destination": "Ingenx_OData_SAP",
+            "path": "/sap/opu/odata/iqms/CREATE_SO_SRV"
+          }
+        },
+        "[development]": {
+          "credentials": {
+            "destination": "SandboxPO",
+            "path": "/sap/opu/odata/iqms/CREATE_SO_SRV"
+          }
+        },
+        "csrf": true,
+        "csrfInBatch": true
+      },
+      "IQMSPARKING_SRV": {
+        "kind": "odata-v2",
+        "model": "srv/external/IQMSPARKING_SRV",
+        "[production]": {
+          "credentials": {
+            "destination": "Ingenx_OData_SAP",
+            "path": "/sap/opu/odata/iqms/PARKING_SRV"
+          }
+        },
+        "[development]": {
+          "credentials": {
+            "destination": "SandboxPO",
+            "path": "/sap/opu/odata/iqms/PARKING_SRV"
+          }
+        },
+        "csrf": true,
+        "csrfInBatch": true
+      },
+      "IQMSQUEUEMANAGE_VALUEHELP_SRV": {
+        "kind": "odata-v2",
+        "model": "srv/external/IQMSQUEUEMANAGE_VALUEHELP_SRV",
+        "[production]": {
+          "credentials": {
+            "destination": "Ingenx_OData_SAP",
+            "path": "/sap/opu/odata/iqms/QUEUEMANAGE_VALUEHELP_SRV"
+          }
+        },
+        "[development]": {
+          "credentials": {
+            "destination": "SandboxPO",
+            "path": "/sap/opu/odata/iqms/QUEUEMANAGE_VALUEHELP_SRV"
+          }
+        },
+        "csrf": true,
+        "csrfInBatch": true
+      },
+      "IQMSSCHEDULING_SRV": {
+        "kind": "odata-v2",
+        "model": "srv/external/IQMSSCHEDULING_SRV",
+        "[production]": {
+          "credentials": {
+            "destination": "Ingenx_OData_SAP",
+            "path": "/sap/opu/odata/iqms/SCHEDULING_SRV"
+          }
+        },
+        "[development]": {
+          "credentials": {
+            "destination": "SandboxPO",
+            "path": "/sap/opu/odata/iqms/SCHEDULING_SRV"
+          }
+        },
+        "csrf": true,
+        "csrfInBatch": true
+      },
+      "IQMSSHIPMENT_CREATE_SRV": {
+        "kind": "odata-v2",
+        "model": "srv/external/IQMSSHIPMENT_CREATE_SRV",
+        "[production]": {
+          "credentials": {
+            "destination": "Ingenx_OData_SAP",
+            "path": "/sap/opu/odata/iqms/SHIPMENT_CREATE_SRV"
+          }
+        },
+        "[development]": {
+          "credentials": {
+            "destination": "SandboxPO",
+            "path": "/sap/opu/odata/iqms/SHIPMENT_CREATE_SRV"
+          }
+        },
+        "csrf": true,
+        "csrfInBatch": true
+      },
+      "IQMSSTOCK_ORDER_SRV": {
+        "kind": "odata-v2",
+        "model": "srv/external/IQMSSTOCK_ORDER_SRV",
+        "[production]": {
+          "credentials": {
+            "destination": "Ingenx_OData_SAP",
+            "path": "/sap/opu/odata/iqms/STOCK_ORDER_SRV"
+          }
+        },
+        "[development]": {
+          "credentials": {
+            "destination": "SandboxPO",
+            "path": "/sap/opu/odata/iqms/STOCK_ORDER_SRV"
+          }
+        },
+        "csrf": true,
+        "csrfInBatch": true
+      },
+      "IQMSSTO_DELIVERY_SRV": {
+        "kind": "odata-v2",
+        "model": "srv/external/IQMSSTO_DELIVERY_SRV",
+        "[production]": {
+          "credentials": {
+            "destination": "Ingenx_OData_SAP",
+            "path": "/sap/opu/odata/iqms/STO_DELIVERY_SRV"
+          }
+        },
+        "[development]": {
+          "credentials": {
+            "destination": "SandboxPO",
+            "path": "/sap/opu/odata/iqms/STO_DELIVERY_SRV"
+          }
+        },
+        "csrf": true,
+        "csrfInBatch": true
+      },
+      "IQMSVEHICLE_CREATE_SRV": {
+        "kind": "odata-v2",
+        "model": "srv/external/IQMSVEHICLE_CREATE_SRV",
+        "[production]": {
+          "credentials": {
+            "destination": "Ingenx_OData_SAP",
+            "path": "/sap/opu/odata/iqms/VEHICLE_CREATE_SRV"
+          }
+        },
+        "[development]": {
+          "credentials": {
+            "destination": "SandboxPO",
+            "path": "/sap/opu/odata/iqms/VEHICLE_CREATE_SRV"
+          }
+        },
+        "csrf": true,
+        "csrfInBatch": true
+      },
+      "IRMSQUEQE_MANAGEMENT_SRV": {
+        "kind": "odata-v2",
+        "model": "srv/external/IRMSQUEQE_MANAGEMENT_SRV",
+        "[production]": {
+          "credentials": {
+            "destination": "Ingenx_OData_SAP",
+            "path": "/sap/opu/odata/irms/QUEQE_MANAGEMENT_SRV"
+          }
+        },
+        "[development]": {
+          "credentials": {
+            "destination": "SandboxPO",
+            "path": "/sap/opu/odata/irms/QUEQE_MANAGEMENT_SRV"
+          }
+        },
+        "csrf": true,
+        "csrfInBatch": true
+      },
+      "IRMSPARKING_NO_SRV": {
+        "kind": "odata-v2",
+        "model": "srv/external/IRMSPARKING_NO_SRV",
+        "[production]": {
+          "credentials": {
+            "destination": "Ingenx_OData_SAP",
+            "path": "/sap/opu/odata/irms/PARKING_NO_SRV"
+          }
+        },
+        "[development]": {
+          "credentials": {
+            "destination": "SandboxPO",
+            "path": "/sap/opu/odata/irms/PARKING_NO_SRV"
+          }
+        },
+        "csrf": true,
+        "csrfInBatch": true
+      },
+      "IRMSZAPI_SALES_ORDER_SRV": {
+        "kind": "odata-v2",
+        "model": "srv/external/IRMSZAPI_SALES_ORDER_SRV",
+        "[production]": {
+          "credentials": {
+            "destination": "Ingenx_OData_SAP",
+            "path": "/sap/opu/odata/sap/API_SALES_ORDER_SRV"
+          }
+        },
+        "[development]": {
+          "credentials": {
+            "destination": "SandboxPO",
+            "path": "/sap/opu/odata/sap/API_SALES_ORDER_SRV"
+          }
+        },
+        "csrf": true,
+        "csrfInBatch": true
+      },
+      "IRMSTRANSPORT_CREATE_SRV": {
+        "kind": "odata-v2",
+        "model": "srv/external/IRMSTRANSPORT_CREATE_SRV",
+        "[production]": {
+          "credentials": {
+            "destination": "Ingenx_OData_SAP",
+            "path": "/sap/opu/odata/irms/TRANSPORT_CREATE_SRV"
+          }
+        },
+        "[development]": {
+          "credentials": {
+            "destination": "SandboxPO",
+            "path": "/sap/opu/odata/irms/TRANSPORT_CREATE_SRV"
+          }
+        },
+        "csrf": true,
+        "csrfInBatch": true
+      },
+      "IRMSVEHICLE_CREATE_SRV": {
+        "kind": "odata-v2",
+        "model": "srv/external/IRMSVEHICLE_CREATE_SRV",
+        "[production]": {
+          "credentials": {
+            "destination": "Ingenx_OData_SAP",
+            "path": "/sap/opu/odata/irms/VEHICLE_CREATE_SRV"
+          }
+        },
+        "[development]": {
+          "credentials": {
+            "destination": "SandboxPO",
+            "path": "/sap/opu/odata/irms/VEHICLE_CREATE_SRV"
+          }
+        },
+        "csrf": true,
+        "csrfInBatch": true
+      },
+      "ZAPI_PURCHASEORDER_PROCESS_SRV": {
+        "kind": "odata-v2",
+        "model": "srv/external/ZAPI_PURCHASEORDER_PROCESS_SRV",
+        "[production]": {
+          "credentials": {
+            "destination": "Ingenx_OData_SAP",
+            "path": "/sap/opu/odata/sap/API_PURCHASEORDER_PROCESS_SRV"
+          }
+        },
+        "[development]": {
+          "credentials": {
+            "destination": "SandboxPO",
+            "path": "/sap/opu/odata/sap/API_PURCHASEORDER_PROCESS_SRV"
+          }
+        },
+        "csrf": true,
+        "csrfInBatch": true
+      },
+      "IRMSCREATE_DELIVERY_SRV": {
+        "kind": "odata-v2",
+        "model": "srv/external/IRMSCREATE_DELIVERY_SRV",
+        "[production]": {
+          "credentials": {
+            "destination": "Ingenx_OData_SAP",
+            "path": "/sap/opu/odata/irms/CREATE_DELIVERY_SRV"
+          }
+        },
+        "[development]": {
+          "credentials": {
+            "destination": "SandboxPO",
+            "path": "/sap/opu/odata/irms/CREATE_DELIVERY_SRV"
+          }
+        },
+        "csrf": true,
+        "csrfInBatch": true
+      },
+      "IRMSCREATE_SO_SRV": {
+        "kind": "odata-v2",
+        "model": "srv/external/IRMSCREATE_SO_SRV",
+        "[production]": {
+          "credentials": {
+            "destination": "Ingenx_OData_SAP",
+            "path": "/sap/opu/odata/irms/CREATE_SO_SRV"
+          }
+        },
+        "[development]": {
+          "credentials": {
+            "destination": "SandboxPO",
+            "path": "/sap/opu/odata/irms/CREATE_SO_SRV"
+          }
+        },
+        "csrf": true,
+        "csrfInBatch": true
+      },
+      "IQMSFACTORY_SRV": {
+        "kind": "odata-v2",
+        "model": "srv/external/IQMSFACTORY_SRV",
+        "[production]": {
+          "credentials": {
+            "destination": "Ingenx_OData_SAP",
+            "path": "/sap/opu/odata/iqms/FACTORY_SRV"
+          }
+        },
+        "[development]": {
+          "credentials": {
+            "destination": "SandboxPO",
+            "path": "/sap/opu/odata/iqms/FACTORY_SRV"
+          }
+        },
+        "csrf": true,
+        "csrfInBatch": true
+      }
+    }
+  }
+}

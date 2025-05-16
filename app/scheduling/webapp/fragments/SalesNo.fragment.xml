@@ -1,0 +1,25 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+
+    <SelectDialog
+        id="salesnoid"
+        noDataText="No Sales Number Found"
+        title="Select Sales Number And Material"
+        search="onValueHelpSearchSON"
+        confirm="onValueHelpConfirmSON"
+        cancel="onValueHelpCancelSON"
+         items="{
+            path: 'salesModel>/',
+            sorter: {
+                path: ''
+            }
+        }">
+        <StandardListItem id="_IDGenStandardListItemSON"
+            title="{salesModel>Salesorderno}"
+            description="Material: {salesModel>Material}"
+            iconDensityAware="false"
+            iconInset="false"
+            type="Active" />
+    </SelectDialog>
+</core:FragmentDefinition>

@@ -1,0 +1,136 @@
+/* Goods issue css */
+
+/* Enter your custom styles here */
+
+.btn{
+    display: flex;
+    flex-direction: row;
+  }
+  .sapTntToolHeader .sapMTitle {
+  
+    font-family: "72-Bold", "72-Boldfull", "72", "72full", Arial, Helvetica, sans-serif !important;
+    color: black !important;
+    font-size: 1.5rem !important;
+    
+  
+  
+  }
+  .sapTntToolHeader.sapMTB {
+    border-radius: 0.5rem;
+  }
+    
+  .sapUiBlockCellContent {
+    padding: 0.5rem !important;
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+  
+  .toolHeaderShadow {
+    box-shadow: 4px 8px 16px 4px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+  }
+  
+  .toolHeaderShadow:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  }
+  
+  .tileLayout {
+    box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+    margin: 10px;
+  }
+  
+  .tileLayout:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  }
+  .headercss{
+    background-color: white;
+  }
+  
+  .flexParking{
+    margin-top: 8px;
+  }
+  
+  .flexVehicle{
+    margin-top: 11px;
+  }
+  
+  .flexExit{
+    margin-top: 8px;
+  }
+  
+  
+  
+  /* Billing screen css */
+
+
+  /* Enter your custom styles here */
+
+.btn{
+    display: flex;
+    flex-direction: row;
+  }
+  .sapTntToolHeader .sapMTitle {
+  
+    font-family: "72-Bold", "72-Boldfull", "72", "72full", Arial, Helvetica, sans-serif !important;
+    color: black !important;
+    font-size: 1.5rem !important;
+    
+  
+  }
+  .sapTntToolHeader.sapMTB {
+    border-radius: 0.5rem;
+  }
+  .sapTntToolHeader {
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 6px 0px;
+    transition: 0.3s;
+  }
+    
+  .sapUiBlockCellContent {
+    padding: 0.5rem !important;
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+  
+  .toolHeaderShadow {
+    box-shadow: 4px 8px 16px 4px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+  }
+  
+  .toolHeaderShadow:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  }
+  
+  .tileLayout {
+    box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+    margin: 10px;
+  }
+  
+  .tileLayout:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  }
+  .headercss{
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 2px 6px;
+  }
+  .mainTable .sapUiTableCnt {
+    border-radius: 10px;
+  }
+  
+  .flexParking{
+    margin-top: 8px;
+  }
+  
+  .flexVehicle{
+    margin-top: 11px;
+  }
+  
+  .flexExit{
+    margin-top: 8px;
+  }
+  
+  
+  
+  

@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0"
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="http://ingenxsrv:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://ingenxsrv:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://ingenxsrv:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://ingenxsrv:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://ingenxsrv:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="IQMS.SHIPMENT_CREATE_SRV" xml:lang="en" sap:schema-version="1"
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="shipTas" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Shipment"/>
+                </Key>
+                <Property Name="Shipment" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Shipment Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Truckno" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Vehicle" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Tochkey" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Touch Key" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Rfid" Type="Edm.Int16" Nullable="false" sap:unicode="false" sap:label="RFID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Bayno" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="BAYNO" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Newdate" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="Startdate" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Newtime" Type="Edm.Time" Nullable="false" Precision="0" sap:unicode="false" sap:label="startTime" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Errorcode" Type="Edm.Int16" Nullable="false" sap:unicode="false" sap:label="Error Code" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Errordefin" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="Error description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Createdby" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="CREABY" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Createddate" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="CREATEDT" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Createdtime" Type="Edm.Time" Nullable="false" Precision="0" sap:unicode="false" sap:label="CREATIME" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Changedby" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="CHANGEBY" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Changeddate" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="CHANGEDT" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Changedtime" Type="Edm.Time" Nullable="false" Precision="0" sap:unicode="false" sap:label="ChangedTime" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="pioigis" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="DocTyp"/>
+                </Key>
+                <Property Name="DocTyp" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Document cat." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DocNumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Document number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LoadIndi" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Load indicator" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DischIndi" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Discharge ind." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Updateflag" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Transact. type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="PiOigisiq" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="DocNumber"/>
+                </Key>
+                <Property Name="DocTyp" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Document cat." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DocNumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Document number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Posnr" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="Item number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Trqty" Type="Edm.Double" sap:unicode="false" sap:label="Transaction qty" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Oifinal" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Final del. ind." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Updateflag" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Transact. type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DocTypLong" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Document Cat." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="PiOigisv" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Vehicle"/>
+                </Key>
+                <Property Name="Vehicle" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Vehicle Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Lddate" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Loading Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Trip" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="Trip Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="VehScrel" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="SC rel. vehicle" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Updateflag" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Transact. type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="PiOigisvd" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Vehicle"/>
+                </Key>
+                <Property Name="Vehicle" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Vehicle Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Drivercode" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Driver no." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Updateflag" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Transact. type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="PiOigisvmq" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Item"/>
+                    <PropertyRef Name="DocNumber"/>
+                </Key>
+                <Property Name="Item" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="Quantity item" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DocTyp" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Document cat." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DocNumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Document number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Posnr" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="Item number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Vehicle" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Vehicle Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TuNumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Transport unit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SeqNmbr" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Seq.no." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Trqty" Type="Edm.Double" sap:unicode="false" sap:label="Transaction qty" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Truom" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Transaction UoM" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+                <Property Name="TdAction" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="TD action" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Matnr" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Updateflag" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Transact. type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ship_header" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Shtype"/>
+                    <PropertyRef Name="Tplst"/>
+                </Key>
+                <Property Name="Shnumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Bulk shipment" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Shtype" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Bulk shipm.type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Tplst" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="TransportPlanPt" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Cfbll" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Confirm bl.load" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Xblnr" Type="Edm.String" Nullable="false" MaxLength="16" sap:unicode="false" sap:label="Reference" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SchedStdt" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Plan shpm.start" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LoadStdt" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Plan.load start" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Updateflag" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Transact. type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="return" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Type"/>
+                </Key>
+                <Property Name="Type" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Message type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Id" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Message Class" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Number" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Message Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Message" Type="Edm.String" Nullable="false" MaxLength="220" sap:unicode="false" sap:label="Message Text" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LogNo" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Log number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LogMsgNo" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="Message no." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="PO_SHNUMBER" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Shnumber"/>
+                </Key>
+                <Property Name="Shnumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Bulk shipment" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="to_header" Relationship="IQMS.SHIPMENT_CREATE_SRV.shipheader_toitem" FromRole="FromRole_shipheader_toitem" ToRole="ToRole_shipheader_toitem"/>
+                <NavigationProperty Name="to_oigisiq" Relationship="IQMS.SHIPMENT_CREATE_SRV.ship_oigisiq" FromRole="FromRole_ship_oigisiq" ToRole="ToRole_ship_oigisiq"/>
+                <NavigationProperty Name="to_oigisvmq" Relationship="IQMS.SHIPMENT_CREATE_SRV.ship_oigisvmq" FromRole="FromRole_ship_oigisvmq" ToRole="ToRole_ship_oigisvmq"/>
+                <NavigationProperty Name="to_oigisvd" Relationship="IQMS.SHIPMENT_CREATE_SRV.ship_oigisvd" FromRole="FromRole_ship_oigisvd" ToRole="ToRole_ship_oigisvd"/>
+                <NavigationProperty Name="to_oigisv" Relationship="IQMS.SHIPMENT_CREATE_SRV.ship_oigisv" FromRole="FromRole_ship_oigisv" ToRole="ToRole_ship_oigisv"/>
+                <NavigationProperty Name="to_oigisi" Relationship="IQMS.SHIPMENT_CREATE_SRV.ship_oigisi" FromRole="FromRole_ship_oigisi" ToRole="ToRole_ship_oigisi"/>
+                <NavigationProperty Name="to_return" Relationship="IQMS.SHIPMENT_CREATE_SRV.ship_return" FromRole="FromRole_ship_return" ToRole="ToRole_ship_return"/>
+            </EntityType>
+            <EntityType Name="xIQMSxshipTypeFetchType" sap:label="Ship type" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="delivery"/>
+                </Key>
+                <Property Name="delivery" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Delivery"/>
+                <Property Name="ParkingNo" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="ParkingNo" sap:quickinfo="ParkingNumber"/>
+                <Property Name="material" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Material Number"/>
+                <Property Name="incoterm" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Incoterms" sap:quickinfo="Incoterms (Part 1)"/>
+                <Property Name="division" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Division"/>
+                <Property Name="VehicleNumber" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Vehicle"/>
+                <Property Name="SalesOrder" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Sales document" sap:quickinfo="Sales and Distribution Document Number"/>
+                <Property Name="DeliveryNo" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Deliveryno" sap:quickinfo="Delivery Number"/>
+                <Property Name="shipment_type" Type="Edm.String" MaxLength="4"/>
+            </EntityType>
+            <ComplexType Name="OigiCreateShipmentRfc">
+                <Property Name="PoShnumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Bulk shipment" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </ComplexType>
+            <ComplexType Name="PiOigis">
+                <Property Name="Shnumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Bulk shipment" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Shtype" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Bulk shipm.type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Tplst" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="TransportPlanPt" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Cfbll" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Confirm bl.load" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Xblnr" Type="Edm.String" Nullable="false" MaxLength="16" sap:label="Reference" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SchedStdt" Type="Edm.DateTime" Nullable="false" Precision="7" sap:label="Plan shpm.start" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SchedSttm" Type="Edm.Time" Nullable="false" Precision="0" sap:label="Sched. start" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LoadStdt" Type="Edm.DateTime" Nullable="false" Precision="7" sap:label="Plan.load start" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LoadSttm" Type="Edm.Time" Nullable="false" Precision="0" sap:label="Loading start" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LoadEddt" Type="Edm.DateTime" Nullable="false" Precision="7" sap:label="Plan.load end" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LoadEdtm" Type="Edm.Time" Nullable="false" Precision="0" sap:label="Loading end" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DelStdt" Type="Edm.DateTime" Nullable="false" Precision="7" sap:label="Del.start.date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DelSttm" Type="Edm.Time" Nullable="false" Precision="0" sap:label="Delivery start" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DelEddt" Type="Edm.DateTime" Nullable="false" Precision="7" sap:label="Del.end date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DelEdtm" Type="Edm.Time" Nullable="false" Precision="0" sap:label="Delivery end" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Updateflag" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Transact. type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Tswuseind" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="TSW useage" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ChgReason" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Change reason" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </ComplexType>
+            <Association Name="ship_oigisi" sap:content-version="1">
+                <End Type="IQMS.SHIPMENT_CREATE_SRV.PO_SHNUMBER" Multiplicity="1" Role="FromRole_ship_oigisi"/>
+                <End Type="IQMS.SHIPMENT_CREATE_SRV.pioigis" Multiplicity="*" Role="ToRole_ship_oigisi"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_ship_oigisi">
+                        <PropertyRef Name="Shnumber"/>
+                    </Principal>
+                    <Dependent Role="ToRole_ship_oigisi">
+                        <PropertyRef Name="DocNumber"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ship_oigisv" sap:content-version="1">
+                <End Type="IQMS.SHIPMENT_CREATE_SRV.PO_SHNUMBER" Multiplicity="1" Role="FromRole_ship_oigisv"/>
+                <End Type="IQMS.SHIPMENT_CREATE_SRV.PiOigisv" Multiplicity="*" Role="ToRole_ship_oigisv"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_ship_oigisv">
+                        <PropertyRef Name="Shnumber"/>
+                    </Principal>
+                    <Dependent Role="ToRole_ship_oigisv">
+                        <PropertyRef Name="Vehicle"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ship_oigisvd" sap:content-version="1">
+                <End Type="IQMS.SHIPMENT_CREATE_SRV.PO_SHNUMBER" Multiplicity="1" Role="FromRole_ship_oigisvd"/>
+                <End Type="IQMS.SHIPMENT_CREATE_SRV.PiOigisvd" Multiplicity="*" Role="ToRole_ship_oigisvd"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_ship_oigisvd">
+                        <PropertyRef Name="Shnumber"/>
+                    </Principal>
+                    <Dependent Role="ToRole_ship_oigisvd">
+                        <PropertyRef Name="Vehicle"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ship_oigisvmq" sap:content-version="1">
+                <End Type="IQMS.SHIPMENT_CREATE_SRV.PO_SHNUMBER" Multiplicity="1" Role="FromRole_ship_oigisvmq"/>
+                <End Type="IQMS.SHIPMENT_CREATE_SRV.PiOigisvmq" Multiplicity="*" Role="ToRole_ship_oigisvmq"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_ship_oigisvmq">
+                        <PropertyRef Name="Shnumber"/>
+                    </Principal>
+                    <Dependent Role="ToRole_ship_oigisvmq">
+                        <PropertyRef Name="DocNumber"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ship_oigisiq" sap:content-version="1">
+                <End Type="IQMS.SHIPMENT_CREATE_SRV.PO_SHNUMBER" Multiplicity="1" Role="FromRole_ship_oigisiq"/>
+                <End Type="IQMS.SHIPMENT_CREATE_SRV.PiOigisiq" Multiplicity="*" Role="ToRole_ship_oigisiq"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_ship_oigisiq">
+                        <PropertyRef Name="Shnumber"/>
+                    </Principal>
+                    <Dependent Role="ToRole_ship_oigisiq">
+                        <PropertyRef Name="DocNumber"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="shipheader_toitem" sap:content-version="1">
+                <End Type="IQMS.SHIPMENT_CREATE_SRV.PO_SHNUMBER" Multiplicity="1" Role="FromRole_shipheader_toitem"/>
+                <End Type="IQMS.SHIPMENT_CREATE_SRV.ship_header" Multiplicity="*" Role="ToRole_shipheader_toitem"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_shipheader_toitem">
+                        <PropertyRef Name="Shnumber"/>
+                    </Principal>
+                    <Dependent Role="ToRole_shipheader_toitem">
+                        <PropertyRef Name="Tplst"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ship_return" sap:content-version="1">
+                <End Type="IQMS.SHIPMENT_CREATE_SRV.PO_SHNUMBER" Multiplicity="1" Role="FromRole_ship_return"/>
+                <End Type="IQMS.SHIPMENT_CREATE_SRV.return" Multiplicity="*" Role="ToRole_ship_return"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_ship_return">
+                        <PropertyRef Name="Shnumber"/>
+                    </Principal>
+                    <Dependent Role="ToRole_ship_return">
+                        <PropertyRef Name="Id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="IQMS_SHIPMENT_CREATE_SRV_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="xIQMSxshipTypeFetch" EntityType="IQMS.SHIPMENT_CREATE_SRV.xIQMSxshipTypeFetchType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="shipTasSet" EntityType="IQMS.SHIPMENT_CREATE_SRV.shipTas" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="pioigisSet" EntityType="IQMS.SHIPMENT_CREATE_SRV.pioigis" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="PiOigisiqSet" EntityType="IQMS.SHIPMENT_CREATE_SRV.PiOigisiq" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="PiOigisvSet" EntityType="IQMS.SHIPMENT_CREATE_SRV.PiOigisv" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="PiOigisvdSet" EntityType="IQMS.SHIPMENT_CREATE_SRV.PiOigisvd" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="PiOigisvmqSet" EntityType="IQMS.SHIPMENT_CREATE_SRV.PiOigisvmq" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ship_headerSet" EntityType="IQMS.SHIPMENT_CREATE_SRV.ship_header" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="returnSet" EntityType="IQMS.SHIPMENT_CREATE_SRV.return" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="PO_SHNUMBERSet" EntityType="IQMS.SHIPMENT_CREATE_SRV.PO_SHNUMBER" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <AssociationSet Name="ship_oigisiqSet" Association="IQMS.SHIPMENT_CREATE_SRV.ship_oigisiq" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="PO_SHNUMBERSet" Role="FromRole_ship_oigisiq"/>
+                    <End EntitySet="PiOigisiqSet" Role="ToRole_ship_oigisiq"/>
+                </AssociationSet>
+                <AssociationSet Name="ship_oigisiSet" Association="IQMS.SHIPMENT_CREATE_SRV.ship_oigisi" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="PO_SHNUMBERSet" Role="FromRole_ship_oigisi"/>
+                    <End EntitySet="pioigisSet" Role="ToRole_ship_oigisi"/>
+                </AssociationSet>
+                <AssociationSet Name="shipheader_toitemSet" Association="IQMS.SHIPMENT_CREATE_SRV.shipheader_toitem" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="PO_SHNUMBERSet" Role="FromRole_shipheader_toitem"/>
+                    <End EntitySet="ship_headerSet" Role="ToRole_shipheader_toitem"/>
+                </AssociationSet>
+                <AssociationSet Name="ship_returnSet" Association="IQMS.SHIPMENT_CREATE_SRV.ship_return" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="PO_SHNUMBERSet" Role="FromRole_ship_return"/>
+                    <End EntitySet="returnSet" Role="ToRole_ship_return"/>
+                </AssociationSet>
+                <AssociationSet Name="ship_oigisvSet" Association="IQMS.SHIPMENT_CREATE_SRV.ship_oigisv" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="PO_SHNUMBERSet" Role="FromRole_ship_oigisv"/>
+                    <End EntitySet="PiOigisvSet" Role="ToRole_ship_oigisv"/>
+                </AssociationSet>
+                <AssociationSet Name="ship_oigisvdSet" Association="IQMS.SHIPMENT_CREATE_SRV.ship_oigisvd" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="PO_SHNUMBERSet" Role="FromRole_ship_oigisvd"/>
+                    <End EntitySet="PiOigisvdSet" Role="ToRole_ship_oigisvd"/>
+                </AssociationSet>
+                <AssociationSet Name="ship_oigisvmqSet" Association="IQMS.SHIPMENT_CREATE_SRV.ship_oigisvmq" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="PO_SHNUMBERSet" Role="FromRole_ship_oigisvmq"/>
+                    <End EntitySet="PiOigisvmqSet" Role="ToRole_ship_oigisvmq"/>
+                </AssociationSet>
+            </EntityContainer>
+            <Annotations Target="IQMS.SHIPMENT_CREATE_SRV.IQMS_SHIPMENT_CREATE_SRV_Entities"
+                xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Aggregation.ApplySupported">
+                    <Record>
+                        <PropertyValue Property="Transformations">
+                            <Collection>
+                                <String>aggregate</String>
+                                <String>groupby</String>
+                                <String>filter</String>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Rollup" EnumMember="None"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="http://ingenxsrv:8001/sap/opu/odata/iqms/SHIPMENT_CREATE_SRV/$metadata"
+                xmlns:atom="http://www.w3.org/2005/Atom"/>
+                <atom:link rel="latest-version" href="http://ingenxsrv:8001/sap/opu/odata/iqms/SHIPMENT_CREATE_SRV/$metadata"
+                    xmlns:atom="http://www.w3.org/2005/Atom"/>
+                </Schema>
+            </edmx:DataServices>
+        </edmx:Edmx>

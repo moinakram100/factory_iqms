@@ -1,0 +1,43 @@
+<mvc:View controllerName="com.ingenx.qms.inventory.controller.Home"
+    xmlns:mvc="sap.ui.core.mvc"
+     xmlns:tnt="sap.tnt"
+    xmlns="sap.m">
+    
+
+       <Page
+        id="inventoryPage"
+        showHeader="false"
+    >
+        <content>
+            <GenericTile
+                id="inventoryDashboardTile"
+                class="sapUiSmallMarginBegin sapUiSmallMarginTop tileLayout"
+                header="Dashboard"
+                press="onInventoryDashboardTile"
+            >
+                <TileContent id="inventoryDashboardTileContent">
+                    <ImageContent
+                        id="inventoryDashboardImage"
+                        src="sap-icon://decision"
+                    />
+                </TileContent>
+            </GenericTile>
+
+            <GenericTile
+                id="inventoryAnalyticsTile"
+                class="sapUiSmallMarginBegin sapUiSmallMarginTop tileLayout"
+                header="Analytics"
+                press="onInventoryAnalyticsTile"
+            >
+                <TileContent id="inventoryAnalyticsTileContent">
+                    <ImageContent
+                        id="inventoryAnalyticsImage"
+                        src="sap-icon://edit"
+                    />
+                </TileContent>
+            </GenericTile>
+
+           
+        </content>
+    </Page>
+</mvc:View>

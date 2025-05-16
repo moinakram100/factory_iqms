@@ -1,0 +1,136 @@
+<mvc:View
+    controllerName="com.ingenx.qms.config.controller.ParkingStatus"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+>
+<Page showHeader='false'>
+     <tnt:ToolHeader
+        id="_IDGenToolHeader1"
+        class="sapUiTinyMarginTop sapUiTinyMarginEnd sapUiTinyMarginBegin"
+    >
+        <HBox
+            justifyContent="Center"
+            width="100%"
+        >
+            <Title
+                id="_IDGenText1"
+                text="Update Parking Status"
+                level="H3"
+                textAlign="Center"
+            />
+        </HBox>
+    </tnt:ToolHeader>
+    
+        <l:VerticalLayout
+            id="MaterialDef_VerticalLayout1"
+            width="100%"
+        >
+            <l:BlockLayout
+                id="MaterialDef_BlockLayout1"
+                background="Dashboard"
+            >
+                <l:BlockLayoutRow id="MaterialDef_BlockLayoutRow1">
+                    <l:BlockLayoutCell
+                        id="MaterialDef_BlockLayoutCell1"
+                        width="100%"
+                    >
+                        <ScrollContainer
+                            id="MaterialDef_ScrollContainer1"
+                            width="100%"
+                            height="calc(100vh - 100px)"
+                            horizontal="false"
+                            vertical="true"
+                        >
+                        
+    <VBox
+        id="mainContainer"
+        alignItems="Start"
+        justifyContent="Center"
+        class="sapUiSmallMargin"
+    >
+        <HBox
+            class="sapUiSmallMarginBottom"
+            alignItems="Center"
+        >
+            <Label
+                text="Parking Number:"
+                width="150px"
+                design="Bold"
+            />
+            <Input
+                id="parking_id"
+                width="250px"
+                showValueHelp="true"
+                valueHelpRequest="onParkingNo"
+                valueHelpOnly="true"
+            />
+        </HBox>
+
+        <HBox
+            class="sapUiSmallMarginBottom"
+            alignItems="Center"
+        >
+            <Label
+                text="Current Status:"
+                width="150px"
+                design="Bold"
+            />
+            <Input
+                id="remark_id"
+                width="250px"
+                editable="false"
+            />
+        </HBox>
+
+        <HBox
+            class="sapUiSmallMarginBottom"
+            alignItems="Center"
+        >
+            <Label
+                text="New Status:"
+                width="150px"
+                design="Bold"
+            />
+
+            <Select
+                id="statusDropdown"
+                width="250px"
+                forceSelection="false"
+                
+            
+                items="{
+        path: 'statusModel>/items',
+        sorter: {
+            path: 'MsgNo',
+            descending: false
+        }
+    }"
+            >
+                <core:Item
+                    key="{statusModel>MsgNo}"
+                    text="{statusModel>MessageText}"
+                />
+            </Select>
+            <Button
+                text="Update"
+                press="onUpdate"
+                class="sapUiTinyMarginBegin"
+                type="Emphasized"
+            />
+        </HBox>
+    </VBox>
+                          
+                        </ScrollContainer>
+                    </l:BlockLayoutCell>
+                </l:BlockLayoutRow>
+            </l:BlockLayout>
+        </l:VerticalLayout>
+ 
+    
+
+</Page>
+</mvc:View>

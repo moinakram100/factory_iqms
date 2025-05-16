@@ -1,0 +1,116 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core">
+    <Dialog id="modifyDialog" title="Create Bay Scheduling">
+        <beginButton>
+            <Button id="_IDGenButton1" text="OK" type="Emphasized" press="handleDialogOkButton"/>
+        </beginButton>
+        <endButton>
+            <Button id="_IDGenButton2" text="Cancel" press="handleDialogCancelButton"/>
+        </endButton>
+        <l:VerticalLayout id="_IDGenVerticalLayout1" width="100%">
+            <IconTabBar id="idIconTabBar" select=".onFilterSelect">
+                <items>
+                    <IconTabFilter
+                        id="_IDGenIconTabFilter1"
+                        icon="sap-icon://customer"
+                        iconColor="Default"
+                        text="Customer"
+                        key="Customer">
+                        <f:SimpleForm
+                            id="appointmentCreateForm"
+                            editable="true"
+                            layout="ResponsiveGridLayout"
+                            singleContainerFullSize="false"
+                            >
+                            <Label id="_IDGenLabel1" text="{modifyModel>/DocType}" labelFor="
+                            "/>
+                
+                            <Input required="true" id="appTitle"  maxLength="255" liveChange="inpchange" value="{modifyModel>/DocNum}" visible="true" />
+                           
+                            <Label id="_IDGenLabel2" text="{= ${modifyModel>/DocType} === 'SO' ? 'Customer' : (${modifyModel>/DocType} === 'STO' ? 'Plant' : '') }"
+                             labelFor="inputInfo"/>
+                            <!-- <Input required="true" id="moreInfo" maxLength="255" liveChange="inpchange"/> -->
+                            <Input required="true" id="moreInfo"  maxLength="255" liveChange="inpchange" value="{modifyModel>/cust}" visible="true"/>
+
+
+                            <Label id="_IDGenLabel" text="Material" />
+                            <Input required="true" id="_IDGenInput3" maxLength="255" liveChange="inpchange" value="{modifyModel>/Mat}"/>
+                            <Label id="_IDGenLbel" text="Quantity" />
+                            <Input required="true" id="_IDGenInut3" maxLength="255" liveChange="inpchange" value="{modifyModel>/Quantity}"/>
+                            
+                            <Label id="_IDGenLabel3" text="Bays" labelFor="appType"/>
+                            <Select
+                                id="appType"
+                                items="{calanderdata>/supportedAppointmentItems}"
+                                forceSelection="true"
+                                required="true">
+                                <core:Item id="_IDGenItem1" key="{calanderdata>type}" text="{calanderdata>text}"/>
+                            </Select>
+                            <Label id="_IDGenLabel4" text="From" labelFor="startDate"/>
+                            <DateTimePicker
+                                id="DTPStartDate"
+                                required="true"
+                                value="{modifyModel>/startDate}"
+                                change="handleDateTimePickerChange"/>
+                       
+                            <Label id="_IDGenLabel5" text="To" labelFor="endDate"/>
+                            <DateTimePicker
+                                id="DTPEndDate"
+                                required="true"
+                                value="{modifyModel>/endDate}"
+                                change="handleDateTimePickerChange"/>
+                            
+                        </f:SimpleForm>
+                    </IconTabFilter>
+                    <IconTabFilter
+                        id="_IDGenIconTabFilter2"
+                        icon="sap-icon://shipping-status"
+                        iconColor="Default"
+                        text="Transporter"
+                        key="Transporter">
+                        <f:SimpleForm
+                            id="_IDGenSimpleForm1"
+                            editable="true"
+                            layout="ResponsiveGridLayout"
+                            singleContainerFullSize="false">
+                            <Label id="_IDGenLabel6" text="{modifyModel>/DocType}" labelFor="_IDGenInput1"/>
+                            <Input required="true" id="_IDGenInput1" maxLength="255" liveChange="inpchange" value="{modifyModel>/DocNum}"/>
+                           
+                            <Label id="_IDGenLabel7" text="Transporter" labelFor="_IDGenInput2"/>
+                            <Input required="true" id="_IDGenInput2" maxLength="255" liveChange="inpchange" value="{modifyModel>/cust}"/>
+                             <Label id="_IDGenLabel20" text="Material" />
+                            <Input required="true" id="_IDGenInput323" maxLength="255" liveChange="inpchange" value="{modifyModel>/Mat}"/>
+                           
+                            <Label id="_IDGenLabel8" text="Bays" labelFor="_IDGenSelect1"/>
+                            
+                            <Select
+                                id="_IDGenSelect1"
+                                items="{calanderdata>/supportedAppointmentItems}"
+                                forceSelection="true"
+                                required="true">
+                                <core:Item id="_IDGenItem2" key="{calanderdata>type}" text="{calanderdata>text}"/>
+                            </Select>
+                            <Label id="_IDGenLabel9" text="From" labelFor="_IDGenDateTimePicker1"/>
+                            <DateTimePicker
+                                id="_IDGenDateTimePicker1"
+                                required="true"
+                                value="{modifyModel>/startDate}"
+                                change="handleDateTimePickerChange"/>
+                          
+                            <Label id="_IDGenLabel10" text="To" labelFor="_IDGenDateTimePicker2"/>
+                            <DateTimePicker
+                                id="_IDGenDateTimePicker2"
+                                required="true"
+                                value="{modifyModel>/endDate}"
+                                change="handleDateTimePickerChange"/>
+                         
+                        </f:SimpleForm>
+                    </IconTabFilter>
+                </items>
+            </IconTabBar>
+        </l:VerticalLayout>
+    </Dialog>
+</core:FragmentDefinition>

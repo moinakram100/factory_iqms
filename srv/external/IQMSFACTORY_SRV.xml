@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0"
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="IQMS.FACTORY_SRV" xml:lang="en" sap:schema-version="1"
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="ScheduleFac" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SalesOrder"/>
+                    <PropertyRef Name="Stockorder"/>
+                </Key>
+                <Property Name="Bayno" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="BAYNO" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SalesOrder" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Sales document" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Stockorder" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="STOCKTRAN" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Startdate" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Startdate" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Enddate" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="ENDDATE" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Starttime" Type="Edm.Time" Precision="0" sap:unicode="false" sap:label="startTime" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Endtime" Type="Edm.Time" Precision="0" sap:unicode="false" sap:label="ENDTIME" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Vehicleno" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Vehicle" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Driver" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Driver" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Cleaner" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Cleaner" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Createdby" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="CREABY" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Createddate" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="CREATEDT" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Createdtime" Type="Edm.Time" Precision="0" sap:unicode="false" sap:label="CREATIME" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Changedby" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="CHANGEBY" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Changeddate" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="CHANGEDT" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Changedtime" Type="Edm.Time" Precision="0" sap:unicode="false" sap:label="ChangedTime" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Park_fac" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ParkDate"/>
+                    <PropertyRef Name="ParkTime"/>
+                    <PropertyRef Name="ParkingNo"/>
+                </Key>
+                <Property Name="ParkDate" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="Park Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ParkTime" Type="Edm.Time" Nullable="false" Precision="0" sap:unicode="false" sap:label="ParkTime" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ParkingNo" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="ParkingNo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ParkingGate" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="ParkGate" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ParkingArea" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Parking Area" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="VehicleNumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Vehicle" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Status" Type="Edm.Byte" Nullable="false" sap:unicode="false" sap:label="StatusCode" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="StatusDesc" Type="Edm.String" Nullable="false" MaxLength="60" sap:unicode="false" sap:label="StatDesc" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Createdby" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="CREABY" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Createddate" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="CREATEDT" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Createdtime" Type="Edm.Time" Precision="0" sap:unicode="false" sap:label="CREATIME" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Changedby" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="CHANGEBY" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Changeddate" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="CHANGEDT" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Changedtime" Type="Edm.Time" Precision="0" sap:unicode="false" sap:label="ChangedTime" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="park_tostatus" Relationship="IQMS.FACTORY_SRV.park_tostatus" FromRole="FromRole_park_tostatus" ToRole="ToRole_park_tostatus"/>
+            </EntityType>
+            <EntityType Name="PARKST_FAC" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Parkingno"/>
+                </Key>
+                <Property Name="Parkingno" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="ParkingNo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Vehicleno" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Vehicle" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SalesOrder" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Sales document" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Stockorder" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="STOCKTRAN" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Startdate" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Startdate" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Starttime" Type="Edm.Time" Precision="0" sap:unicode="false" sap:label="startTime" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Quantity" Type="Edm.Decimal" Precision="15" Scale="3" sap:unicode="false" sap:label="Quantity" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Uom" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Unit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+                <Property Name="Bayno" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="BAYNO" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Plant" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PlantText" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Planttxt" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Soldtoparty" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Customer" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DeliveryNo" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Deliveryno" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DelivDate" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="DelivDt" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DelivTime" Type="Edm.Time" Precision="0" sap:unicode="false" sap:label="DelivTime" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ShipmentNo" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Shipment Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ShipDate" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="ShipDateShipDate" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ShipTime" Type="Edm.Time" Precision="0" sap:unicode="false" sap:label="ShipTime" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BillingNo" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Billing Doc." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BillDate" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Billing Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BillTime" Type="Edm.Time" Precision="0" sap:unicode="false" sap:label="Billing Time" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Goodsissue" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="GoodsIssue" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="GiDate" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="GI Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="GiTime" Type="Edm.Time" Precision="0" sap:unicode="false" sap:label="GITime" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Goodsreceipt" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="GoodsRecei" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="GrDate" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="GR Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="GrTime" Type="Edm.Time" Precision="0" sap:unicode="false" sap:label="GR Time" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Createdby" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="CREABY" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Createddate" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="CREATEDT" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Createdtime" Type="Edm.Time" Precision="0" sap:unicode="false" sap:label="CREATIME" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Changedby" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="CHANGEBY" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Changeddate" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="CHANGEDT" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Changedtime" Type="Edm.Time" Precision="0" sap:unicode="false" sap:label="ChangedTime" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <Association Name="park_tostatus" sap:content-version="1">
+                <End Type="IQMS.FACTORY_SRV.Park_fac" Multiplicity="1" Role="FromRole_park_tostatus"/>
+                <End Type="IQMS.FACTORY_SRV.PARKST_FAC" Multiplicity="*" Role="ToRole_park_tostatus"/>
+            </Association>
+            <EntityContainer Name="IQMS_FACTORY_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ScheduleFacSet" EntityType="IQMS.FACTORY_SRV.ScheduleFac" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="Park_facSet" EntityType="IQMS.FACTORY_SRV.Park_fac" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="PARKST_FACSet" EntityType="IQMS.FACTORY_SRV.PARKST_FAC" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <AssociationSet Name="park_tostatusSet" Association="IQMS.FACTORY_SRV.park_tostatus" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Park_facSet" Role="FromRole_park_tostatus"/>
+                    <End EntitySet="PARKST_FACSet" Role="ToRole_park_tostatus"/>
+                </AssociationSet>
+            </EntityContainer>
+            <atom:link rel="self" href="http://ingenxsrv:8001/sap/opu/odata/iqms/FACTORY_SRV/$metadata"
+                xmlns:atom="http://www.w3.org/2005/Atom"/>
+                <atom:link rel="latest-version" href="http://ingenxsrv:8001/sap/opu/odata/iqms/FACTORY_SRV/$metadata"
+                    xmlns:atom="http://www.w3.org/2005/Atom"/>
+                </Schema>
+            </edmx:DataServices>
+        </edmx:Edmx>

@@ -1,0 +1,173 @@
+<mvc:View
+    controllerName="com.ingenx.qms.parking.controller.Exit"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt"
+    xmlns:t="sap.ui.table"
+    xmlns:filterbar="sap.ui.comp.filterbar"
+    xmlns:l="sap.ui.layout"
+    displayBlock="true"
+>
+    <tnt:ToolHeader
+        id="_IDGenToolHeader1"
+        class="sapUiTinyMarginTop sapUiTinyMarginEnd sapUiTinyMarginBegin"
+    >
+        <HBox
+            justifyContent="Center"
+            width="100%"
+        >
+            <Title
+                id="_IDGenText1"
+                text="Vehicle Exit Screen"
+                level="H3"
+                textAlign="Center"
+            />
+        </HBox>
+    </tnt:ToolHeader>
+
+    <l:BlockLayout>
+        <l:BlockLayoutRow>
+            <l:BlockLayoutCell>
+                <HBox
+                    justifyContent="Center"
+                    class="headercss"
+                >
+                    <FlexBox>
+                        <FlexBox direction="Column">
+                            <Label
+                                text="Parking No "
+                                class="flexParking"
+                                design="Bold"
+                            />
+                            <Label
+                                text="Vehicle No "
+                                class="flexVehicle"
+                                design="Bold"
+                            />
+                        </FlexBox>
+                        <FlexBox direction="Column">
+                            <Input
+                                submit="onSubmitParkingNo"
+                                id="ParkingNoInput"
+                                class="sapUiTinyMarginBegin"
+                            />
+                            <Input
+                                submit="onSubmitVehicle"
+                                id="VehicleNumberInput"
+                                    class="sapUiTinyMarginBegin"
+                            />
+                        </FlexBox>
+                    </FlexBox>
+                    <FlexBox
+                        id="exitFlexBoxBtn"
+                        direction="Column"
+                        class="sapUiSmallMarginBegin"
+                    >
+                        <Button
+                            text="Exit"
+                            width="100px"
+                            press="onExitPress"
+                            icon="sap-icon://arrow-right"
+                            iconFirst="false"
+                        />
+                    </FlexBox>
+                </HBox>
+            </l:BlockLayoutCell>
+        </l:BlockLayoutRow>
+    </l:BlockLayout>
+
+    <l:BlockLayout>
+        <l:BlockLayoutRow>
+            <l:BlockLayoutCell>
+                <t:Table
+                    id="_IDGenTable2"
+                    visibleRowCount="5"
+                    selectionMode="MultiToggle"
+                    rows="{dataModel>/}"
+                    rowSelectionChange="onSelectTable"
+                    class="mainTable"
+                >
+                    <t:columns>
+                        <t:Column>
+                            <t:label>
+                                <Label text="Parking No" />
+                            </t:label>
+                            <t:template>
+                                <Text
+                                    text="{dataModel>ParkingNo}"
+                                    textAlign="Right"
+                                />
+                            </t:template>
+                        </t:Column>
+                        <t:Column>
+                            <t:label>
+                                <Label text="Vehicle No" />
+                            </t:label>
+                            <t:template>
+                                <Text
+                                    text="{dataModel>VehicleNumber}"
+                                    textAlign="Right"
+                                />
+                            </t:template>
+                        </t:Column>
+                        <t:Column>
+                            <t:label>
+                                <Label text="Vehicle Type" />
+                            </t:label>
+                            <t:template>
+                                <Text
+                                    text="{dataModel>vehicleType}"
+                                    textAlign="Right"
+                                />
+                            </t:template>
+                        </t:Column>
+                        <t:Column>
+                            <t:label>
+                                <Label text="Status" />
+                            </t:label>
+                            <t:template>
+                                <Text
+                                    text="{dataModel>Status}"
+                                    textAlign="Right"
+                                />
+                            </t:template>
+                        </t:Column>
+                        <t:Column>
+                            <t:label>
+                                <Label text="Delivery" />
+                            </t:label>
+                            <t:template>
+                                <Text
+                                    text="{dataModel>DeliveryNo}"
+                                    textAlign="Right"
+                                />
+                            </t:template>
+                        </t:Column>
+                        <t:Column>
+                            <t:label>
+                                <Label text="Shipment No" />
+                            </t:label>
+                            <t:template>
+                                <Text
+                                    text="{dataModel>ShipmentNo}"
+                                    textAlign="Right"
+                                />
+                            </t:template>
+                        </t:Column>
+                        <t:Column>
+                            <t:label>
+                                <Label text="Good Issue Qty" />
+                            </t:label>
+                            <t:template>
+                                <Text
+                                    text="{dataModel>quantity}"
+                                    textAlign="Right"
+                                />
+                            </t:template>
+                        </t:Column>
+                    </t:columns>
+                </t:Table>
+            </l:BlockLayoutCell>
+        </l:BlockLayoutRow>
+    </l:BlockLayout>
+</mvc:View>

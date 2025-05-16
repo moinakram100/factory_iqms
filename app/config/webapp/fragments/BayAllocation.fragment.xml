@@ -1,0 +1,66 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:mvc="sap.ui.core.mvc"
+>
+    <Dialog
+        id="_IDDia1"
+        title="Material Type and Definition Mapping"
+        class="sapUiSmallMargin"
+    >
+        <VBox
+            id="_IDnx1"
+            class="sapUiContentPadding sapUiSmallMargin"
+        >
+            <Label
+                id="_IDLel1"
+                text="Bay Label :"
+                design="Bold"
+            />
+            <Input
+                id="bayLabel_Id"
+                width="250px"
+            />
+            <Label
+                id="_IDGLl2"
+                text="Bay ID :"
+                design="Bold"
+            />
+            <Input
+                id="bayId_Id"
+                width="250px"
+            />
+            <Label
+                id="_IDGl2"
+                text="Material"
+                design="Bold"
+            />
+            <Select id="_IDGenlect1" width="250px" forceSelection="false" items = "{Matdata>/}">
+                <core:Item
+                    key="{Matdata>MaterialDefinition}"
+                    text="{Matdata>MaterialDefinition}"
+                />
+            </Select>
+        </VBox>
+
+        <footer>
+            <OverflowToolbar id="otter">
+                <ToolbarSpacer />
+
+                <Button
+                    id="_IDGenBuon1"
+                    type="Accept"
+                    text="Save"
+                    press="onSaveBayAllocation"
+                />
+                <Button
+                    id="_IDGenBton2"
+                    type="Reject"
+                    text="Cancel"
+                    press="oncanceleNewDocumentNo"
+                />
+            </OverflowToolbar>
+        </footer>
+    </Dialog>
+</core:FragmentDefinition>

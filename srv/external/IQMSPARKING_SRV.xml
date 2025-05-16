@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0"
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="http://ingenxsrv:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://ingenxsrv:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://ingenxsrv:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://ingenxsrv:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://ingenxsrv:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="IQMS.PARKING_SRV" xml:lang="en" sap:schema-version="1"
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="Park_header" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ParkingNo"/>
+                </Key>
+                <Property Name="Shiptoparty" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="ShipToPart" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Driver" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Driver" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PlantText" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Planttxt" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ParkingNo" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="ParkingNo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Description" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Cleaner" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Cleaner" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Plant" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ParkingGate" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="ParkGate" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Soldtoparty" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Customer" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ParkingArea" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Parking Area" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="VehicleNumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Vehicle" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Purpose" Type="Edm.String" Nullable="false" MaxLength="7" sap:unicode="false" sap:label="Purpose" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Destination" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Destination" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TransportCode" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Vendor" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Status" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Product" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TruckType" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="Truck Type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Createdby" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="CREABY" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Createddate" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="CREATEDT" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Createdtime" Type="Edm.Time" Precision="0" sap:unicode="false" sap:label="CREATIME" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Changedby" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="CHANGEBY" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Changeddate" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="CHANGEDT" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Changedtime" Type="Edm.Time" Precision="0" sap:unicode="false" sap:label="ChangedTime" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="park_assocations" Relationship="IQMS.PARKING_SRV.park_assocations" FromRole="FromRole_park_assocations" ToRole="ToRole_park_assocations"/>
+            </EntityType>
+            <EntityType Name="park_item" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ParkingNo"/>
+                </Key>
+                <Property Name="ParkingNo" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="ParkingNo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Stodate" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="STODATE" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="EntryDate" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Entry Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Stotime" Type="Edm.Time" Precision="0" sap:unicode="false" sap:label="STOTimes" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="EntryTime" Type="Edm.Time" Precision="0" sap:unicode="false" sap:label="Entry Time" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ExitDate" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Exit Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ExitTime" Type="Edm.Time" Precision="0" sap:unicode="false" sap:label="Exit Time" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SecClearDate" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Security Cleared Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SecClearTime" Type="Edm.Time" Precision="0" sap:unicode="false" sap:label="Security Cleared Time" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SecFailedDate" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Security Failed Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SecFailedTime" Type="Edm.Time" Precision="0" sap:unicode="false" sap:label="Security Failed Time" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LanDate" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="LAN Gen Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LanTime" Type="Edm.Time" Precision="0" sap:unicode="false" sap:label="LAN Gen Time" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LoadingDate" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Loading Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LoadingTime" Type="Edm.Time" Precision="0" sap:unicode="false" sap:label="Loading Time" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BilledDate" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Billed Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BilledTime" Type="Edm.Time" Precision="0" sap:unicode="false" sap:label="Billed Time" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Salesorderdate" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Sales Order Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Salesordertime" Type="Edm.Time" Precision="0" sap:unicode="false" sap:label="Sales Order Time" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Deliverydate" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Delivery Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Deliverytime" Type="Edm.Time" Precision="0" sap:unicode="false" sap:label="Delivery Time" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Createdby" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="CREABY" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Createddate" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="CREATEDT" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Createdtime" Type="Edm.Time" Precision="0" sap:unicode="false" sap:label="CREATIME" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Changedby" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="CHANGEBY" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Changeddate" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="CHANGEDT" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Changedtime" Type="Edm.Time" Precision="0" sap:unicode="false" sap:label="ChangedTime" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="xIQMSxparking_cdsType" sap:label="parking cds" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ParkingNo"/>
+                </Key>
+                <Property Name="ParkingNo" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="ParkingNo" sap:quickinfo="ParkingNumber"/>
+                <Property Name="ParkingGate" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="ParkGate"/>
+                <Property Name="ParkingArea" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Parking Area"/>
+                <Property Name="VehicleNumber" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Vehicle"/>
+                <Property Name="Purpose" Type="Edm.String" MaxLength="7" sap:display-format="UpperCase" sap:label="Purpose"/>
+                <Property Name="Destination" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Destination"/>
+                <Property Name="Shiptoparty" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="ShipToPart" sap:quickinfo="shipToParty"/>
+                <Property Name="Description" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Description"/>
+                <Property Name="Soldtoparty" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Customer" sap:quickinfo="Customer Number"/>
+                <Property Name="TransportCode" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Vendor" sap:quickinfo="Account Number of Vendor or Creditor"/>
+                <Property Name="Status" Type="Edm.String" MaxLength="100" sap:label="Status"/>
+                <Property Name="Product" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Material Number"/>
+                <Property Name="TruckType" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Truck Type"/>
+                <Property Name="Createdby" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="CREABY" sap:quickinfo="CreatedBy"/>
+                <Property Name="Createddate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="CREATEDT" sap:quickinfo="CreatedDate"/>
+                <Property Name="Createdtime" Type="Edm.Time" Precision="0" sap:label="CREATIME" sap:quickinfo="CreatedTime"/>
+                <Property Name="Changedby" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="CHANGEBY" sap:quickinfo="ChangedBy"/>
+                <Property Name="Changeddate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="CHANGEDT" sap:quickinfo="ChangedDate"/>
+                <Property Name="Changedtime" Type="Edm.Time" Precision="0" sap:label="" sap:quickinfo="ChangedTime"/>
+            </EntityType>
+            <Association Name="park_assocations" sap:content-version="1">
+                <End Type="IQMS.PARKING_SRV.Park_header" Multiplicity="1" Role="FromRole_park_assocations"/>
+                <End Type="IQMS.PARKING_SRV.park_item" Multiplicity="*" Role="ToRole_park_assocations"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_park_assocations">
+                        <PropertyRef Name="ParkingNo"/>
+                    </Principal>
+                    <Dependent Role="ToRole_park_assocations">
+                        <PropertyRef Name="ParkingNo"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="IQMS_PARKING_SRV_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="xIQMSxparking_cds" EntityType="IQMS.PARKING_SRV.xIQMSxparking_cdsType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="Park_headerSet" EntityType="IQMS.PARKING_SRV.Park_header" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="park_itemSet" EntityType="IQMS.PARKING_SRV.park_item" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <AssociationSet Name="park_assocationsSet" Association="IQMS.PARKING_SRV.park_assocations" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Park_headerSet" Role="FromRole_park_assocations"/>
+                    <End EntitySet="park_itemSet" Role="ToRole_park_assocations"/>
+                </AssociationSet>
+            </EntityContainer>
+            <Annotations Target="IQMS.PARKING_SRV.IQMS_PARKING_SRV_Entities"
+                xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Aggregation.ApplySupported">
+                    <Record>
+                        <PropertyValue Property="Transformations">
+                            <Collection>
+                                <String>aggregate</String>
+                                <String>groupby</String>
+                                <String>filter</String>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Rollup" EnumMember="None"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="http://ingenxsrv:8001/sap/opu/odata/iqms/PARKING_SRV/$metadata"
+                xmlns:atom="http://www.w3.org/2005/Atom"/>
+                <atom:link rel="latest-version" href="http://ingenxsrv:8001/sap/opu/odata/iqms/PARKING_SRV/$metadata"
+                    xmlns:atom="http://www.w3.org/2005/Atom"/>
+                </Schema>
+            </edmx:DataServices>
+        </edmx:Edmx>

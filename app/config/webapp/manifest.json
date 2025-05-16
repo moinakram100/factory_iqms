@@ -1,0 +1,227 @@
+{
+  "_version": "1.65.0",
+  "sap.app": {
+    "id": "com.ingenx.qms.config",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.17.5",
+      "toolsId": "45f73598-2268-42d3-af4e-97cb6c048b2f"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/odata/v4/factory/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "odataVersion": "4.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.135.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "com.ingenx.qms.config.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "transition": "slide",
+        "type": "View",
+        "viewType": "XML",
+        "path": "com.ingenx.qms.config.view",
+        "async": true,
+        "viewPath": "com.ingenx.qms.config.view"
+      },
+      "routes": [
+        {
+          "name": "RouteHome",
+          "pattern": ":?query:",
+          "target": [
+            "TargetHome"
+          ]
+        },
+        {
+          "name": "RouteConfigHome",
+          "pattern": "config",
+          "target": [
+            "TargetConfigHome"
+          ]
+        },
+        {
+          "name": "RouteParkingGate",
+          "pattern": "parkingGate",
+          "target": [
+            "TargetParkingGate"
+          ]
+        },
+        {
+          "name": "RouteVehicleDefinition",
+          "pattern": "vehicle",
+          "target": [
+            "TargetVehicleDefinition"
+          ]
+        },
+        {
+          "name": "RouteChecklistCreation",
+          "pattern": "checklist",
+          "target": [
+            "TargetChecklistCreation"
+          ]
+        },
+        {
+          "name": "RouteMaterialDefinition",
+          "pattern": "materialDefinition",
+          "target": [
+            "TargetMaterialDefinition"
+          ]
+        },
+        {
+          "name": "RouteBayAllocation",
+          "pattern": "bay",
+          "target": [
+            "TargetBayAllocation"
+          ]
+        },
+        {
+          "name": "RouteShipmentDetail",
+          "pattern": "shipment",
+          "target": [
+            "TargetShipmentDetail"
+          ]
+        },
+        {
+          "name": "RouteStatusHome",
+          "pattern": "status",
+          "target": [
+            "TargetStatusHome"
+          ]
+        },
+        {
+          "name": "RouteParkingStatus",
+          "pattern": "parkingStatus",
+          "target": [
+            "TargetParkingStatus"
+          ]
+        },
+        {
+          "name": "RouteBayStatus",
+          "pattern": "bayStatus",
+          "target": [
+            "TargetBayStatus"
+          ]
+        }
+      ],
+      "targets": {
+        "TargetHome": {
+          "id": "Home",
+          "name": "Home"
+        },
+        "TargetConfigHome": {
+          "id": "configHome",
+          "name": "ConfigHome"
+        },
+        "TargetParkingGate": {
+          "id": "parkingGate",
+          "name": "ParkingGate"
+        },
+        "TargetVehicleDefinition": {
+          "id": "vehicleDefinition",
+          "name": "VehicleDefinition"
+        },
+        "TargetChecklistCreation": {
+          "id": "checklistCreation",
+          "name": "ChecklistCreation"
+        },
+        "TargetMaterialDefinition": {
+          "id": "MaterialDefinition",
+          "name": "MaterialDefinition"
+        },
+        "TargetBayAllocation": {
+          "id": "BayAllocation",
+          "name": "BayAllocation"
+        },
+        "TargetShipmentDetail": {
+          "id": "ShipmentDetail",
+          "name": "ShipmentDetail"
+        },
+        "TargetStatusHome": {
+          "id": "StatusHome",
+          "name": "StatusHome"
+        },
+        "TargetParkingStatus": {
+          "id": "ParkingStatus",
+          "name": "ParkingStatus"
+        },
+        "TargetBayStatus": {
+          "id": "BayStatus",
+          "name": "BayStatus"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "com.ingenx.qms.config.view.App",
+      "type": "XML",
+      "id": "App",
+      "async": true
+    }
+  }
+}

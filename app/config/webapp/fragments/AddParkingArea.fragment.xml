@@ -1,0 +1,28 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <Dialog
+        title="Add Parking Area"
+        id="addParkingArea_dialog"
+    >
+        <FlexBox class = "parkingAreaFrag">
+            <FlexBox alignItems="Center" class="sapUiSmallMarginBegin">
+                <Text  text="Area :" />
+                <Input id="parkarea_frag_id" width="150px"  submit="onSubmitParkingArea" />
+            </FlexBox>
+            <FlexBox alignItems="Center" class="sapUiSmallMarginBegin sapUiSmallMarginEnd">
+                <Text text="Description :" />
+                <Input id="parkarea_frag_descrip_id" width="200px" submit="onSubmitParkingArea"/>
+            </FlexBox>
+        </FlexBox>
+        <footer>
+            <OverflowToolbar id="ooter">
+                <ToolbarSpacer/>
+                <Button text="Submit" press="onSubmitParkingArea"  ></Button>
+                <Button text="Close" press="onCloseParkingArea"  ></Button>
+            </OverflowToolbar>
+        </footer>
+    </Dialog>
+</core:FragmentDefinition>
+

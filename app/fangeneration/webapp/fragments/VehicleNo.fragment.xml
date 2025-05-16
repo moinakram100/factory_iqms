@@ -1,0 +1,18 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+    <SelectDialog
+        id="VehicleNoDialog"
+        
+        title="Select Vehicle Number"
+        search="onVehicleNoSearch"
+        confirm="onVehicleNoClose"
+        cancel="onVehicleNoClose"
+        items="{mergedData>/}">
+        <StandardListItem id="VehicleList"
+            title="{mergedData>VehicleNumber}"
+            iconDensityAware="false"
+            iconInset="false"
+            type="Active" />
+    </SelectDialog>
+</core:FragmentDefinition>

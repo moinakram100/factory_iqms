@@ -1,0 +1,152 @@
+<mvc:View
+    controllerName="com.ingenx.qms.config.controller.MaterialDefinition"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:tnt="sap.tnt"
+>
+    <Page
+        id="MaterialDef_page"
+        showHeader="false"
+    >
+        <tnt:ToolHeader
+            id="MaterialDef_ToolHeader"
+            class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiSmallMarginTop"
+        >
+            
+            <Title
+                text="Material Type and Definition Mapping"
+                wrapping="true"
+                id="MaterialDef_Title"
+                level="H3"
+            />
+            <ToolbarSpacer id="MaterialDef_ToolbarSpacer2" />
+            <HBox id="MaterialDef_HBox1">
+                <Button
+                    id="MaterialDef_Create"
+                    text="Create"
+                    width="100px"
+                    press="onAddBtnPress"
+                    type="Emphasized"
+                    visible="true"
+                    class="sapUiTinyMarginEnd"
+                />
+                <Button
+                    id="MaterialDef_Delete"
+                    text="Delete"
+                    width="100px"
+                    press="onDeleteBtnPress"
+                    type="Emphasized"
+                    visible="true"
+                />
+                <Button
+                    id="MaterialDef_Confrm"
+                    text="Confirm"
+                    width="100px"
+                    press="onConfirmBtnDeletion"
+                    type="Emphasized"
+                    visible="false"
+                    class="sapUiTinyMarginEnd"
+                />
+                <Button
+                    id="MaterialDef_Cancel"
+                    text="Cancel"
+                    width="100px"
+                    press="onCancelBtnDeletion"
+                    type="Emphasized"
+                    visible="false"
+                />
+            </HBox>
+        </tnt:ToolHeader>
+
+        <l:VerticalLayout
+            id="MaterialDef_VerticalLayout1"
+            width="100%"
+        >
+            <l:BlockLayout
+                id="MaterialDef_BlockLayout1"
+                background="Dashboard"
+            >
+                <l:BlockLayoutRow id="MaterialDef_BlockLayoutRow1">
+                    <l:BlockLayoutCell
+                        id="MaterialDef_BlockLayoutCell1"
+                        width="90%"
+                    >
+                        <ScrollContainer
+                            id="MaterialDef_ScrollContainer1"
+                            width="100%"
+                            height="calc(100vh - 110px)"
+                            horizontal="false"
+                            vertical="true"
+                        >
+                            <Table
+                                items="{/MaterialTypeDefinition}"
+                                id="MaterialDef_Table"
+                                selectionChange="onSelect"
+                                mode="None"
+                                sticky="ColumnHeaders"
+                            >
+                                <columns>
+                                    <Column id="MaterialDef_Col_Definition">
+                                        <header>
+                                            <Label
+                                                wrapping="true"
+                                                text="Material Definition"
+                                            />
+                                        </header>
+                                    </Column>
+                                    <Column id="MaterialDef_Col_Code">
+                                        <header>
+                                            <Label
+                                                wrapping="true"
+                                                text="Material Code"
+                                            />
+                                        </header>
+                                    </Column>
+                                    <Column id="MaterialDef_Col_Division">
+                                        <header>
+                                            <Label
+                                                wrapping="true"
+                                                text="Division"
+                                            />
+                                        </header>
+                                    </Column>
+                                    <Column id="MaterialDef_Col_Type">
+                                        <header>
+                                            <Label
+                                                wrapping="true"
+                                                text="Material Type"
+                                            />
+                                        </header>
+                                    </Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem
+                                        type="Active"
+                                        id="MaterialDef_ColListItem1"
+                                    >
+                                        <cells>
+                                            <Text text="{MaterialDefinition}" />
+                                            <Text text="{Material}" />
+                                            <Text text="{Division}" />
+                                            <Text text="{MaterialType}" />
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                                <noData>
+                                    <IllustratedMessage
+                                        id="MaterialDef_IllustratedMessage1"
+                                        enableVerticalResponsiveness="true"
+                                        title="No Data Found"
+                                        description="There are no items in this Table"
+                                    />
+                                </noData>
+                            </Table>
+                        </ScrollContainer>
+                    </l:BlockLayoutCell>
+                </l:BlockLayoutRow>
+            </l:BlockLayout>
+        </l:VerticalLayout>
+    </Page>
+</mvc:View>

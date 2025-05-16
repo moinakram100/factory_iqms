@@ -1,0 +1,161 @@
+<mvc:View
+    controllerName="com.ingenx.qms.inventory.controller.Analytics"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+    xmlns:viz.data="sap.viz.ui5.data"
+    xmlns:viz="sap.viz.ui5.controls"
+    xmlns:layout="sap.ui.layout"
+    xmlns:f="sap.f"
+    xmlns:cards="sap.f.cards"
+    xmlns:tnt="sap.tnt"
+>
+    <Page
+        showHeader="false"
+    >
+     <tnt:ToolHeader
+        id="_IDGenToolHeader1"
+        class="sapUiTinyMarginTop sapUiTinyMarginEnd sapUiTinyMarginBegin"
+    >
+        <HBox
+            justifyContent="Center"
+            width="100%"
+        >
+            <Title
+                id="_IDGenText1"
+                text="Lorry Turnaround Dashboard"
+                level="H3"
+                textAlign="Center"
+            />
+        </HBox>
+    </tnt:ToolHeader>
+    
+       <VBox  alignItems="Center" justifyContent="Center">
+       
+       
+        <layout:HorizontalLayout allowWrapping="true">
+            <f:Card
+                width="600px"
+                height="250px"
+                class="sapUiSmallMarginBegin sapUiSmallMarginTop"
+            >
+                <f:header>
+
+              
+                    <cards:Header
+                        iconAlt="sap-icon://shipping-status"
+                        iconBackgroundColor="Accent5"
+                        iconDisplayShape="Square"
+                        iconSrc="sap-icon://shipping-status"
+                        iconVisible="true"
+                        title="Parking Lot"
+                        statusText="Total: {mergedData>/mergedData/length}"
+                        subtitle="Security Cleared: {mergedData>/totalSecurityClearedCount} ({= (${mergedData>/totalSecurityClearedCount} * 100 / (${mergedData>/totalSecurityClearedCount} + ${mergedData>/totalSecurityFailedCount})).toFixed(2) }%) | Security Failed: {mergedData>/totalSecurityFailedCount} ({= (${mergedData>/totalSecurityFailedCount} * 100 / (${mergedData>/totalSecurityClearedCount} + ${mergedData>/totalSecurityFailedCount})).toFixed(2) }%)"
+                        titleMaxLines="30"
+                    
+                    />
+                    
+                </f:header>
+                <f:content>
+                    <HBox
+                        alignItems="Center"
+                        class="separator"
+                        wrap="Wrap"
+                        id="Hbox_id"
+                    />
+                </f:content>
+            </f:Card>
+
+            <f:Card
+                width="600px"
+                height="250px"
+                class="sapUiSmallMarginBegin sapUiSmallMarginTop"
+            >
+                <f:header>
+                    <cards:Header
+                        iconAlt="sap-icon://shipping-status"
+                        iconBackgroundColor="Accent5"
+                        iconDisplayShape="Square"
+                        iconSrc="sap-icon://shipping-status"
+                        iconVisible="true"
+                        title="Time Office"
+                        statusText = "Total: {mergedData>/totalSecurityClearedCount}"
+                        subtitle="SAP Documentation Complete: {sapDoc>/totalsapDocCleared} ({= (${sapDoc>/totalsapDocCleared} * 100 / (${sapDoc>/totalsapDocCleared} + ${sapDoc>/totalsapDocPending})).toFixed(2) }%) | SAP Documentation Pending: {sapDoc>/totalsapDocPending} ({= (${sapDoc>/totalsapDocPending} * 100 / (${sapDoc>/totalsapDocCleared} + ${sapDoc>/totalsapDocPending})).toFixed(2) }%)"
+
+                        titleMaxLines="30"
+                    />
+                </f:header>
+                <f:content>
+                    <HBox
+                        alignItems="Center"
+                        class="separator"
+                        wrap="Wrap"
+                        id="HBoxsapdoc"
+                    />
+                </f:content>
+            </f:Card>
+        </layout:HorizontalLayout>
+
+        <layout:HorizontalLayout allowWrapping="true">
+            <f:Card
+                width="600px"
+                height="250px"
+                class="sapUiSmallMarginBegin sapUiSmallMarginTop"
+            >
+                <f:header>
+                    <cards:Header
+                        iconAlt="sap-icon://shipping-status"
+                        iconBackgroundColor="Accent5"
+                        iconDisplayShape="Square"
+                        iconSrc="sap-icon://shipping-status"
+                        iconVisible="true"
+                        title="Invoice and Accounting Counter"
+                        statusText = "Total: {= ${InvoicedModel>/InvoicedData}.length }"
+                        subtitle="Invoiced Created: {InvoicedModel>/totalInvoicedCleared} ({= (${InvoicedModel>/totalInvoicedCleared} * 100 / (${InvoicedModel>/totalInvoicedCleared} + ${InvoicedModel>/totalInvoicedPending})).toFixed(2) }%) | Invoiced Pending: {InvoicedModel>/totalInvoicedPending} ({= (${InvoicedModel>/totalInvoicedPending} * 100 / (${InvoicedModel>/totalInvoicedCleared} + ${InvoicedModel>/totalInvoicedPending})).toFixed(2) }%)"
+                        titleMaxLines="30"
+                    />
+                </f:header>
+                <f:content>
+                    <HBox
+                        alignItems="Center"
+                        class="separator"
+                        wrap="Wrap"
+                        id="HboxInvoiced"
+                    />
+                </f:content>
+            </f:Card>
+
+            <f:Card
+                width="600px"
+                height="250px"
+                class="sapUiSmallMarginBegin sapUiSmallMarginTop"
+            >
+                <f:header>
+                    <cards:Header
+                        iconAlt="sap-icon://shipping-status"
+                        iconBackgroundColor="Accent5"
+                        iconDisplayShape="Square"
+                        iconSrc="sap-icon://shipping-status"
+                        iconVisible="true"
+                        statusText="Total: {= ${LoadedModel>/LoadedData}.length }"
+                        title="Loading Bay"
+                        subtitle="Loading Completed: {LoadedModel>/totalLoadedCleared} ({= (${LoadedModel>/totalLoadedCleared} * 100 / (${LoadedModel>/totalLoadedCleared} + ${LoadedModel>/totalLoadedPending})).toFixed(2) }%) | Loading Pending: {LoadedModel>/totalLoadedPending} ({= (${LoadedModel>/totalLoadedPending} * 100 / (${LoadedModel>/totalLoadedCleared} + ${LoadedModel>/totalLoadedPending})).toFixed(2) }%)"
+
+                        titleMaxLines="30"
+                    />
+                </f:header>
+                <f:content>
+                    <HBox
+                        alignItems="Center"
+                        class="separator"
+                        wrap="Wrap"
+                        id="HBoxLoaded"
+                    />
+                </f:content>
+            </f:Card>
+        </layout:HorizontalLayout>
+       </VBox>
+
+    </Page>
+</mvc:View>

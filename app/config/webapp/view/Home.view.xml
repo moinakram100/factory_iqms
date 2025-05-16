@@ -1,0 +1,60 @@
+<mvc:View controllerName="com.ingenx.qms.config.controller.Home"
+    xmlns:mvc="sap.ui.core.mvc"
+     xmlns:tnt="sap.tnt"
+    xmlns="sap.m">
+    <tnt:ToolHeader
+        id="_IDGenToolHeader2"
+        class="sapUiTinyMarginTop sapUiTinyMarginEnd sapUiTinyMarginBegin"
+    >
+       <HBox
+                justifyContent="Center"
+                width="100%"
+                id="HBoxSCTitle"
+            >
+                <Title
+                    text="Config"
+                    wrapping="true"
+                    id="SecurityHome_Header"
+                    textAlign="Center"
+                    class="headerTitle"
+                />
+            </HBox>
+    </tnt:ToolHeader>
+
+       <Page
+        id="parkingPage"
+        showHeader="false"
+    >
+        <content>
+            <GenericTile
+                id="parkingConfigTile"
+                class="sapUiSmallMarginBegin sapUiSmallMarginTop tileLayout"
+                header="Config"
+                press="onConfigTile"
+            >
+                <TileContent id="parkingConfigContent">
+                    <ImageContent
+                        id="parkingConfigImage"
+                        src="sap-icon://developer-settings"
+                    />
+                </TileContent>
+            </GenericTile>
+
+            <GenericTile
+                id="statusTile"
+                class="sapUiSmallMarginBegin sapUiSmallMarginTop tileLayout"
+                header="Status"
+                press="onStatusTile"
+            >
+                <TileContent id="statusTileContent">
+                    <ImageContent
+                        id="parkingStatusImage"
+                        src="sap-icon://edit"
+                    />
+                </TileContent>
+            </GenericTile>
+
+          
+        </content>
+    </Page>
+</mvc:View>
