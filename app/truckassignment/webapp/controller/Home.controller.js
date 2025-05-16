@@ -28,7 +28,7 @@ sap.ui.define(
 
             _loadSchedulingData: async function (oModel, oCalendarModel) {
                 try {
-                  const oBindList = oModel.bindList("/xIQMSxscheduling_cds");
+                  const oBindList = oModel.bindList("/xIQMSxschfac_fetch");
 
                   const aContexts = await oBindList.requestContexts(0, Infinity);
                   const aData = aContexts.map(ctx => ctx.getObject());

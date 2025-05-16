@@ -693,11 +693,11 @@ sap.ui.define([
         },
         pressCreateSo: async function () {
           if (!ParkingNoValidation && !SalesOrderValidation && !DeliveryNoValidation && !shipmentNoValidation && !statusValidation) {
-            sap.m.MessageBox.error("Please Select a Parking Number.");
+            sap.m.MessageBox.warning("Please Select a Parking No.");
             return;
           }
           if (SalesOrderValidation) {
-            sap.m.MessageBox.error("Sales Order already created.");
+            sap.m.MessageBox.warning("Sales Order already created.");
             return;
           }
           this.flagSO = true;
@@ -1350,8 +1350,10 @@ sap.ui.define([
         createDelivery: async function () {
           sap.ui.core.BusyIndicator.show(0);
           try {
-            this.validateDeliveryInputs();
-  
+            let isValid = this.validateDeliveryInputs();
+            if(!isValid){
+              return
+            }
             const deliveryContext = await this.prepareAndCreateDelivery();
   
             const success = this.showSuccessAndRefresh(deliveryContext);
@@ -1377,14 +1379,18 @@ sap.ui.define([
             !statusValidation &&
             (!SalesOrderValidation && !STOValidation)
           ) {
-            throw new Error("Please select the Parking Number.");
+            sap.m.MessageBox.warning("Please Select a Parking No.");
+            return false
           }
           if (!SalesOrderValidation && !STOValidation) {
-            throw new Error("Please create SO / STO first.");
+            sap.m.MessageBox.warning("Please create SO / STO first.");
+            return false
           }
           if (DeliveryNoValidation) {
-            throw new Error("Delivery already created for this entry.");
+            sap.m.MessageBox.warning("Delivery already created for this entry.");
+            return false
           }
+          return true
         },
   
         prepareAndCreateDelivery: async function () {

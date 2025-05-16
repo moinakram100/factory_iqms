@@ -2,24 +2,7 @@
     xmlns:mvc="sap.ui.core.mvc"
      xmlns:tnt="sap.tnt"
     xmlns="sap.m">
-    <tnt:ToolHeader
-        id="_IDGenToolHeader2"
-        class="sapUiTinyMarginTop sapUiTinyMarginEnd sapUiTinyMarginBegin"
-    >
-       <HBox
-                justifyContent="Center"
-                width="100%"
-                id="HBoxSCTitle"
-            >
-                <Title
-                    text="Security Clearance"
-                    wrapping="true"
-                    id="SecurityHome_Header"
-                    textAlign="Center"
-                    class="headerTitle"
-                />
-            </HBox>
-    </tnt:ToolHeader>
+
 
        <Page
         id="parkingPage"
@@ -32,12 +15,7 @@
                 header="Create Parking"
                 press="onCreateParkingTile"
             >
-                <TileContent id="parkingCreatePATileContent">
-                    <ImageContent
-                        id="parkingCreatPAImage"
-                        src="sap-icon://decision"
-                    />
-                </TileContent>
+               
             </GenericTile>
 
             <GenericTile
@@ -46,12 +24,7 @@
                 header="Security Clearance"
                 press="onSecurityClearanceTile"
             >
-                <TileContent id="parkingTileContent">
-                    <ImageContent
-                        id="parkingSecurityClearanceImage"
-                        src="sap-icon://edit"
-                    />
-                </TileContent>
+
             </GenericTile>
 
             <GenericTile
@@ -60,12 +33,7 @@
                 header="Exit"
                 press="onExitTile"
             >
-                <TileContent id="parkingExitTileContent">
-                    <ImageContent
-                        id="parkingExitImage"
-                        src="sap-icon://manager-insight"
-                    />
-                </TileContent>
+                
             </GenericTile>
         </content>
     </Page>

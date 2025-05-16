@@ -1,4 +1,3 @@
-
 <mvc:View
     controllerName="com.ingenx.qms.scheduling.controller.Home"
     xmlns:mvc="sap.ui.core.mvc"

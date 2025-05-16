@@ -198,7 +198,7 @@ sap.ui.define([
 
 			_fetchSchedulingData: async function () {
 				let oModel = this.getOwnerComponent().getModel();
-				let oBindList = oModel.bindList("/xIQMSxscheduling_cds");
+				let oBindList = oModel.bindList("/xIQMSxschfac_fetch");
 
 				try {
 					let aContexts = await oBindList.requestContexts(0, Infinity);
@@ -1159,7 +1159,7 @@ sap.ui.define([
 						oModel.setProperty(sAppointmentPath + "/startDate", sFrom);
 						oModel.setProperty(sAppointmentPath + "/endDate", sTo);
 					} else {
-						// oBindlistMessage.create(oMessageData, true);
+						oBindlistMessage.create(oMessageData, true);
 
 						oBindlist.create(oEntryData, true);
 

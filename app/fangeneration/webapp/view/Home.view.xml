@@ -12,57 +12,57 @@
             <GenericTile
                 id="fanGenerationTile"
                 class="sapUiSmallMarginBegin sapUiSmallMarginTop tileLayout"
-                header="FAN Generation - Solid"
+                header="FAN - Solid Fuel"
                 press="onSolidFanGenerationTile"
             >
-                <TileContent id="SolidFanGenerationTileContent">
+                <!-- <TileContent id="SolidFanGenerationTileContent">
                     <ImageContent
                         id="SolidFanGenerationImage"
                         src="sap-icon://decision"
                     />
-                </TileContent>
+                </TileContent> -->
             </GenericTile>
 
             <GenericTile
                 id="liquidFanGenerationTile"
                 class="sapUiSmallMarginBegin sapUiSmallMarginTop tileLayout"
-                header="FAN Generation - Liquid"
+                header="FAN - Liquid Fuel"
                 press="onliquidFanGenerationTile"
             >
-                <TileContent id="liquidFanGenerationTileContent">
+                <!-- <TileContent id="liquidFanGenerationTileContent">
                     <ImageContent
                         id="liquidFanGenerationImage"
                         src="sap-icon://edit"
                     />
-                </TileContent>
+                </TileContent> -->
             </GenericTile>
 
             <GenericTile
                 id="gasFanGenerationTile"
                 class="sapUiSmallMarginBegin sapUiSmallMarginTop tileLayout"
-                header="FAN Generation - Gas"
+                header="FAN - Gas Fuel"
                 press="onGasFanGenerationTile"
             >
-                <TileContent id="gasFanGenerationTileContent">
+                <!-- <TileContent id="gasFanGenerationTileContent">
                     <ImageContent
                         id="gasFanGenerationImage"
                         src="sap-icon://manager-insight"
                     />
-                </TileContent>
+                </TileContent> -->
             </GenericTile>
 
             <GenericTile
                 id="MaterialFanGenerationTile"
                 class="sapUiSmallMarginBegin sapUiSmallMarginTop tileLayout"
-                header="FAN Generation - Material"
+                header="FAN - Material"
                 press="onMaterialFanGenerationTile"
             >
-                <TileContent id="MaterialFanGenerationTileContent">
+                <!-- <TileContent id="MaterialFanGenerationTileContent">
                     <ImageContent
                         id="materialFanGenerationImage"
                         src="sap-icon://manager-insight"
                     />
-                </TileContent>
+                </TileContent> -->
             </GenericTile>
         </content>
     </Page>

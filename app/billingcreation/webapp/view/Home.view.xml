@@ -6,14 +6,14 @@
   
         <content>
             <GenericTile id="statusParkingTile" class="sapUiSmallMarginBegin sapUiSmallMarginTop tileLayout" header="Goods Issue" press="onGoodsIssue">
-                <TileContent id="statusParkingContentId">
+                <!-- <TileContent id="statusParkingContentId">
                     <ImageContent id="statusParkingIconId" src="sap-icon://BusinessSuiteInAppSymbols/icon-gate" />
-                </TileContent>
+                </TileContent> -->
             </GenericTile>
             <GenericTile id="statusVehicleTile" class="sapUiSmallMarginBegin sapUiSmallMarginTop tileLayout" header="Billing" press="onBilling">
-                <TileContent id="statusVehicleContentId">
+                <!-- <TileContent id="statusVehicleContentId">
                     <ImageContent id="statusVehicleIconId" src="sap-icon://BusinessSuiteInAppSymbols/icon-checklist-item" />
-                </TileContent>
+                </TileContent> -->
             </GenericTile>
 </content>
             </Page>

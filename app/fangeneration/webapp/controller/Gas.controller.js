@@ -647,15 +647,15 @@ sap.ui.define([
         },
         pressCreateSo: async function () {
           if (!ParkingNoValidation && !SalesOrderValidation && !DeliveryNoValidation && !shipmentNoValidation && !statusValidation) {
-            sap.m.MessageBox.error("Please Select a Parking Number.");
+            sap.m.MessageBox.warning("Please Select a Parking No.");
             return;
           }
           if (SalesOrderValidation) {
-            sap.m.MessageBox.error("Sales Order already created.");
+            sap.m.MessageBox.warning("Sales Order already created.");
             return;
           }
           if (statusValidation && statusValidation.includes('Vehicle Master Missing')) {
-            sap.m.MessageBox.error("Please Create Vehicle Master Data first.");
+            sap.m.MessageBox.warning("Please Create Vehicle Master Data first.");
             return;
           }
   
@@ -1093,13 +1093,13 @@ sap.ui.define([
           try {
             //  Frontend validations
             if (!ParkingNoValidation && !SalesOrderValidation && !DeliveryNoValidation && !shipmentNoValidation && !statusValidation) {
-              sap.m.MessageBox.error("Please Select the Parking Number.");
+              sap.m.MessageBox.warning("Please Select a Parking No.");
               return;
             } else if (!SalesOrderValidation) {
-              sap.m.MessageBox.error("Please create Sales Order first.");
+              sap.m.MessageBox.warning("Please create Sales Order first.");
               return;
             } else if (DeliveryNoValidation) {
-              sap.m.MessageBox.error("Delivery already created for this entry.");
+              sap.m.MessageBox.warning("Delivery already created for this entry.");
               return;
             }
   
@@ -1225,27 +1225,27 @@ sap.ui.define([
   
         onClickShipment: function () {
           if (!ParkingNoValidation && !SalesOrderValidation && !DeliveryNoValidation && !shipmentNoValidation && !statusValidation) {
-            sap.m.MessageBox.error("Please Select the Parking Number.");
+            sap.m.MessageBox.warning("Please Select a Parking No.");
             return
           }
   
           else if (!SalesOrderValidation && !DeliveryNoValidation) {
-            sap.m.MessageBox.error("Please create Sales Order and Delivery first.");
+            sap.m.MessageBox.warning("Please create Sales Order and Delivery first.");
             return
           }
   
           else if (!SalesOrderValidation) {
-            sap.m.MessageBox.error("Please create Sales Order first.");
+            sap.m.MessageBox.warning("Please create Sales Order first.");
             return
           }
   
           else if (!DeliveryNoValidation) {
-            sap.m.MessageBox.error("Please create Delivery first.");
+            sap.m.MessageBox.warning("Please create Delivery first.");
             return
           }
   
           else if (shipmentNoValidation) {
-            sap.m.MessageBox.error("Shipment already created for this entry.");
+            sap.m.MessageBox.warning("Shipment already created for this entry.");
             this.byId('_IDGenTable2').clearSelection();
   
             return
