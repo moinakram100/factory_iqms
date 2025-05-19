@@ -15,4 +15,4 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:4004/odata/v4/factory/ScheduleFacSet
+GET http://localhost:4004/odata/v4/factory/fetchSO_STO_PR_Data(docType='Sales Order')

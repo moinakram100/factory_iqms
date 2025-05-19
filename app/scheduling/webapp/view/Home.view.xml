@@ -79,7 +79,7 @@
                         <unified:CalendarAppointment
                             id="_IDGenCalendarAppointment1"
                             title="{calanderdata>DocType}: {calanderdata>DocNum}"
-                               text="{= ${calanderdata>DocType} === 'SO' ? 'Customer No: ' + ${calanderdata>Soldtoparty} : 'Plant: ' + ${calanderdata>Plant} }"
+                               text="{= ${calanderdata>DocType} === 'SO' ? 'Customer No: ' + ${calanderdata>OidShip} : 'Plant: ' + ${calanderdata>OidShip} }"
                             type="{calanderdata>Calendertype}"
                             icon="{calanderdata>icon}"
                             startDate="{calanderdata>startDate}"

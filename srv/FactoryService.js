@@ -153,10 +153,11 @@ module.exports = async (srv) => {
     srv.on('READ', 'xIRMSxDriverLicence', req => IRMSQUEQE_MANAGEMENT_SRV.run(req.query));
 
     srv.on('READ', 'xIRMSxvehicle_defination', req => IRMSQUEQE_MANAGEMENT_SRV.run(req.query));
-    const IQMSFACTORY_SRV = await cds.connect.to("IQMSFACTORY_SRV"); 
-   
-    srv.on('READ', 'ScheduleFacSet', req => IQMSFACTORY_SRV.run(req.query)); 
-    srv.on('CREATE', 'ScheduleFacSet', req => IQMSFACTORY_SRV.run(req.query)); 
+    const IQMSFACTORY_SRV = await cds.connect.to("IQMSFACTORY_SRV");
+
+    srv.on('READ', 'ScheduleFacSet', req => IQMSFACTORY_SRV.run(req.query));
+    srv.on('CREATE', 'ScheduleFacSet', req => IQMSFACTORY_SRV.run(req.query));
+    srv.on('UPDATE', 'ScheduleFacSet', req =>{ IQMSFACTORY_SRV.run(req.query)});
 
     srv.on("READ", "fetchVehType", async (req) => {
         console.log("fetchVehType fn called");
@@ -474,7 +475,7 @@ module.exports = async (srv) => {
     srv.on('checkVehicleBeforeSubmitParking', async req => {
 
         const { Vehicle, VehicleDef } = req.data;
-        console.log("req data params",req.data, Vehicle, VehicleDef);
+        console.log("req data params", req.data, Vehicle, VehicleDef);
 
         // Step 1: Check VehicleDef for VehicleType
         const vehicleTypeQuery = SELECT.from('VehicleTypeDefinition')
@@ -548,7 +549,7 @@ module.exports = async (srv) => {
             // Extract status (assuming the first entry in partItemResult is the relevant one)
             const status = partItemResult[0].Status;
             console.log("park item result :", partItemResult[0]);
-      
+
 
             // Step 6: Check the status and determine if the vehicle is in the refinery
             if (status === "Exit" || status === "Park-Out" || status === "Empty Out") {
@@ -817,19 +818,169 @@ module.exports = async (srv) => {
             return req.reject(500, `Internal Server Error: ${error.message}`);
         }
     });
+
+    srv.on('fetchSchedulingData', async (req) => {
+        try {
+            const schedData = await IQMSQUEUEMANAGE_VALUEHELP_SRV.run(SELECT.from('xIQMSxschfac_fetch'));
+    
+            if (!schedData || schedData.length === 0) {
+                return req.reject(404, "No scheduling data found.");
+            }
+    
+            // Fetch SO and STO data once for lookup
+            const soData = await IQMSQUEUEMANAGE_VALUEHELP_SRV.run(SELECT.from('xIQMSxfetch_so'));
+            const stoData = await IQMSQUEUEMANAGE_VALUEHELP_SRV.run(SELECT.from('xIQMSxfetch_sto'));
+    
+            // Convert SO and STO data to maps for fast lookup
+            const soMap = new Map(soData.map(item => [item.Vbeln, item]));
+            const stoMap = new Map(stoData.map(item => [item.Sto, item]));
+    
+            const result = schedData.map(entry => {
+                let startDateObj = null;
+                let endDateObj = null;
+    
+                if (entry.Startdate && entry.Starttime) {
+                    startDateObj = new Date(entry.Startdate.split("T")[0] + "T" + entry.Starttime);
+                }
+    
+                if (entry.Enddate && entry.Endtime) {
+                    endDateObj = new Date(entry.Enddate.split("T")[0] + "T" + entry.Endtime);
+                }
+    
+                const isSO = entry.SalesOrder && entry.SalesOrder !== "X";
+                const docNum = isSO ? entry.SalesOrder : entry.Stockorder;
+                const docType = isSO ? "SO" : "STO";
+                const lookupData = isSO ? soMap.get(entry.SalesOrder) : stoMap.get(entry.Stockorder);
+    
+                return {
+                    Bayno: entry.Bayno,
+                    Startdate: startDateObj,
+                    Enddate: endDateObj,
+                    Vehicleno: entry.Vehicleno,
+                    Driver: entry.Driver,
+                    Cleaner: entry.Cleaner,
+                    Createdby: entry.Createdby,
+                    Createddate: entry.Createddate,
+                    Createdtime: entry.Createdtime,
+                    Changedby: entry.Changedby,
+                    Changeddate: entry.Changeddate,
+                    Changedtime: entry.Changedtime,
+                    DocType: docType,
+                    DocNum: docNum,
+                    Material: lookupData?.Material || lookupData?.Matnr || null,
+                    quantity: lookupData?.Quantity || lookupData?.quantity || null,
+                    uom: lookupData?.Unit || lookupData?.uom || null,
+                    OidShip: lookupData?.Plant || lookupData?.OidShip || null,
+                    Endtime: entry.Endtime,
+                    Starttime : entry.Starttime
+                };
+            });
+    
+            return result;
+    
+        } catch (error) {
+            console.error("Error in fetchSchedulingData handler:", error);
+    
+            if (error.status) {
+                return req.reject(error.status, error.message);
+            }
+    
+            return req.reject(500, `Internal Server Error: ${error.message}`);
+        }
+    });
+    srv.on('fetchSO_STO_PR_Data', async (req) => {
+        try {
+            const docType = req.data.docType;
+
+            if (!docType) {
+                return req.reject(400, "Document type (docType) is required.");
+            }
+
+            let data = [];
+            let result = [];
+
+            // Fetch Sales Orders
+            if (docType === "Sales Order") {
+                data = await IQMSQUEUEMANAGE_VALUEHELP_SRV.run(SELECT.from('xIQMSxfetch_so'));
+
+                if (!data || data.length === 0) {
+                    return req.reject(404, "No Sales Order data found.");
+                }
+
+                result = data.map(entry => ({
+                    Vbeln: entry.Vbeln || null,
+                    quantity: entry.quantity || null,
+                    uom: entry.uom || null,
+                    Matnr: entry.Matnr || null,
+                    OidShip: entry.OidShip || null,
+                    Item: entry.Posnr || null,
+                    DocType: "SO",
+                    DocNum: entry.Vbeln || null
+                }));
+            }
+
+            // Fetch STOs
+            else if (docType === "Stock Transfer") {
+                data = await IQMSQUEUEMANAGE_VALUEHELP_SRV.run(SELECT.from('xIQMSxfetch_sto'));
+
+                if (!data || data.length === 0) {
+                    return req.reject(404, "No STO data found.");
+                }
+
+                result = data.map(entry => ({
+                    STO: entry.Sto || null,
+                    quantity: entry.Quantity || null,
+                    uom: entry.Unit || null,
+                    Matnr: entry.Material || null,
+                    OidShip: entry.Plant || null,
+                    Item: entry.Item || null,
+                    DocType: "STO",
+                    DocNum: entry.Sto || null
+                }));
+            }
+
+            else {
+                return req.reject(400, `Unsupported docType: ${docType}`);
+            }
+
+            // Sorting the result based on docType
+            result.sort((a, b) => {
+                if (docType === "Sales Order") {
+                    return parseInt(b.Vbeln || "0", 10) - parseInt(a.Vbeln || "0", 10);
+                } else {
+                    return parseInt(b.STO || "0", 10) - parseInt(a.STO || "0", 10);
+                }
+            });
+
+            console.log(`Fetched and sorted ${docType} entries:`, result.length);
+            return result;
+
+
+        } catch (error) {
+            console.error("Error in fetchSO_STO_PR_Data:", error);
+
+            if (error.status) {
+                return req.reject(error.status, error.message);
+            }
+
+            return req.reject(500, `Internal Server Error: ${error.message}`);
+        }
+    });
+
+
     // open STO  for Scheduling screen
     srv.on('fetchSTO', async (req) => {
         try {
             // Step 1: Fetch data using the CDS view/API from the correct service
             const stoData = await IQMSQUEUEMANAGE_VALUEHELP_SRV.run(SELECT.from('xIQMSxfetch_sto'));
-    
+
             if (!stoData || stoData.length === 0) {
                 console.log("No STO data found");
                 throw { status: 404, message: `No STO data found` };
             }
-    
+
             console.log("Fetched STO count:", stoData.length);
-    
+
             // Step 2: Map and format the data to required response structure
             const result = stoData.map(entry => ({
                 STO: entry.Sto,                       // Purchase Order
@@ -839,22 +990,22 @@ module.exports = async (srv) => {
                 OidShip: entry.Plant || null,         // Supplying Plant
                 Item: entry.Item || null              // PO Item
             }));
-    
+
             console.log("Total entries prepared:", result.length);
             return result;
-    
+
         } catch (error) {
             console.error("Error in fetchSTO handler:", error);
-    
+
             if (error.status) {
                 return req.reject(error.status, error.message);
             }
-    
+
             return req.reject(500, `Internal Server Error: ${error.message}`);
         }
     });
 
-    
+
     // srv.on('fetchSTO', async (req) => {
     //     try {
     //         // Step 1: Fetch PurchaseOrder and CompanyCode from A_PurchaseOrder
@@ -981,7 +1132,7 @@ module.exports = async (srv) => {
                     ShipmentNo: item.ShipmentNo,
                     Quantity: item.Quantity,
                     Stockorder: item.Stockorder,
-                    Bayno : item.Bayno
+                    Bayno: item.Bayno
                 };
                 return map;
             }, {});
@@ -1021,7 +1172,7 @@ module.exports = async (srv) => {
                 item.ShipmentNo = schedulingInfo.ShipmentNo || "";
                 item.Quantity = schedulingInfo.Quantity || "";
                 item.Stockorder = schedulingInfo.Stockorder || "";
-                item.Bayno  = schedulingInfo.Bayno || ""
+                item.Bayno = schedulingInfo.Bayno || ""
                 return item;
             });
 
@@ -1261,9 +1412,9 @@ module.exports = async (srv) => {
             const transporter = nodemailer.createTransport({
                 service: 'gmail',
                 auth: {
-                    user:'deepanshugoyal2906',
-                    pass:'oczl lrgb avot vfpv'
-                  
+                    user: 'deepanshugoyal2906',
+                    pass: 'oczl lrgb avot vfpv'
+
                 },
             });
             //   user: process.env.EMAIL_USER,

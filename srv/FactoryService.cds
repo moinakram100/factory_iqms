@@ -2097,7 +2097,14 @@ service factoryService {
         PurchaseOrderQuantityUnit : String;
         Material : String
     };
+     function fetchSO_STO_PR_Data(docType : String)  
+     returns array of {
 
+    };
+      function fetchSchedulingData()                                                                                                                                                                                                                                     returns array of {
+      
+        Material : String
+    };
 
     // entity Invoice_createSet              as
     //     projection on IRMSBILLING_DOCUMENT_SRV.Invoice_createSet {

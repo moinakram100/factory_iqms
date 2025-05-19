@@ -195,8 +195,45 @@ sap.ui.define([
 				let oCalendar = this.getView().byId("SPC1");
 				oCalendar.addEventDelegate({ onAfterRendering: this._attachDragEvents.bind(this) });
 			},
-
 			_fetchSchedulingData: async function () {
+				const oModel = this.getOwnerComponent().getModel(); // Main OData model
+				const calendarModel = this.getView().getModel("calanderdata"); // View model for calendar data
+				const supportedAppointmentItems = calendarModel.getProperty("/supportedAppointmentItems") || [];
+			
+				try {
+					// Bind the function import that returns scheduling data
+					const oBinding = oModel.bindList("/fetchSchedulingData()"); // <- Ensure this matches metadata
+					const aContexts = await oBinding.requestContexts(0, Infinity);
+			
+					const appointments = aContexts.map(oContext => {
+						const appointment = oContext.getObject();
+			
+						// Combine Startdate + Starttime
+						if (appointment.Startdate && appointment.Starttime) {
+							appointment.startDate = new Date(appointment.Startdate.split("T")[0] + "T" + appointment.Starttime);
+						}
+			
+						// Combine Enddate + Endtime
+						if (appointment.Enddate && appointment.Endtime) {
+							appointment.endDate = new Date(appointment.Enddate.split("T")[0] + "T" + appointment.Endtime);
+						}
+			
+						// Add calendar type for UI grouping
+						appointment.Calendertype = this._getCalendarType(appointment.Bayno, supportedAppointmentItems);
+			
+						return appointment;
+					});
+			
+					calendarModel.setProperty("/appointments", appointments);
+					console.log("Appointments fetched via function:", appointments);
+			
+				} catch (error) {
+					console.error("Error in _fetchSchedulingData:", error);
+				}
+			}
+,			
+
+			_fetchSchedulingData1: async function () {
 				let oModel = this.getOwnerComponent().getModel();
 				let oBindList = oModel.bindList("/xIQMSxschfac_fetch");
 
@@ -231,6 +268,8 @@ sap.ui.define([
 					});
 
 					calendarModel.setProperty("/appointments", appointments);
+					console.log("appointments", appointments);
+					
 					console.log(this.getView().getModel("calanderdata").getProperty("/appointments"));
 
 				} catch (error) {
@@ -244,20 +283,29 @@ sap.ui.define([
 			}
 			,
 
-			onDocumentChange: function (oEvent) {
+			onDocumentChange: async function (oEvent) {
 				let sValue = oEvent.getSource().getSelectedItem().getProperty('text');
 				console.log(sValue);
 				if( sValue === 'Sales Order'){
 					this.byId('plantFilterInput').setVisible( false);
 					this.byId('customerFilterInput').setVisible( true);
 
-				}else {
+				}else if(sValue === 'Stock Transfer'){
 					this.byId('plantFilterInput').setVisible( true);
 					this.byId('customerFilterInput').setVisible(false);
 
+				}else {
+				// logic to show Stock order requisition filter input avalue help
 				}
-				this.fetchSO_STO_Data(oModelsales, sValue);
-
+				let oModel = this.getOwnerComponent().getModel();
+				let sPath = `/fetchSO_STO_PR_Data(docType='${encodeURIComponent(sValue)}')`;
+				let bindList = oModel.bindList(sPath);
+				let oContexts = await bindList.requestContexts(0, Infinity);
+				let oData = oContexts.map( context => context.getObject());
+				console.log('mydata', oData);;
+				oModelsales.setData(oData);
+				this._aOriginalSalesData = [...oData];
+				
 			},
 			onPlantCode: function () {
 				helperFunctions._openValueHelpDialog(this, 'PlantCodeDialog', 'com.ingenx.qms.scheduling.fragments.PlantCode');
@@ -358,63 +406,63 @@ sap.ui.define([
 			},
 
 
-			fetchSO_STO_Data: async function (oModelsales, sValue) {
-				sap.ui.core.BusyIndicator.show(0);
+			// fetchSO_STO_Data: async function (oModelsales, sValue) {
+			// 	sap.ui.core.BusyIndicator.show(0);
 
-				try {
-					let oModel3 = this.getOwnerComponent().getModel();
-					let oBindList3;
-					if (sValue === "Sales Order") {
+			// 	try {
+			// 		let oModel3 = this.getOwnerComponent().getModel();
+			// 		let oBindList3;
+			// 		if (sValue === "Sales Order") {
 
-						oBindList3 = oModel3.bindList("/xIQMSxfetch_so");
-					} else {
-						oBindList3 = oModel3.bindList('/fetchSTO');
-					}
+			// 			oBindList3 = oModel3.bindList("/xIQMSxfetch_so");
+			// 		} else {
+			// 			oBindList3 = oModel3.bindList('/fetchSTO');
+			// 		}
 
-					let aContexts = await oBindList3.requestContexts(0, Infinity);
-					let filteredData = aContexts
-						.map(oContext => oContext.getObject())
-						.filter(item => item.Matnr && item.uom); // Filter out null or undefined Matnr & Uom
+			// 		let aContexts = await oBindList3.requestContexts(0, Infinity);
+			// 		let filteredData = aContexts
+			// 			.map(oContext => oContext.getObject())
+			// 			.filter(item => item.Matnr && item.uom); // Filter out null or undefined Matnr & Uom
 
-					// ading filed:
-					filteredData = filteredData.map(item => {
-						if (sValue === "Sales Order") {
-							return {
-								...item,
-								DocType: "SO",
-								DocNum: item.Vbeln
-							};
-						} else {
-							return {
-								...item,
-								DocType: "STO",
-								DocNum: item.STO
-							};
-						}
-					});
+			// 		// ading filed:
+			// 		filteredData = filteredData.map(item => {
+			// 			if (sValue === "Sales Order") {
+			// 				return {
+			// 					...item,
+			// 					DocType: "SO",
+			// 					DocNum: item.Vbeln
+			// 				};
+			// 			} else {
+			// 				return {
+			// 					...item,
+			// 					DocType: "STO",
+			// 					DocNum: item.STO
+			// 				};
+			// 			}
+			// 		});
 				
 
-					filteredData.sort((a, b) => {
-						if (sValue === "Sales Order") {
-							return parseInt(b.Vbeln || "0", 10) - parseInt(a.Vbeln || "0", 10);
-						} else {
-							return parseInt(b.STO || "0", 10) - parseInt(a.STO || "0", 10);
-						}
-					});
-					// 🟢 Store fresh unfiltered copy
-					this._aOriginalSalesData = [...filteredData];
+			// 		filteredData.sort((a, b) => {
+			// 			if (sValue === "Sales Order") {
+			// 				return parseInt(b.Vbeln || "0", 10) - parseInt(a.Vbeln || "0", 10);
+			// 			} else {
+			// 				return parseInt(b.STO || "0", 10) - parseInt(a.STO || "0", 10);
+			// 			}
+			// 		});
+			// 		// 🟢 Store fresh unfiltered copy
+			// 		this._aOriginalSalesData = [...filteredData];
 
 
-					oModelsales.setData(filteredData);
+			// 		oModelsales.setData(filteredData);
 
-					// Log the sorted and filtered data
-					console.log(`Filtered & Sorted ${sValue} data:`, filteredData);
-				} catch (error) {
-					console.error(`Error fetching ${sValue} data:`, error);
-				} finally {
-					sap.ui.core.BusyIndicator.hide();
-				}
-			},
+			// 		// Log the sorted and filtered data
+			// 		console.log(`Filtered & Sorted ${sValue} data:`, filteredData);
+			// 	} catch (error) {
+			// 		console.error(`Error fetching ${sValue} data:`, error);
+			// 	} finally {
+			// 		sap.ui.core.BusyIndicator.hide();
+			// 	}
+			// },
 
 
 			_attachDragEvents: function () {
@@ -681,7 +729,8 @@ sap.ui.define([
 					oModel.updateBindings();
 				} else {
 					let oResModel = this.getOwnerComponent().getModel();
-					let oBindList = oResModel.bindList("/SchedulingSet");
+					// let oBindList = oResModel.bindList("/SchedulingSet");
+					let oBindList = oResModel.bindList("/ScheduleFacSet");
 					let Filter;
 					// 🧠 Dynamically define filter key and model property key
 					let sKey = extractedTitle === "SO" ? "SalesOrder" : "Stockorder";
