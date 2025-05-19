@@ -28,7 +28,8 @@ sap.ui.define(
 
             _loadSchedulingData: async function (oModel, oCalendarModel) {
                 try {
-                  const oBindList = oModel.bindList("/xIQMSxschfac_fetch");
+                //   const oBindList = oModel.bindList("/xIQMSxschfac_fetch");
+                  const oBindList = oModel.bindList("/fetchSchedulingData");
 
                   const aContexts = await oBindList.requestContexts(0, Infinity);
                   const aData = aContexts.map(ctx => ctx.getObject());
@@ -43,19 +44,19 @@ sap.ui.define(
                     return createdDateStr === todayStr && !item.DeliveryNo && !item.Parkingno;
                   });
                     // Add DocType and documentNo only to today's items...
-                    filteredData.forEach(item => {
+                    // filteredData.forEach(item => {
 
-                        if (item.SalesOrder && item.SalesOrder !== 'X') { 
-                            item.DocType = "SO";
-                            item.documentNo = item.SalesOrder;
-                        } else if (item.Stockorder) {
-                            item.DocType = "STO";
-                            item.documentNo = item.Stockorder;
-                        } else {
-                            item.DocType = "N/A";
-                            item.documentNo = "N/A";
-                        }
-                    });
+                    //     if (item.SalesOrder && item.SalesOrder !== 'X') { 
+                    //         item.DocType = "SO";
+                    //         item.documentNo = item.SalesOrder;
+                    //     } else if (item.Stockorder) {
+                    //         item.DocType = "STO";
+                    //         item.documentNo = item.Stockorder;
+                    //     } else {
+                    //         item.DocType = "N/A";
+                    //         item.documentNo = "N/A";
+                    //     }
+                    // });
 
                     oCalendarModel.setData(filteredData);
                     console.log("Filtered SchedulingSet Data (Calendar):", filteredData);
@@ -93,15 +94,27 @@ sap.ui.define(
             //     }
             //     return "";
             // },
-            formatTitle: function (vbeln, sto, matnr) {
-                const isSO = vbeln && vbeln !== "X";
-                const docNum = isSO ? vbeln : sto;
+            // formatTitle: function (vbeln, sto, matnr) {
+            //     const isSO = vbeln && vbeln !== "X";
+            //     const docNum = isSO ? vbeln : sto;
+            //     const material = matnr;
+            
+            //     if (docNum ) {
+            //         const label = isSO ? "SO" : "STO";
+            //         const spaces = Array(isSO ? 20 : 4).join('\u00A0');
+            //         return label + ": " + docNum + spaces + "Material: " + material;
+            //     }
+            //     return "";
+            // },
+                     formatTitle: function (docType, docNum, matnr) {
+              
                 const material = matnr;
             
-                if (docNum && material) {
-                    const label = isSO ? "SO" : "STO";
-                    const spaces = Array(isSO ? 20 : 4).join('\u00A0');
-                    return label + ": " + docNum + spaces + "Material: " + material;
+                if (docNum && docType) {
+                const isSO = docType === 'SO';
+        
+                const spaces = Array(isSO ? 20 : 4).join('\u00A0');
+                    return docType + ": " + docNum + spaces + "Material: " + material;
                 }
                 return "";
             },
@@ -132,6 +145,77 @@ sap.ui.define(
           
 
 
+            // onUpdateClick: function (oEvent) {
+            //     // debugger;
+
+            //     let oListItem = oEvent.getSource(); // Get the selected list item
+            //     let oContext = oListItem.getBindingContext("schedulingArray"); // Get the binding context
+            //     let oData = oContext ? oContext.getObject() : null; // Retrieve the data object
+
+            //     console.log("Selected Item Data", oData);
+
+            //     if (oData) {
+            //         // Safely retrieve data and provide default values where necessary
+            //         let material = oData.Material || "";
+            //         let quantity = oData.Quantity || "";
+            //         let startDate = oData.Startdate || "";
+            //         let soldToParty = oData.Soldtoparty || "";
+            //         let SalesOrder = oData.SalesOrder || "";
+            //         let startTime = oData.Starttime || "";
+            //         let  Stockorder = oData.Stockorder || ""
+            //         let plant = oData.Plant || ""
+            //         this.DocType = oData.DocType;
+            //         this.documentNo = oData.documentNo
+
+
+            //         if (startDate) {
+            //             startDate = startDate.split('T')[0];
+            //         }
+
+            //         this.flagSubmit = false;
+
+            //         // Safely access salesOrder properties if it exists
+            //         let VehicleNumber = oData.Vehicleno || "" ;
+            //         let cleanerName = oData.Cleaner || "" ;
+            //         let driverName = oData.Driver || "" ;
+
+            //         if (VehicleNumber && driverName && cleanerName) {
+            //             this.flagSubmit = true;
+
+            //         }
+
+            //         console.log("VehicleNumber:", VehicleNumber);
+            //         console.log("startDate:", startDate);
+            //         console.log("startTime:", startTime);
+
+            //         // Set values in the view if data is available
+            //         oView.byId('startDate_id').setValue(startDate)
+            //         oView.byId('reportTime_id').setValue(startTime);
+            //         oView.byId("Mat_id").setValue(material);
+            //         oView.byId("Qty_id").setValue(quantity);
+            //         if( this.DocType === 'SO'){
+                        
+            //             oView.byId("Doc_id").setValue(SalesOrder);
+            //             oView.byId("Doc_label").setText("Sales Order No");
+            //             oView.byId("Destination_label").setText("Sold To Party");    
+
+            //         }else {
+            //             oView.byId("Doc_id").setValue(Stockorder);
+            //             oView.byId("Doc_label").setText("Stock Order No");
+            //             oView.byId("Destination_label").setText("Plant");        
+
+            //         }
+            //         oView.byId("STPOrPlant_id").setValue(soldToParty || plant);
+            //         oView.byId("STP_id").setValue(soldToParty || plant);
+
+            //         // Set the input values only if they are not empty
+            //         oView.byId("truck_id").setValue(VehicleNumber ? VehicleNumber : "");
+            //         oView.byId("DriName_id").setValue(driverName ? driverName : "");
+            //         oView.byId("Cleaner_id").setValue(cleanerName ? cleanerName : "");
+            //     } else {
+            //         console.error("No data found for the selected item.");
+            //     }
+            // },
             onUpdateClick: function (oEvent) {
                 // debugger;
 
@@ -144,13 +228,13 @@ sap.ui.define(
                 if (oData) {
                     // Safely retrieve data and provide default values where necessary
                     let material = oData.Material || "";
-                    let quantity = oData.Quantity || "";
+                    let quantity = oData.quantity || "";
                     let startDate = oData.Startdate || "";
-                    let soldToParty = oData.Soldtoparty || "";
-                    let SalesOrder = oData.SalesOrder || "";
+                    let soldToParty = oData.OidShip || "";
+                    let SalesOrder = oData.DocNum || "";
                     let startTime = oData.Starttime || "";
-                    let  Stockorder = oData.Stockorder || ""
-                    let plant = oData.Plant || ""
+                    let  Stockorder = oData.DocNum || ""
+                    let plant = oData.OidShip || ""
                     this.DocType = oData.DocType;
                     this.documentNo = oData.documentNo
 
@@ -238,7 +322,7 @@ sap.ui.define(
                 };
 
                 let oModel = this.getOwnerComponent().getModel();
-                let oBindList = oModel.bindList('/SchedulingSet');
+                let oBindList = oModel.bindList('/ScheduleFacSet');
                 // let aFilter = new sap.ui.model.Filter("SalesOrder", sap.ui.model.FilterOperator.EQ, salesOrder);
                 let sKey = this.DocType === "SO" ? "SalesOrder" : "Stockorder";
             

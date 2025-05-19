@@ -158,9 +158,9 @@ sap.ui.define([
 					startDate: new Date(),
 					endDate: new Date(),
 					Uom: "",
-					Stockorder:"",
+					Stockorder: "",
 					DocType: "SO", // default
-					DocNum : ""
+					DocNum: ""
 				});
 				this.getView().setModel(modifyModel, "modifyModel");
 				// setting sales model for salesOrder/ STO data
@@ -195,87 +195,88 @@ sap.ui.define([
 				let oCalendar = this.getView().byId("SPC1");
 				oCalendar.addEventDelegate({ onAfterRendering: this._attachDragEvents.bind(this) });
 			},
+
 			_fetchSchedulingData: async function () {
 				const oModel = this.getOwnerComponent().getModel(); // Main OData model
 				const calendarModel = this.getView().getModel("calanderdata"); // View model for calendar data
 				const supportedAppointmentItems = calendarModel.getProperty("/supportedAppointmentItems") || [];
-			
+
 				try {
 					// Bind the function import that returns scheduling data
 					const oBinding = oModel.bindList("/fetchSchedulingData()"); // <- Ensure this matches metadata
 					const aContexts = await oBinding.requestContexts(0, Infinity);
-			
+
 					const appointments = aContexts.map(oContext => {
 						const appointment = oContext.getObject();
-			
+
 						// Combine Startdate + Starttime
 						if (appointment.Startdate && appointment.Starttime) {
 							appointment.startDate = new Date(appointment.Startdate.split("T")[0] + "T" + appointment.Starttime);
 						}
-			
+
 						// Combine Enddate + Endtime
 						if (appointment.Enddate && appointment.Endtime) {
 							appointment.endDate = new Date(appointment.Enddate.split("T")[0] + "T" + appointment.Endtime);
 						}
-			
+
 						// Add calendar type for UI grouping
 						appointment.Calendertype = this._getCalendarType(appointment.Bayno, supportedAppointmentItems);
-			
+
 						return appointment;
 					});
-			
+
 					calendarModel.setProperty("/appointments", appointments);
 					console.log("Appointments fetched via function:", appointments);
-			
+
 				} catch (error) {
 					console.error("Error in _fetchSchedulingData:", error);
 				}
 			}
-,			
+			,
 
-			_fetchSchedulingData1: async function () {
-				let oModel = this.getOwnerComponent().getModel();
-				let oBindList = oModel.bindList("/xIQMSxschfac_fetch");
+			// _fetchSchedulingData1: async function () {
+			// 	let oModel = this.getOwnerComponent().getModel();
+			// 	let oBindList = oModel.bindList("/xIQMSxschfac_fetch");
 
-				try {
-					let aContexts = await oBindList.requestContexts(0, Infinity);
-					let calendarModel = this.getView().getModel("calanderdata");
-					let supportedAppointmentItems = calendarModel.getProperty("/supportedAppointmentItems");
+			// 	try {
+			// 		let aContexts = await oBindList.requestContexts(0, Infinity);
+			// 		let calendarModel = this.getView().getModel("calanderdata");
+			// 		let supportedAppointmentItems = calendarModel.getProperty("/supportedAppointmentItems");
 
-					let appointments = aContexts.map(oContext => {
-						let appointment = oContext.getObject();
+			// 		let appointments = aContexts.map(oContext => {
+			// 			let appointment = oContext.getObject();
 
-						// Directly combining Startdate and Starttime
-						if (appointment.Startdate && appointment.Starttime) {
-							let startDateObj = new Date(appointment.Startdate.split("T")[0] + "T" + appointment.Starttime);
-							appointment.startDate = startDateObj;
-						}
+			// 			// Directly combining Startdate and Starttime
+			// 			if (appointment.Startdate && appointment.Starttime) {
+			// 				let startDateObj = new Date(appointment.Startdate.split("T")[0] + "T" + appointment.Starttime);
+			// 				appointment.startDate = startDateObj;
+			// 			}
 
-						// Directly combining Enddate and Endtime
-						if (appointment.Enddate && appointment.Endtime) {
-							let endDateObj = new Date(appointment.Enddate.split("T")[0] + "T" + appointment.Endtime);
-							appointment.endDate = endDateObj;
-						}
-                        // calender data modified to show on UI 
-						appointment.Calendertype = this._getCalendarType(appointment.Bayno, supportedAppointmentItems);
-						
-						const isSO = appointment.SalesOrder && appointment.SalesOrder !== "X";
+			// 			// Directly combining Enddate and Endtime
+			// 			if (appointment.Enddate && appointment.Endtime) {
+			// 				let endDateObj = new Date(appointment.Enddate.split("T")[0] + "T" + appointment.Endtime);
+			// 				appointment.endDate = endDateObj;
+			// 			}
+			//             // calender data modified to show on UI 
+			// 			appointment.Calendertype = this._getCalendarType(appointment.Bayno, supportedAppointmentItems);
 
-						appointment.DocType = isSO ? "SO" : "STO";
-						appointment.DocNum  = isSO ? appointment.SalesOrder : appointment.Stockorder;
+			// 			const isSO = appointment.SalesOrder && appointment.SalesOrder !== "X";
 
-						return appointment;
-					});
+			// 			appointment.DocType = isSO ? "SO" : "STO";
+			// 			appointment.DocNum  = isSO ? appointment.SalesOrder : appointment.Stockorder;
 
-					calendarModel.setProperty("/appointments", appointments);
-					console.log("appointments", appointments);
-					
-					console.log(this.getView().getModel("calanderdata").getProperty("/appointments"));
+			// 			return appointment;
+			// 		});
 
-				} catch (error) {
-					console.error("Error fetching SchedulingSet data:", error);
-				}
-			},
+			// 		calendarModel.setProperty("/appointments", appointments);
+			// 		console.log("appointments", appointments);
+
+			// 		console.log(this.getView().getModel("calanderdata").getProperty("/appointments"));
+
+			// 	} catch (error) {
+			// 		console.error("Error fetching SchedulingSet data:", error);
+			// 	}
+			// },
 
 			_getCalendarType: function (bayNo, supportedAppointmentItems) {
 				let bayMapping = supportedAppointmentItems.find(item => item.text === bayNo);
@@ -284,35 +285,48 @@ sap.ui.define([
 			,
 
 			onDocumentChange: async function (oEvent) {
-				let sValue = oEvent.getSource().getSelectedItem().getProperty('text');
-				console.log(sValue);
-				if( sValue === 'Sales Order'){
-					this.byId('plantFilterInput').setVisible( false);
-					this.byId('customerFilterInput').setVisible( true);
+				// Show busy indicator
+				sap.ui.core.BusyIndicator.show(0);
 
-				}else if(sValue === 'Stock Transfer'){
-					this.byId('plantFilterInput').setVisible( true);
-					this.byId('customerFilterInput').setVisible(false);
+				try {
+					let sValue = oEvent.getSource().getSelectedItem().getProperty('text');
+					console.log(sValue);
 
-				}else {
-				// logic to show Stock order requisition filter input avalue help
+					if (sValue === 'Sales Order') {
+						this.byId('plantFilterInput').setVisible(false);
+						this.byId('customerFilterInput').setVisible(true);
+					} else if (sValue === 'Stock Transfer') {
+						this.byId('plantFilterInput').setVisible(true);
+						this.byId('customerFilterInput').setVisible(false);
+					} else {
+						// logic to show Stock Order Requisition filter input value help
+					}
+
+					let oModel = this.getOwnerComponent().getModel();
+					let sPath = `/fetchSO_STO_PR_Data(docType='${encodeURIComponent(sValue)}')`;
+					let bindList = oModel.bindList(sPath);
+					let oContexts = await bindList.requestContexts(0, Infinity);
+					let oData = oContexts.map(context => context.getObject());
+
+					console.log('mydata', oData);
+					oModelsales.setData(oData);
+					this._aOriginalSalesData = [...oData];
+
+				} catch (error) {
+					console.error("Error while fetching data:", error);
+					sap.m.MessageBox.error("Failed to load data. Please try again.");
+				} finally {
+					// Hide busy indicator
+					sap.ui.core.BusyIndicator.hide();
 				}
-				let oModel = this.getOwnerComponent().getModel();
-				let sPath = `/fetchSO_STO_PR_Data(docType='${encodeURIComponent(sValue)}')`;
-				let bindList = oModel.bindList(sPath);
-				let oContexts = await bindList.requestContexts(0, Infinity);
-				let oData = oContexts.map( context => context.getObject());
-				console.log('mydata', oData);;
-				oModelsales.setData(oData);
-				this._aOriginalSalesData = [...oData];
-				
-			},
+			}
+			,
 			onPlantCode: function () {
 				helperFunctions._openValueHelpDialog(this, 'PlantCodeDialog', 'com.ingenx.qms.scheduling.fragments.PlantCode');
-                
+
 			},
-			onPlantSearch: function( oEvent){
-				helperFunctions._valueHelpLiveSearchMutipleFilters( oEvent, ['Plant','Plant_text'], false);
+			onPlantSearch: function (oEvent) {
+				helperFunctions._valueHelpLiveSearchMutipleFilters(oEvent, ['Plant', 'Plant_text'], false);
 			},
 			onPlantConfirm: function (oEvent) {
 				let oSelectedItem = oEvent.getParameter("selectedItem");
@@ -440,7 +454,7 @@ sap.ui.define([
 			// 				};
 			// 			}
 			// 		});
-				
+
 
 			// 		filteredData.sort((a, b) => {
 			// 			if (sValue === "Sales Order") {
@@ -610,12 +624,12 @@ sap.ui.define([
 				if (docNumber && material) {
 					const label = vbeln ? "SO" : "STO";
 					let spaces;
-					if(label === "SO"){
+					if (label === "SO") {
 
 						spaces = Array(26).join('\u00A0');
-					}else {
+					} else {
 						spaces = Array(10).join('\u00A0');
-						
+
 					}
 					return label + ": " + docNumber + spaces + "Material: " + material;
 				}
@@ -631,7 +645,7 @@ sap.ui.define([
 				}
 				return "";
 			},
-			formatDescription : function (oidShip, docType){
+			formatDescription: function (oidShip, docType) {
 				if (docType === "SO") {
 					return "Customer: " + (oidShip || "-");
 				} else if (docType === "STO") {
@@ -750,7 +764,7 @@ sap.ui.define([
 						let localTimeFrom = that.formatDateToLocalISO(oStartDate);
 						let localTimeTo = that.formatDateToLocalISO(oEndDate);
 						if (aContexts.length) {
-							let contextArr = aContexts.filter(context => {return context.getObject()[sKey] === extractedDocNo });
+							let contextArr = aContexts.filter(context => { return context.getObject()[sKey] === extractedDocNo });
 							if (contextArr.length) {
 
 								contextArr[0].setProperty("Starttime", localTimeFrom.split('T')[1]);
@@ -812,7 +826,7 @@ sap.ui.define([
 				oModel.getData().appointments.push(oNewAppointment);
 				oModel.updateBindings();
 
-			
+
 			},
 
 			handleViewChange: function () {
@@ -1127,28 +1141,28 @@ sap.ui.define([
 				let myModel = this.getOwnerComponent().getModel();
 				let oBindlist = myModel.bindList("/ScheduleFacSet");
 				let oBindlistMessage = myModel.bindList("/CustomerTransporterEMail");
-			
+
 				let sStartDateId = "DTPStartDate";
 				let sEndDateId = "DTPEndDate";
-			
+
 				// Get local modifyModel data
 				let oModifyModel = this.getView().getModel('modifyModel');
 				let sLocalData = oModifyModel.getData();
-			
+
 				let sMaterial = sLocalData.Mat;
 				let sQuantity = sLocalData.Quantity;
 				let sCustomer = sLocalData.cust;
 				let sDocType = sLocalData.DocType;  // "SO" or "STO"
 				let sDocNum = sLocalData.DocNum;    // actual SalesOrder or STO number
 				let sUom = sLocalData.Uom
-			
+
 				let sFromDate = this.byId(sStartDateId).getDateValue();
 				let sToDate = this.byId(sEndDateId).getDateValue();
 				let sBays = this.byId("appType").getSelectedItem().getText();
-			
+
 				let sLocalTimeFrom = this.formatDateToLocalISO(sFromDate);
 				let sLocalTimeTo = this.formatDateToLocalISO(sToDate);
-			    let sAppointmentPath;
+				let sAppointmentPath;
 				if (!sDocNum || !sCustomer) {
 					MessageToast.show("Order Number and Customer are mandatory to Fill.");
 					return;
@@ -1156,7 +1170,7 @@ sap.ui.define([
 				// Extract date and time separately
 				let [startDate, startTime] = sLocalTimeFrom.split("T");
 				let [endDate, endTime] = sLocalTimeTo.split("T");
-			
+
 				// 📌 Build the entry based on DocType
 				let oEntryData = {
 					"Bayno": sBays,
@@ -1170,11 +1184,11 @@ sap.ui.define([
 					"Driver": "",
 					"Cleaner": ""
 				};
-				console.log("scheduling data",oEntryData)
-		
+				console.log("scheduling data", oEntryData)
+
 				let oMessageData = {
-					salesOrder: sDocType === 'SO' ? sDocNum :'',
-					Stockorder : sDocType === 'STO' ? sDocNum : '',
+					salesOrder: sDocType === 'SO' ? sDocNum : '',
+					Stockorder: sDocType === 'STO' ? sDocNum : '',
 					custORTrans: sCustomer,
 					bays: sBays,
 					fromDateTime: sLocalTimeFrom,
@@ -1182,7 +1196,7 @@ sap.ui.define([
 					email: "deepanshu.goyal@ingenxtec.com",
 					message: "CUSTOMER",
 					Quantity: sQuantity,
-					unit : sUom,
+					unit: sUom,
 					material: sMaterial
 				}
 				// let Filter = new sap.ui.model.Filter("title", sap.ui.model.FilterOperator.EQ, profile);
@@ -1230,7 +1244,7 @@ sap.ui.define([
 									setTimeout(() => {
 										sap.m.MessageToast.show("Refreshing Calendar Data ...", {
 											duration: 700 // Show for 0.7 second
-										  });
+										});
 										// sap.m.MessageToast.show("Updating data ...");
 										that._fetchSchedulingData();
 
@@ -1286,14 +1300,14 @@ sap.ui.define([
 				let sDocType = sLocalData.DocType;  // "SO" or "STO"
 				let sDocNum = sLocalData.DocNum;    // actual SalesOrder or STO number
 				let sUom = sLocalData.Uom
-			
+
 				let sFromDate = this.byId(sStartDateId).getDateValue();
 				let sToDate = this.byId(sEndDateId).getDateValue();
 				let sBays = this.byId("appType").getSelectedItem().getText();
-			
+
 				let sLocalTimeFrom = this.formatDateToLocalISO(sFromDate);
 				let sLocalTimeTo = this.formatDateToLocalISO(sToDate);
-			    let sAppointmentPath;
+				let sAppointmentPath;
 				if (!sDocNum || !sTransporter) {
 					MessageToast.show("Order Number and Transporter are mandatory to Fill.");
 					return;
@@ -1333,8 +1347,8 @@ sap.ui.define([
 				// 	Quantity: sQuantity
 				// }
 				let oMessageData = {
-					salesOrder: sDocType === 'SO' ? sDocNum :'',
-					Stockorder : sDocType === 'STO' ? sDocNum : '',
+					salesOrder: sDocType === 'SO' ? sDocNum : '',
+					Stockorder: sDocType === 'STO' ? sDocNum : '',
 					custORTrans: sTransporter,
 					bays: sBays,
 					fromDateTime: sLocalTimeFrom,
@@ -1342,7 +1356,7 @@ sap.ui.define([
 					email: "deepanshu.goyal@ingenxtec.com",
 					message: "TRANSPORTER",
 					Quantity: sQuantity,
-					unit : sUom,
+					unit: sUom,
 					material: sMaterial
 				}
 				if (this.byId(sStartDateId).getValueState() !== ValueState.Error && this.byId(sEndDateId).getValueState() !== ValueState.Error) {
@@ -1477,7 +1491,7 @@ sap.ui.define([
 						Uom: oContext.uom,
 						Stockorder: oContext.STO || "",
 						DocType: oContext.DocType,
-						DocNum : oContext.DocNum
+						DocNum: oContext.DocNum
 
 					};
 

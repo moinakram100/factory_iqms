@@ -412,10 +412,10 @@
 
                     <StandardListItem
                         id="listItem"
-                        title="{ parts: [{path: 'schedulingArray>SalesOrder'}, {path: 'schedulingArray>Stockorder'},{path: 'schedulingArray>Material'}], formatter: '.formatTitle' }"
-                        description="{= ${schedulingArray>DocType} === 'SO' ? 'Cust: ' + ${schedulingArray>Soldtoparty} : 'Plant: ' + ${schedulingArray>Plant} }"
+                        title="{ parts: [{path: 'schedulingArray>DocType'}, {path: 'schedulingArray>DocNum'},{path: 'schedulingArray>Material'}], formatter: '.formatTitle' }"
+                        description="{= ${schedulingArray>DocType} === 'SO' ? 'Cust: ' + ${schedulingArray>OidShip} : 'Plant: ' + ${schedulingArray>OidShip} }"
                         type="Navigation"
-                       info="{ parts: [{ path: 'schedulingArray>Quantity' }, { path: 'schedulingArray>Uom' }], formatter: '.formatQuantityInfo' }"
+                       info="{ parts: [{ path: 'schedulingArray>quantity' }, { path: 'schedulingArray>uom' }], formatter: '.formatQuantityInfo' }"
 
                         press="onUpdateClick"
                     />
