@@ -381,132 +381,254 @@ sap.ui.define([
   
         },
   
-        createParkingFn: async function (parkingGate, parkingArea, createdDate, vehicleNumber, driverName, cleanerName, sSelectedText, TransportCode, customerCode, product, VehicleType, parkStatus, plant, plantText) {
+        // createParkingFn: async function (parkingGate, parkingArea, createdDate, vehicleNumber, driverName, cleanerName, sSelectedText, TransportCode, customerCode, product, VehicleType, parkStatus, plant, plantText) {
           
+        //   try {
+        //     // Get the current time in HH:MM:SS format
+        //     let now = new Date();
+        //     let hours = String(now.getHours()).padStart(2, '0');
+        //     let minutes = String(now.getMinutes()).padStart(2, '0');
+        //     let seconds = String(now.getSeconds()).padStart(2, '0');
+  
+        //     let time = `${hours}:${minutes}:${seconds}`; // Format as "HH:MM:SS"
+        //     // console.log("Current time:", time);
+  
+        //     // Prepare the payload for creating the parking entry
+        //     let oPayload = {
+        //       ParkingGate: parkingGate,
+        //       ParkingArea: parkingArea,
+        //       VehicleNumber: vehicleNumber,
+        //       Purpose: sSelectedText,
+        //       TransportCode: TransportCode,
+        //       Soldtoparty: customerCode ?? "",
+        //       Description: ShipToName ?? "",
+        //       Destination: Destination ?? "",
+        //       Product: product,
+        //       TruckType: VehicleType,
+        //       Shiptoparty: "",
+        //       Status: parkStatus,
+        //       Driver: driverName,
+        //       Cleaner: cleanerName,
+        //       Plant: plant,
+        //       PlantText: plantText,
+        //       park_assocations: [
+        //         {
+        //           ParkingNo: ""
+        //         }
+        //       ]
+        //     };
+  
+        //     console.log("Payload for parking", oPayload);
+  
+        //     // Get the model for OData binding
+        //     let oModel = this.getOwnerComponent().getModel();
+  
+        //     console.log("New Payload ", oPayload);
+  
+        //     // Bind to the Park_headerSet entity and create a new entry
+        //     let oBindListSPM = oModel.bindList("/Park_headerSet2");
+  
+        //     // Begin the creation process and handle completion in the callback
+            
+        //     let that = this;
+            
+        //     let sKey = that.salesOrderNo ?  "SalesOrder" : "Stockorder"
+        //     let DocNum = that.salesOrderNo ? that.salesOrderNo : that.Stockorder;
+        //     sap.m.MessageToast.show("Creating Parking No...");
+  
+        //     oBindListSPM.create(oPayload, true);
+            
+        //     sap.ui.core.BusyIndicator.show(0);
+  
+        //     oBindListSPM.attachCreateCompleted(async (p) => {
+        //       try {
+        //         let params = p.getParameters();
+        //         console.log("Create parameters:", params);
+  
+        //         if (params.success) {
+  
+        //           let obj = params.context.getObject();
+        //           console.log("Created object:", obj);
+        //           let oParkingNo = obj.ParkingNo;
+        //           that.byId('parking_id').setValue(oParkingNo);
+  
+        //           // updating  entry in Schedulingset if parking created using scanned data sales order
+               
+        //           if (oParkingNo) {
+        //             if (that.salesOrderNo || that.Stockorder) {
+  
+        //               let oBindList = oModel.bindList("/SchedulingSet");
+  
+        //               await oBindList.requestContexts().then(function (aContexts) {
+        //                 if (aContexts.length > 0) {
+        //                   let contextArr = aContexts.filter((context) => context.getObject()[sKey] === DocNum);
+        //                   if (contextArr.length) {
+  
+        //                     contextArr[0].setProperty("Parkingno", oParkingNo);
+  
+        //                   }
+        //                 } else {
+        //                   sap.m.MessageBox.warning(`No matching entry found for the ${sKey}.`);
+        //                 }
+        //               });
+  
+  
+        //             }
+  
+        //           }
+        //           // Display success message to the user
+        //           sap.m.MessageBox.success(`Parking No ${oParkingNo} Created.`, {
+        //             title: "Success",
+        //             onClose: function (oAction) {
+        //               if (oAction === sap.m.MessageBox.Action.OK) {
+        //                 // Reset fields upon confirmation of the success message
+        //                 that.resetFields();
+        //               }
+        //             }
+        //           });
+        //         } else {
+        //           // If the creation failed, show the error message
+        //           let errorMsg = params.context.oModel.mMessages[""] ? params.context.oModel.mMessages[""][0].message : "An unknown error occurred.";
+        //           sap.m.MessageBox.error(`Error while creating parking entry: ${errorMsg}`);
+        //         }
+        //       } catch (err) {
+        //         // Catch any errors during the callback after the creation
+        //         console.error("Error during createCompleted callback:", err);
+        //         sap.m.MessageBox.error("An unexpected error occurred during parking creation.");
+        //       }
+        //     });
+  
+        //   } catch (error) {
+        //     // Catch any errors during the overall creation process
+        //     console.log("Error during parking creation:", error.message);
+        //     sap.m.MessageBox.error("Error in creating the parking entry. Please try again.");
+        //     // sap.m.MessageBox.error(error.message);
+        //   } finally {
+        //     sap.ui.core.BusyIndicator.hide();
+        //   }
+        // },
+        createParkingFn: async function (parkingGate, parkingArea, createdDate, vehicleNumber, driverName, cleanerName, sSelectedText, TransportCode, customerCode, product, VehicleType, parkStatus, plant, plantText) {
           try {
-            // Get the current time in HH:MM:SS format
             let now = new Date();
-            let hours = String(now.getHours()).padStart(2, '0');
-            let minutes = String(now.getMinutes()).padStart(2, '0');
-            let seconds = String(now.getSeconds()).padStart(2, '0');
-  
-            let time = `${hours}:${minutes}:${seconds}`; // Format as "HH:MM:SS"
-            // console.log("Current time:", time);
-  
-            // Prepare the payload for creating the parking entry
+        
+            // ISO Date and Time formatting
+            let isoDate = now.toISOString().split("T")[0]; // YYYY-MM-DD
+            let isoTime = `PT${String(now.getHours()).padStart(2, '0')}H${String(now.getMinutes()).padStart(2, '0')}M${String(now.getSeconds()).padStart(2, '0')}S`;
+        
+            // New Payload for Park_facSet
             let oPayload = {
+              ParkDate: `${isoDate}T00:00:00`,
+              ParkTime: "PT00H00M00S",
+              ParkingNo: "",
               ParkingGate: parkingGate,
               ParkingArea: parkingArea,
               VehicleNumber: vehicleNumber,
-              Purpose: sSelectedText,
-              TransportCode: TransportCode,
-              Soldtoparty: customerCode ?? "",
-              Description: ShipToName ?? "",
-              Destination: Destination ?? "",
-              Product: product,
-              TruckType: VehicleType,
-              Shiptoparty: "",
               Status: parkStatus,
-              Driver: driverName,
-              Cleaner: cleanerName,
-              Plant: plant,
-              PlantText: plantText,
-              park_assocations: [
+              StatusDesc: "",
+              Createdby: "", // Fill dynamically if needed
+              Createddate: null,
+              Createdtime: isoTime,
+              Changedby: "",
+              Changeddate: null,
+              Changedtime: isoTime,
+              park_tostatus: [
                 {
-                  ParkingNo: ""
+                  Parkingno: "",
+                  Vehicleno: vehicleNumber,
+                  SalesOrder: this.salesOrderNo ?? "",
+                  Stockorder: this.Stockorder ?? "",
+                  Startdate: null,
+                  Starttime: "PT00H00M00S",
+                  Material: product,
+                  Quantity: "0.000",
+                  Uom: "",
+                  Bayno: "",
+                  Plant: plant,
+                  PlantText: plantText,
+                  Soldtoparty: customerCode,
+                  DeliveryNo: "",
+                  DelivDate: null,
+                  DelivTime: "PT00H00M00S",
+                  ShipmentNo: "",
+                  ShipDate: null,
+                  ShipTime: "PT00H00M00S",
+                  BillingNo: "",
+                  BillDate: null,
+                  BillTime: "PT00H00M00S",
+                  Goodsissue: "",
+                  GiDate: null,
+                  GiTime: "PT00H00M00S",
+                  Goodsreceipt: "",
+                  GrDate: null,
+                  GrTime: "PT00H00M00S"
                 }
               ]
             };
-  
-            console.log("Payload for parking", oPayload);
-  
-            // Get the model for OData binding
+        
+            console.log("New Payload for Park_facSet:", oPayload);
+        
             let oModel = this.getOwnerComponent().getModel();
-  
-            console.log("New Payload ", oPayload);
-  
-            // Bind to the Park_headerSet entity and create a new entry
-            let oBindListSPM = oModel.bindList("/Park_headerSet2");
-  
-            // Begin the creation process and handle completion in the callback
-            
-            let that = this;
-            
-            let sKey = that.salesOrderNo ?  "SalesOrder" : "Stockorder"
-            let DocNum = that.salesOrderNo ? that.salesOrderNo : that.Stockorder;
+            let oBindListSPM = oModel.bindList("/Park_facSet");
+        
             sap.m.MessageToast.show("Creating Parking No...");
-  
-            oBindListSPM.create(oPayload, true);
-            
             sap.ui.core.BusyIndicator.show(0);
-  
+        
+            let that = this;
+        
+            oBindListSPM.create(oPayload, true);
+        
             oBindListSPM.attachCreateCompleted(async (p) => {
               try {
                 let params = p.getParameters();
                 console.log("Create parameters:", params);
-  
+        
                 if (params.success) {
-  
                   let obj = params.context.getObject();
-                  console.log("Created object:", obj);
                   let oParkingNo = obj.ParkingNo;
+                  console.log("Created ParkingNo:", oParkingNo);
                   that.byId('parking_id').setValue(oParkingNo);
-  
-                  // updating  entry in Schedulingset if parking created using scanned data sales order
-               
-                  if (oParkingNo) {
-                    if (that.salesOrderNo || that.Stockorder) {
-  
-                      let oBindList = oModel.bindList("/SchedulingSet");
-  
-                      await oBindList.requestContexts().then(function (aContexts) {
-                        if (aContexts.length > 0) {
-                          let contextArr = aContexts.filter((context) => context.getObject()[sKey] === DocNum);
-                          if (contextArr.length) {
-  
-                            contextArr[0].setProperty("Parkingno", oParkingNo);
-  
-                          }
-                        } else {
-                          sap.m.MessageBox.warning(`No matching entry found for the ${sKey}.`);
-                        }
-                      });
-  
-  
-                    }
-  
+        
+                  if (oParkingNo && (that.salesOrderNo || that.Stockorder)) {
+                    let sKey = that.salesOrderNo ? "SalesOrder" : "Stockorder";
+                    let DocNum = that.salesOrderNo ?? that.Stockorder;
+        
+                    // let oBindList = oModel.bindList("/SchedulingSet");
+                    // await oBindList.requestContexts().then(function (aContexts) {
+                    //   let contextArr = aContexts.filter(context => context.getObject()[sKey] === DocNum);
+                    //   if (contextArr.length) {
+                    //     contextArr[0].setProperty("Parkingno", oParkingNo);
+                    //   } else {
+                    //     sap.m.MessageBox.warning(`No matching entry found for the ${sKey}.`);
+                    //   }
+                    // });
                   }
-                  // Display success message to the user
+        
                   sap.m.MessageBox.success(`Parking No ${oParkingNo} Created.`, {
                     title: "Success",
                     onClose: function (oAction) {
                       if (oAction === sap.m.MessageBox.Action.OK) {
-                        // Reset fields upon confirmation of the success message
                         that.resetFields();
                       }
                     }
                   });
                 } else {
-                  // If the creation failed, show the error message
                   let errorMsg = params.context.oModel.mMessages[""] ? params.context.oModel.mMessages[""][0].message : "An unknown error occurred.";
                   sap.m.MessageBox.error(`Error while creating parking entry: ${errorMsg}`);
                 }
               } catch (err) {
-                // Catch any errors during the callback after the creation
                 console.error("Error during createCompleted callback:", err);
                 sap.m.MessageBox.error("An unexpected error occurred during parking creation.");
               }
             });
-  
+        
           } catch (error) {
-            // Catch any errors during the overall creation process
             console.log("Error during parking creation:", error.message);
             sap.m.MessageBox.error("Error in creating the parking entry. Please try again.");
-            // sap.m.MessageBox.error(error.message);
           } finally {
             sap.ui.core.BusyIndicator.hide();
           }
-        },
+        }
+,        
   
         getMaxParkingNoFn: async function (oModel) {
           try {

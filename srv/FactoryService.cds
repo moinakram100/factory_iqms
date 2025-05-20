@@ -5,13 +5,11 @@ using IRMSZAPI_SALES_ORDER_SRV from './external/IRMSZAPI_SALES_ORDER_SRV';
 using IQMSFACTORY_SRV from './external/IQMSFACTORY_SRV.cds';
 
 
-
 // using IRMSCREATE_SO_SRV from './external/IRMSCREATE_SO_SRV';
 // using IRMSCREATE_DELIVERY_SRV from './external/IRMSCREATE_DELIVERY_SRV';
 // using IRMSSHIPMENT_CREATE_SRV from './external/IRMSSHIPMENT_CREATE_SRV';
 
 using IRMSTRANSPORT_CREATE_SRV from './external/IRMSTRANSPORT_CREATE_SRV';
-
 using IRMSVEHICLE_CREATE_SRV from './external/IRMSVEHICLE_CREATE_SRV';
 // using IRMSBILLING_DOCUMENT_SRV from './external/IRMSBILLING_DOCUMENT_SRV';
 using IQMSSCHEDULING_SRV from './external/IQMSSCHEDULING_SRV.cds';
@@ -41,8 +39,25 @@ service factoryService {
     // entity xIRMSxmaterial                 as projection on IRMSQUEQE_MANAGEMENT_SRV.xIRMSxmaterial;
     // entity xIRMSxTransport                as projection on IRMSQUEQE_MANAGEMENT_SRV.xIRMSxTransport;
 
-  entity ScheduleFacSet as projection on IQMSFACTORY_SRV.ScheduleFacSet
-    {        Bayno, key SalesOrder, key Stockorder, Startdate, Enddate, Starttime, Endtime, Vehicleno, Driver, Cleaner, Createdby, Createddate, Createdtime, Changedby, Changeddate, Changedtime     }  
+    entity ScheduleFacSet                 as
+        projection on IQMSFACTORY_SRV.ScheduleFacSet {
+                Bayno,
+            key SalesOrder,
+            key Stockorder,
+                Startdate,
+                Enddate,
+                Starttime,
+                Endtime,
+                Vehicleno,
+                Driver,
+                Cleaner,
+                Createdby,
+                Createddate,
+                Createdtime,
+                Changedby,
+                Changeddate,
+                Changedtime
+        }
 
     // stodelivery
     entity CreatedItemsSet                as
@@ -67,8 +82,83 @@ service factoryService {
         };
 
 
-          entity xIQMSxschfac_fetch as projection on IQMSQUEUEMANAGE_VALUEHELP_SRV.xIQMSxschfac_fetch
-    {        key SalesOrder, key Stockorder, Bayno, Startdate, Enddate, Starttime, Endtime, Vehicleno, Driver, Cleaner, Createdby, Createddate, Createdtime, Changedby, Changeddate, Changedtime     } 
+    entity xIQMSxschfac_fetch             as
+        projection on IQMSQUEUEMANAGE_VALUEHELP_SRV.xIQMSxschfac_fetch {
+            key SalesOrder,
+            key Stockorder,
+                Bayno,
+                Startdate,
+                Enddate,
+                Starttime,
+                Endtime,
+                Vehicleno,
+                Driver,
+                Cleaner,
+                Createdby,
+                Createddate,
+                Createdtime,
+                Changedby,
+                Changeddate,
+                Changedtime
+        }
+
+    entity PARKST_FACSet                  as
+        projection on IQMSFACTORY_SRV.PARKST_FACSet {
+            key Parkingno,
+                Vehicleno,
+                SalesOrder,
+                Stockorder,
+                Startdate,
+                Starttime,
+                Material,
+                Quantity,
+                Uom,
+                Bayno,
+                Plant,
+                PlantText,
+                Soldtoparty,
+                DeliveryNo,
+                DelivDate,
+                DelivTime,
+                ShipmentNo,
+                ShipDate,
+                ShipTime,
+                BillingNo,
+                BillDate,
+                BillTime,
+                Goodsissue,
+                GiDate,
+                GiTime,
+                Goodsreceipt,
+                GrDate,
+                GrTime,
+                Createdby,
+                Createddate,
+                Createdtime,
+                Changedby,
+                Changeddate,
+                Changedtime
+        };
+
+    entity Park_facSet                    as
+        projection on IQMSFACTORY_SRV.Park_facSet {
+            key ParkDate,
+            key ParkTime,
+            key ParkingNo,
+                ParkingGate,
+                ParkingArea,
+                VehicleNumber,
+                Status,
+                StatusDesc,
+                Createdby,
+                Createddate,
+                Createdtime,
+                Changedby,
+                Changeddate,
+                Changedtime,
+                park_tostatus
+        };
+
 
     entity ReturnSet                      as
         projection on IQMSSTO_DELIVERY_SRV.ReturnSet {
@@ -654,7 +744,6 @@ service factoryService {
                 FundsCtr,
                 CmmtItem,
                 Pricedate,
-
                 GrossWt,
                 Volume,
                 Volumeunit,
@@ -1159,8 +1248,16 @@ service factoryService {
                 Gjahr,
                 Delivery
         }
-     entity xIQMSxfetch_sto as projection on IQMSQUEUEMANAGE_VALUEHELP_SRV.xIQMSxfetch_sto
-    {        key Sto, delivery,  Material, Plant, Quantity, Unit     }    
+
+    entity xIQMSxfetch_sto                as
+        projection on IQMSQUEUEMANAGE_VALUEHELP_SRV.xIQMSxfetch_sto {
+            key Sto,
+                delivery,
+                Material,
+                Plant,
+                Quantity,
+                Unit
+        }
 
     // new Deleivery API
 
@@ -1607,7 +1704,6 @@ service factoryService {
         }
 
 
-
     entity A_SalesOrder                   as
         projection on IRMSZAPI_SALES_ORDER_SRV.A_SalesOrder {
             key SalesOrder,
@@ -1899,14 +1995,14 @@ service factoryService {
 
 
     function ExitScreen()                                                                                                                                                                                                                                   returns array of {
-        ParkingNo : String;
-        VehicleNumber : String;
-        vehicleType : String;
+        ParkingNo         : String;
+        VehicleNumber     : String;
+        vehicleType       : String;
         VehicleDefination : String;
-        Status : String;
-        DeliveryNo : String;
-        ShipmentNo : String;
-        quantity : Decimal(10, 2);
+        Status            : String;
+        DeliveryNo        : String;
+        ShipmentNo        : String;
+        quantity          : Decimal(10, 2);
 
     };
     // ****************  functions for CreateParking screen   START ********
@@ -1924,13 +2020,13 @@ service factoryService {
     };
 
     function checkVehicleBeforeSubmitParking(Vehicle : String, VehicleDef : String)                                                                                                                                                                         returns array of {
-        VehicleType : String;
-        isVehicleMatched : Boolean;
+        VehicleType         : String;
+        isVehicleMatched    : Boolean;
         isVehicleInRefinary : Boolean;
     };
 
     function fetchCustomerData(Kunnr : String)                                                                                                                                                                                                              returns array of {
-        ShipToName : String; //  for Name1 field
+        ShipToName  : String; //  for Name1 field
 
         Destination : String // for Ort01 field
 
@@ -1942,11 +2038,11 @@ service factoryService {
 
     function getCustomizedParkingData(ParkingNo : String)                                                                                                                                                                                                   returns array of {
 
-        ParkingNo : String;
-        VehicleNumber : String;
-        TruckType : String;
-        Product : String;
-        Status : String;
+        ParkingNo         : String;
+        VehicleNumber     : String;
+        TruckType         : String;
+        Product           : String;
+        Status            : String;
         VehicleDefination : String
     };
 
@@ -1955,21 +2051,21 @@ service factoryService {
     //  Security clearance - Home Screen     Handlers START ***************************
     function getParkingNoData(ParkingNo : String)                                                                                                                                                                                                           returns array of {
 
-        ParkingNo : String;
-        VehicleNo : String;
-        VehicleType : String;
-        Product : String;
+        ParkingNo    : String;
+        VehicleNo    : String;
+        VehicleType  : String;
+        Product      : String;
         VehicleStaus : String;
-        ParkingGate : String;
-        ParkingArea : String;
+        ParkingGate  : String;
+        ParkingArea  : String;
     };
 
     // **************  Security Check List  fn's                  START   ******************
     function getCheckListData(ParkingNo : String, VehicleNumber : String, TruckTypeDef : String, TruckType : String)                                                                                                                                        returns array of {
-        Id : String;
+        Id      : String;
         Remarks : String;
-        pass : String;
-        fail : String;
+        pass    : String;
+        fail    : String;
     };
 
     // **************  Security Check List  fn's                  END******************
@@ -1983,126 +2079,127 @@ service factoryService {
     };
 
     function fetchSo(Matnr : String, OidShip : String)                                                                                                                                                                                                      returns array of {
-        Vbeln : String;
-        Matnr : String;
+        Vbeln   : String;
+        Matnr   : String;
         OidShip : String;
     };
 
 
     function LiquidScreen()                                                                                                                                                                                                                                 returns array of {
-        ParkingNo : String;
-        Shiptoparty : String;
-        Destination : String;
-        ParkingGate : String;
-        ParkingArea : String;
-        VehicleNumber : String;
-        ParkingDate : String;
-        DriverName : String;
-        CleanerName : String;
-        Purpose : String;
-        TransportCode : String;
-        CustomerCode : String;
-        Product : String;
-        TruckType : String;
-        Status : String;
+        ParkingNo         : String;
+        Shiptoparty       : String;
+        Destination       : String;
+        ParkingGate       : String;
+        ParkingArea       : String;
+        VehicleNumber     : String;
+        ParkingDate       : String;
+        DriverName        : String;
+        CleanerName       : String;
+        Purpose           : String;
+        TransportCode     : String;
+        CustomerCode      : String;
+        Product           : String;
+        TruckType         : String;
+        Status            : String;
         VehicleDefination : String;
-        ShipmentNo : String;
-        DeliveryNo : String;
-        SalesOrder : String
+        ShipmentNo        : String;
+        DeliveryNo        : String;
+        SalesOrder        : String
     };
 
     function SolidScreen()                                                                                                                                                                                                                                  returns array of {
-        ParkingNo : String;
-        Shiptoparty : String;
-        Destination : String;
-        ParkingGate : String;
-        ParkingArea : String;
-        VehicleNumber : String;
-        ParkingDate : String;
-        DriverName : String;
-        CleanerName : String;
-        Purpose : String;
-        TransportCode : String;
-        CustomerCode : String;
-        Product : String;
-        TruckType : String;
-        Status : String;
+        ParkingNo         : String;
+        Shiptoparty       : String;
+        Destination       : String;
+        ParkingGate       : String;
+        ParkingArea       : String;
+        VehicleNumber     : String;
+        ParkingDate       : String;
+        DriverName        : String;
+        CleanerName       : String;
+        Purpose           : String;
+        TransportCode     : String;
+        CustomerCode      : String;
+        Product           : String;
+        TruckType         : String;
+        Status            : String;
         VehicleDefination : String;
-        ShipmentNo : String;
-        DeliveryNo : String;
-        SalesOrder : String
+        ShipmentNo        : String;
+        DeliveryNo        : String;
+        SalesOrder        : String
     };
 
     function GasScreen()                                                                                                                                                                                                                                    returns array of {
-        ParkingNo : String;
-        Shiptoparty : String;
-        Destination : String;
-        ParkingGate : String;
-        ParkingArea : String;
-        VehicleNumber : String;
-        ParkingDate : String;
-        DriverName : String;
-        CleanerName : String;
-        Purpose : String;
-        TransportCode : String;
-        CustomerCode : String;
-        Product : String;
-        TruckType : String;
-        Status : String;
+        ParkingNo         : String;
+        Shiptoparty       : String;
+        Destination       : String;
+        ParkingGate       : String;
+        ParkingArea       : String;
+        VehicleNumber     : String;
+        ParkingDate       : String;
+        DriverName        : String;
+        CleanerName       : String;
+        Purpose           : String;
+        TransportCode     : String;
+        CustomerCode      : String;
+        Product           : String;
+        TruckType         : String;
+        Status            : String;
         VehicleDefination : String;
-        ShipmentNo : String;
-        DeliveryNo : String;
-        SalesOrder : String
+        ShipmentNo        : String;
+        DeliveryNo        : String;
+        SalesOrder        : String
     };
 
     function MaterialScreen()                                                                                                                                                                                                                               returns array of {
-        ParkingNo : String;
-        Shiptoparty : String;
-        Destination : String;
-        ParkingGate : String;
-        ParkingArea : String;
-        VehicleNumber : String;
-        ParkingDate : String;
-        DriverName : String;
-        CleanerName : String;
-        Purpose : String;
-        TransportCode : String;
-        CustomerCode : String;
-        Product : String;
-        TruckType : String;
-        Status : String;
+        ParkingNo         : String;
+        Shiptoparty       : String;
+        Destination       : String;
+        ParkingGate       : String;
+        ParkingArea       : String;
+        VehicleNumber     : String;
+        ParkingDate       : String;
+        DriverName        : String;
+        CleanerName       : String;
+        Purpose           : String;
+        TransportCode     : String;
+        CustomerCode      : String;
+        Product           : String;
+        TruckType         : String;
+        Status            : String;
         VehicleDefination : String;
-        ShipmentNo : String;
-        DeliveryNo : String;
-        SalesOrder : String
+        ShipmentNo        : String;
+        DeliveryNo        : String;
+        SalesOrder        : String
     };
 
 
     function BillingInvoice()                                                                                                                                                                                                                               returns array of {
-        ParkingNo : String;
-        VehicleNumber : String;
-        vehicleType : String;
+        ParkingNo         : String;
+        VehicleNumber     : String;
+        vehicleType       : String;
         VehicleDefinition : String;
-        Status : String;
-        DeliveryNo : String;
-        ShipmentNo : String;
-        quantity : Decimal;
+        Status            : String;
+        DeliveryNo        : String;
+        ShipmentNo        : String;
+        quantity          : Decimal;
     };
 
     // fetch sto details
     function fetchSTO()                                                                                                                                                                                                                                     returns array of {
-        PurchaseOrder : String;
-        CompanyCode : String;
-        OrderQuantity : String;
+        PurchaseOrder             : String;
+        CompanyCode               : String;
+        OrderQuantity             : String;
         PurchaseOrderQuantityUnit : String;
-        Material : String
+        Material                  : String
     };
-     function fetchSO_STO_PR_Data(docType : String)  
-     returns array of {
+
+    function fetchSO_STO_PR_Data(docType : String)                                                                                                                                                                                                          returns array of {
 
     };
-      function fetchSchedulingData()                                                                                                                                                                                                                                     returns array of {
-      
+
+    function fetchSchedulingData()                                                                                                                                                                                                                          returns array of {
+
         Material : String
     };
 
