@@ -10,7 +10,6 @@
     "@sap-cloud-sdk/http-client": "^4.0.2",
     "@sap-cloud-sdk/resilience": "^4.0.2",
     "@sap/cds": "^8.9.3",
-    "@sap/hana-client": "^2.24.24",
     "express": "^4",
     "nodemailer": "^7.0.3",
     "@sap-cloud-sdk/connectivity": "^3"
@@ -30,7 +29,8 @@
     "watch-inventory": "cds watch --open inventory/webapp/index.html?sap-ui-xx-viewCache=false",
     "watch-billingcreation": "cds watch --open billingcreation/webapp/index.html?sap-ui-xx-viewCache=false",
     "watch-fangeneration": "cds watch --open fangeneration/webapp/index.html?sap-ui-xx-viewCache=false",
-    "watch-parking": "cds watch --open parking/webapp/index.html?sap-ui-xx-viewCache=false"
+    "watch-parking": "cds watch --open parking/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-analytics": "cds watch --open analytics/webapp/index.html?sap-ui-xx-viewCache=false"
   },
   "cds": {
     "requires": {
@@ -376,6 +376,9 @@
         "csrf": true,
         "csrfInBatch": true
       }
+    },
+    "sql": {
+      "native_hana_associations": false
     }
   }
 }

@@ -1,7 +1,7 @@
 {
   "_version": "1.65.0",
   "sap.app": {
-    "id": "com.ingenx.qms.config",
+    "id": "com.ingenx.qms.configfactory",
     "type": "application",
     "i18n": "i18n/i18n.properties",
     "applicationVersion": {

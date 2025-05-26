@@ -1,0 +1,144 @@
+<mvc:View
+  controllerName="com.ingenx.qms.analytics.controller.AnalysisReport"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns:m="sap.m"
+  xmlns:tnt="sap.tnt"
+  xmlns:core="sap.ui.core"
+  xmlns:table="sap.ui.table"
+  >
+
+  <m:Page showHeader="false">
+    <m:content>
+      <tnt:ToolHeader
+        id="viewTime_ToolHeader"
+        class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+        width="99%">
+        <m:HBox justifyContent="Center" width="100%">
+          <m:Title text="Truck Time Analysis" level="H3" class="headerTitle"/>
+        </m:HBox>
+      </tnt:ToolHeader>
+
+      <m:VBox width="100%" class="sapUiSmallMargin">
+        <m:Panel headerText="Search &amp; Filters" class="visitorPanel3DD sapUiSmallMarginTop" width="98%">
+          <m:HBox alignItems="Center" justifyContent="SpaceBetween" wrap="Wrap" class="sapUiSmallMargin sapUiTinyMarginBottom">
+            <m:HBox alignItems="Center" wrap="Wrap">
+              <m:Label text="Fields:" class="sapUiTinyMarginEnd"/>
+              <m:MultiComboBox
+                id="filterSelect"
+                selectionChange="onFilterSelectionChange"
+                placeholder="Select fields"
+                width="15rem"
+                class="sapUiTinyMarginEnd">
+                <core:Item key="vehicleNo" text="Vehicle No" />
+                <core:Item key="plant" text="Plant" />
+                <core:Item key="material" text="Material" />
+                <core:Item key="bay" text="Bay" />
+              </m:MultiComboBox>
+              <m:HBox id="filterInputs" alignItems="Center" wrap="Wrap" class="sapUiTinyMarginEnd" />
+              <m:Button text="Search" type="Emphasized" press="onSearchWithFilters" class="sapUiTinyMarginEnd"/>
+            </m:HBox>
+            <m:HBox alignItems="Center">
+              <m:Button text="View Time" type="Emphasized" press="onToggleView" class="sapUiTinyMarginEnd"/>
+              <m:Button text="Avg. Time" type="Emphasized" press="onCalcAvgTime"/>
+            </m:HBox>
+          </m:HBox>
+        </m:Panel>
+
+        <m:Panel headerText="Vehicle Journey Details" class="visitorPanel3DD sapUiSmallMarginTop" width="98%">
+          <table:Table
+            id="vehicleTable"
+            rows="{vehicleModel>/records}"
+            selectionMode="MultiToggle"
+            selectionBehavior="RowSelector"
+            visibleRowCount="10"
+            width="100%"
+            enableColumnReordering="true"
+            rowHeight="40">
+
+            <table:columns>
+              <table:Column label="Vehicle No" width="7rem" hAlign="Center">
+                <table:template>
+                  <m:Text text="{vehicleModel>vehicleNo}" wrapping="False" class="monospaceText"/>
+                </table:template>
+              </table:Column>
+              <table:Column label="Parking No" width="7rem" hAlign="Center">
+                <table:template>
+                  <m:Text text="{vehicleModel>parkingNo}" wrapping="False" class="monospaceText"/>
+                </table:template>
+              </table:Column>
+
+              <table:Column label="Material" width="6rem" hAlign="Center">
+                <table:template>
+                  <m:Text text="{vehicleModel>material}" wrapping="False" class="monospaceText"/>
+                </table:template>
+              </table:Column>
+              <table:Column label="Plant" width="7rem" hAlign="Center">
+                <table:template>
+                  <m:Text text="{vehicleModel>plant}" wrapping="False"/>
+                </table:template>
+              </table:Column>
+
+                            <table:Column label="Bay" width="3rem" hAlign="Begin">
+                <table:template>
+                  <m:Text text="{vehicleModel>bay}" wrapping="False"/>
+                </table:template>
+              </table:Column>
+              <table:Column label="Entry Time" width="5.5rem" hAlign="Center">
+                <table:template>
+                  <m:Text text="{vehicleModel>created}" wrapping="False"/>
+                </table:template>
+              </table:Column>
+              <table:Column label="Security Clearance" width="9rem" hAlign="Center">
+                <table:template>
+                  <m:Text text="{= ${vehicleModel>securityClearance/value} || ${vehicleModel>securityClearance} }" wrapping="False"
+                    class="{= ${vehicleModel>securityClearance/status} === 'Late' ? 'textRed' : ${vehicleModel>securityClearance/status} === 'Early' ? 'textYellow' : 'textGreen'}" />
+                </table:template>
+              </table:Column>
+
+              <table:Column label="Sales Order" width="6rem" hAlign="Center">
+                <table:template>
+                  <m:Text text="{= ${vehicleModel>salesOrder/value} || ${vehicleModel>salesOrder} }" wrapping="False"
+                    class="{= ${vehicleModel>salesOrder/status} === 'Late' ? 'textRed' : ${vehicleModel>salesOrder/status} === 'Early' ? 'textYellow' : 'textGreen'}" />
+                </table:template>
+              </table:Column>
+              <table:Column label="Delivery No" width="6rem" hAlign="Center">
+                <table:template>
+                  <m:Text text="{= ${vehicleModel>deliveryNo/value} || ${vehicleModel>deliveryNo} }" wrapping="False"
+                    class="{= ${vehicleModel>deliveryNo/status} === 'Late' ? 'textRed' : ${vehicleModel>deliveryNo/status} === 'Early' ? 'textYellow' : 'textGreen'}" />
+                </table:template>
+              </table:Column>
+              <table:Column label="Shipment" width="6rem" hAlign="Center">
+                <table:template>
+                  <m:Text text="{= ${vehicleModel>shipmentNo/value} || ${vehicleModel>shipmentNo} }" wrapping="False"
+                    class="{= ${vehicleModel>shipmentNo/status} === 'Late' ? 'textRed' : ${vehicleModel>shipmentNo/status} === 'Early' ? 'textYellow' : 'textGreen'}" />
+                </table:template>
+              </table:Column>
+
+                            <table:Column label="Goods loading" width="7rem" hAlign="Center">
+                <table:template>
+                  <m:Text text="{= ${vehicleModel>vehicleMaster/value} || ${vehicleModel>vehicleMaster} }" wrapping="False"
+                    class="{= ${vehicleModel>vehicleMaster/status} === 'Late' ? 'textRed' : ${vehicleModel>vehicleMaster/status} === 'Early' ? 'textYellow' : 'textGreen'}" />
+                </table:template>
+              </table:Column>
+              <table:Column label="Billing" width="6rem" hAlign="Center">
+                <table:template>
+                  <m:Text text="{= ${vehicleModel>billing/value} || ${vehicleModel>billing} }" wrapping="False"
+                    class="{= ${vehicleModel>billing/status} === 'Late' ? 'textRed' : ${vehicleModel>billing/status} === 'Early' ? 'textYellow' : 'textGreen'}" />
+                </table:template>
+              </table:Column>
+              <table:Column label="Exit" width="6rem" hAlign="Center">
+                <table:template>
+                  <m:Text text="{= ${vehicleModel>exit/value} || ${vehicleModel>exit} }" wrapping="False"
+                    class="{= ${vehicleModel>exit/status} === 'Late' ? 'textRed' : ${vehicleModel>exit/status} === 'Early' ? 'textYellow' : 'textGreen'}" />
+                </table:template>
+              </table:Column>
+              
+              
+
+            </table:columns>
+          </table:Table>
+        </m:Panel>
+      </m:VBox>
+    </m:content>
+  </m:Page>
+</mvc:View>

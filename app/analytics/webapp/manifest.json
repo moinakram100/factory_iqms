@@ -1,7 +1,7 @@
 {
   "_version": "1.65.0",
   "sap.app": {
-    "id": "com.ingenx.qms.truckassignmentfactory",
+    "id": "com.ingenx.qms.analytics",
     "type": "application",
     "i18n": "i18n/i18n.properties",
     "applicationVersion": {
@@ -13,7 +13,7 @@
     "sourceTemplate": {
       "id": "@sap/generator-fiori:basic",
       "version": "1.17.5",
-      "toolsId": "c58e2355-e5fc-4a46-82cd-e8e36476b899"
+      "toolsId": "49f6e529-a3a2-4843-9225-3e0986576145"
     },
     "dataSources": {
       "mainService": {
@@ -45,7 +45,7 @@
   "sap.ui5": {
     "flexEnabled": true,
     "dependencies": {
-      "minUI5Version": "1.135.0",
+      "minUI5Version": "1.136.1",
       "libs": {
         "sap.m": {},
         "sap.ui.core": {}
@@ -59,7 +59,7 @@
       "i18n": {
         "type": "sap.ui.model.resource.ResourceModel",
         "settings": {
-          "bundleName": "com.ingenx.qms.truckassignment.i18n.i18n"
+          "bundleName": "com.ingenx.qms.analytics.i18n.i18n"
         }
       },
       "": {
@@ -87,9 +87,9 @@
         "transition": "slide",
         "type": "View",
         "viewType": "XML",
-        "path": "com.ingenx.qms.truckassignment.view",
+        "path": "com.ingenx.qms.analytics.view",
         "async": true,
-        "viewPath": "com.ingenx.qms.truckassignment.view"
+        "viewPath": "com.ingenx.qms.analytics.view"
       },
       "routes": [
         {
@@ -98,17 +98,50 @@
           "target": [
             "TargetHome"
           ]
+        },
+        {
+          "name": "RouteanalyticsDashboard",
+          "pattern": "dashboard",
+          "target": [
+            "TargetanalyticsDashboard"
+          ]
+        },
+        {
+          "name": "RouteanalyticsAnalytics",
+          "pattern": "analytics",
+          "target": [
+            "TargetanalyticsAnalytics"
+          ]
+        },
+        {
+          "name": "RouteAnalysisReport",
+          "pattern": "timereport",
+          "target": [
+            "TargetAnalysisReport"
+          ]
         }
       ],
       "targets": {
         "TargetHome": {
           "id": "Home",
           "name": "Home"
+        },
+        "TargetAnalysisReport": {
+          "id": "AnalysisReport",
+          "name": "AnalysisReport"
+        },
+        "TargetanalyticsDashboard": {
+          "id": "Dashboard",
+          "name": "Dashboard"
+        },
+        "TargetanalyticsAnalytics": {
+          "id": "Analytics",
+          "name": "Analytics"
         }
       }
     },
     "rootView": {
-      "viewName": "com.ingenx.qms.truckassignment.view.App",
+      "viewName": "com.ingenx.qms.analytics.view.App",
       "type": "XML",
       "id": "App",
       "async": true

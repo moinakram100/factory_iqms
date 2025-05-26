@@ -18,3 +18,5 @@ using from './parking/annotations';
 using from './fangeneration/annotations';
 
 using from './inventory/annotations';
+
+using from './analytics/annotations';
