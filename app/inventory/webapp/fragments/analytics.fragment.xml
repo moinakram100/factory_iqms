@@ -1,0 +1,66 @@
+<core:FragmentDefinition
+  xmlns="sap.m"
+  xmlns:core="sap.ui.core"
+  xmlns:viz="sap.viz.ui5.controls"
+  xmlns:viz.data="sap.viz.ui5.data"
+  xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds">
+
+  <Dialog
+    id="avgTimeDialog"
+    title="{avgTimeModel>/title}"
+    contentHeight="350px"
+    contentWidth="70%"
+    class="sapUiContentPadding">
+
+    <viz:VizFrame
+      id="avgTimeChart"
+      width="100%"
+      height="350px"
+      vizType="combination"
+      uiConfig="{applicationSet: 'fiori'}"
+      vizProperties="{
+        valueAxis: {
+          title: { visible: false }
+        },
+        categoryAxis: {
+          title: { visible: false }
+        },
+        legend: {
+          title: { visible: false },
+          visible: true
+        },
+        plotArea: {
+          dataLabel: {
+            visible: true,
+            labelPosition: 'outside'
+          },
+          dataShape: {
+            primaryAxis: ['bar', 'line']
+          }
+        }
+      }">
+
+      <viz:dataset>
+        <viz.data:FlattenedDataset data="{avgTimeModel>/data}">
+          <viz.data:dimensions>
+            <viz.data:DimensionDefinition name="Step" value="{avgTimeModel>step}" />
+          </viz.data:dimensions>
+          <viz.data:measures>
+            <viz.data:MeasureDefinition name="Truck Time" value="{avgTimeModel>truckTime}" />
+            <viz.data:MeasureDefinition name="Avg Time" value="{avgTimeModel>avgTime}" />
+          </viz.data:measures>
+        </viz.data:FlattenedDataset>
+      </viz:dataset>
+
+      <viz:feeds>
+        <viz.feeds:FeedItem uid="primaryValues" type="Measure" values="Truck Time,Avg Time" />
+        <viz.feeds:FeedItem uid="axisLabels" type="Dimension" values="Step" />
+      </viz:feeds>
+
+    </viz:VizFrame>
+
+    <endButton>
+      <Button text="Close" press="onCloseDialog" />
+    </endButton>
+  </Dialog>
+</core:FragmentDefinition>

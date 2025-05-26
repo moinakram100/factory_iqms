@@ -112,12 +112,23 @@
           "target": [
             "TargetInventoryAnalytics"
           ]
+        },
+        {
+          "name": "RouteAnalysisReport",
+          "pattern": "report",
+          "target": [
+            "TargetAnalysisReport"
+          ]
         }
       ],
       "targets": {
         "TargetHome": {
           "id": "Home",
           "name": "Home"
+        },
+        "TargetAnalysisReport": {
+          "id": "AnalysisReport",
+          "name": "AnalysisReport"
         },
         "TargetInventoryDashboard": {
           "id": "Dashboard",

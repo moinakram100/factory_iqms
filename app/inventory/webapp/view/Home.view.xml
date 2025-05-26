@@ -36,6 +36,20 @@
                     />
                 </TileContent> -->
             </GenericTile>
+                <GenericTile
+                id="AnalyticsReportTile"
+                class="sapUiSmallMarginBegin sapUiSmallMarginTop tileLayout"
+                header="Time Analytics"
+                press="onInventoryAnalysisReport"
+            >
+                <!-- <TileContent id="inventoryAnalyticsTileContent">
+                    <ImageContent
+                        id="inventoryAnalyticsImage"
+                        src="sap-icon://edit"
+                    />
+                </TileContent> -->
+            </GenericTile>
+
 
            
         </content>

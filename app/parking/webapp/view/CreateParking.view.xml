@@ -9,6 +9,7 @@
     xmlns:core="sap.ui.core"
     xmlns:ndc="sap.ndc"
 >
+<Page showHeader="false">
     <tnt:ToolHeader
         id="_IDGenToolHeader1"
         class="sapUiTinyMarginTop sapUiTinyMarginEnd sapUiTinyMarginBegin"
@@ -356,5 +357,5 @@
                 />
             </FlexBox>
         </FlexBox>
-    
+    </Page>
 </mvc:View>

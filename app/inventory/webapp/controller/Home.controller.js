@@ -12,6 +12,9 @@ sap.ui.define([
         },
         onInventoryAnalyticsTile : function(){
             this.Router.navTo("RouteInventoryAnalytics")
+        },
+        onInventoryAnalysisReport : function(){
+            this.Router.navTo("RouteAnalysisReport")
         }
     });
 });
