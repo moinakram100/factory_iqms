@@ -1,0 +1,43 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <Dialog
+        title="Create Shipment"
+        id="createShipmentDialog"
+    >
+        <FlexBox direction="Row" class = "touchrfidcss">
+            <FlexBox alignItems="Center">
+                <Label text="Touch key :-"  />
+                <Input
+                    width="150px"
+                    id="TouchKey_ifvans"
+                />
+            </FlexBox>
+
+            <FlexBox alignItems="Center" class="csstouchkey">
+                <Label text="RFID :-"  />
+                <Input
+                    width="150px"
+                    id="Rfid_idvans"
+                    class="cssrfid"
+                    type="Number"
+                />
+            </FlexBox>
+        </FlexBox>
+
+        <footer>
+            <OverflowToolbar id="ooter">
+                <ToolbarSpacer />
+                <Button
+                    text="Submit"
+                    press="CreateShipment"
+                />
+                <Button
+                    text="Close"
+                    press="onCloseShipment"
+                />
+            </OverflowToolbar>
+        </footer>
+    </Dialog>
+</core:FragmentDefinition>

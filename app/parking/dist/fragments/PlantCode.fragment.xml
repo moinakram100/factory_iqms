@@ -1,0 +1,60 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+ 
+    <SelectDialog
+        id="PlantCodeDialog"
+        title="Select Plant"
+        liveChange="onPlantSearch"
+        search="onPlantSearch"
+        confirm="onPlantConfirm"
+        items="{/xIQMSxPlants}">
+        <StandardListItem id="PlantCodeListItem"
+            title="{Plant}"
+            iconDensityAware="false"
+            iconInset="false"
+            type="Active"
+            description="{Plant_text}"
+            wrapping="true"/>
+    </SelectDialog>
+</core:FragmentDefinition>
+<!-- 
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+
+    <SelectDialog
+        id="PlantCodeDialog"
+        title="Select Plant"
+        liveChange="onTransportSearch"
+        search="onPlantSearch"
+        confirm="onPlantConfirm">
+
+        <items>
+            <StandardListItem
+                title="AJML"
+                description="Ajmal Perfumes"
+                type="Active"
+                iconDensityAware="false"
+                iconInset="false"
+                wrapping="true" />
+
+            <StandardListItem
+                title="DUB1"
+                description="Dubai Main Plant"
+                type="Active"
+                iconDensityAware="false"
+                iconInset="false"
+                wrapping="true" />
+
+            <StandardListItem
+                title="SHJ2"
+                description="Sharjah Secondary Plant"
+                type="Active"
+                iconDensityAware="false"
+                iconInset="false"
+                wrapping="true" />
+        </items>
+        
+    </SelectDialog>
+</core:FragmentDefinition> -->

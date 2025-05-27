@@ -1,0 +1,48 @@
+<mvc:View xmlns:tnt="sap.tnt" 
+    controllerName="com.ingenx.qms.config.controller.ConfigHome"
+    xmlns:mvc="sap.ui.core.mvc" 
+    displayBlock="true"
+    xmlns="sap.m">
+   
+    <tnt:ToolHeader id="configHomePageToolHeaderId" class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiSmallMarginTop">
+        <ToolbarSpacer id="homePageHeaderId"/>
+        <FlexBox alignItems="Center" justifyContent="Center" width="100%">
+            <Title id="pageHeader" text="Configuration Panel" />
+        </FlexBox>
+    </tnt:ToolHeader>
+
+    <Page id="configHomePageId" showHeader="false">
+        <content>
+            <GenericTile id="ConfigParkingTile" class="sapUiSmallMarginBegin sapUiSmallMarginTop tileLayout" header="Parking Gate and Area Definition" press="onParking">
+                <TileContent id="ConfigParkingContentId">
+                    <ImageContent id="ConfigParkingIconId" src="sap-icon://BusinessSuiteInAppSymbols/icon-gate" />
+                </TileContent>
+            </GenericTile>
+            <GenericTile id="ConfigVehicleTile" class="sapUiSmallMarginBegin sapUiSmallMarginTop tileLayout" header="Vehicle Type Definition" press="onVehhicleDefination">
+                <TileContent id="ConfigVehicleContentId">
+                    <ImageContent id="ConfigVehicleIconId" src="sap-icon://BusinessSuiteInAppSymbols/icon-box-truck" />
+                </TileContent>
+            </GenericTile>
+            <GenericTile id="ConfigChecklistTile" class="sapUiSmallMarginBegin sapUiSmallMarginTop tileLayout" header="Checklist Creation for Vehicle" press="onChecklistCreation">
+                <TileContent id="ConfigChecklistContentId">
+                    <ImageContent id="ConfigChecklistIconId" src="sap-icon://BusinessSuiteInAppSymbols/icon-checklist-item" />
+                </TileContent>
+            </GenericTile>
+            <GenericTile id="ConfigMaterialTile" class="sapUiSmallMarginBegin sapUiSmallMarginTop tileLayout" header="Material Type Definition" press="onMaterialDefinition">
+                <TileContent id="ConfigMaterialContentId">
+                    <ImageContent id="ConfigMaterialIconId" src="sap-icon://BusinessSuiteInAppSymbols/icon-raw-material" />
+                </TileContent>
+            </GenericTile>
+            <GenericTile id="ConfigBayTile" class="sapUiSmallMarginBegin sapUiSmallMarginTop tileLayout" header="Bay Allocation" press="onBayAllocation">
+                <TileContent id="ConfigBayContentId">
+                    <ImageContent id="ConfigBayIconId" src="sap-icon://BusinessSuiteInAppSymbols/icon-class" />
+                </TileContent>
+            </GenericTile>
+            <GenericTile id="ConfigShipmentTile" class="sapUiSmallMarginBegin sapUiSmallMarginTop tileLayout" header="Shipment Detail" press="onShipmentDetail">
+                <TileContent id="ConfigShipmentContentId">
+                    <ImageContent id="ConfigShipmentIconId" src="sap-icon://BusinessSuiteInAppSymbols/icon-container-loading" />
+                </TileContent>
+            </GenericTile>
+        </content>
+    </Page>
+</mvc:View>

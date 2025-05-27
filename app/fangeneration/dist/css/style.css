@@ -1,0 +1,184 @@
+/* solid screen css */
+
+/* Enter your custom styles here */
+.sapTntToolHeader .sapMTitle {
+
+    font-family: "72-Bold", "72-Boldfull", "72", "72full", Arial, Helvetica, sans-serif !important;
+    color: black !important;
+
+
+}
+.sapTntToolHeader.sapMTB {
+    border-radius: 0.5rem;
+}
+    
+.sapUiBlockCellContent {
+    padding: 0.5rem !important;
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
+}
+ 
+.sapTntToolHeader {
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 6px 0px;
+    transition: 0.3s;
+}
+ 
+/* .sapTntToolHeader:hover {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 6px;
+} */
+.headerTitle{
+    font-size: 1.5rem !important;
+    font-weight: bold;
+    align-items: center;
+}
+
+.mainFlexContainer{
+    background-color: white;
+    margin: 10px 10px 10px 10px;
+    border-radius: 10px;
+    min-height: 210px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    padding: 1rem;
+    gap: 2rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+}
+.mainTable{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 10px !important;
+    margin-left: .74%;
+
+
+}
+.mainTable .sapUiTableCnt {
+    border-radius: 10px;
+}
+
+.touchrfidcss{
+    padding: 10px;
+}
+
+.csstouchkey{
+    margin-left: 10px;
+}
+
+.dailogCss{
+    margin-left: 100px;
+}
+
+.customLabel{
+    margin-left: 20px;
+}
+
+.customInput {
+    padding-right: 20px;
+}
+
+.css1{
+    border-right: 1px solid white;
+    padding-right : 14px;
+    padding-top: 10px;
+    gap: 1rem;
+}
+
+.css2{
+    gap: 0.5rem;
+}
+
+.css3{
+    margin-top: 10px;
+}
+
+.css4{
+    margin-top: 2px;
+}
+.css5{
+    margin-top: 5px;
+}
+
+.css6{
+    margin-top: 4px;
+}
+
+.css7{
+    border: 1.5px solid #cccccc; 
+    box-shadow: 0 0px 3px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 10px;
+    height: 11rem;
+}
+
+.css8{
+    border-bottom: 1px solid gray;
+    width: 100%;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.css9{
+    margin-top: 15px;
+}
+.sapMScrollCont{
+    scrollbar-width: none;
+}
+
+.mainVBox1{
+    padding: 1rem;
+}
+
+.css2CVM{
+    margin: 10px 0px 0px 20px;
+ }
+
+.css3CVM{
+    border: 1.5px solid #cccccc; 
+    box-shadow: 0 0px 3px 0 rgba(0, 0, 0, 0.1);
+    padding: 10px 10px 10px 30px;
+    margin: 0px 10px 10px 10px;
+    border-radius: 10px;
+}
+
+
+
+.css4CVM{
+    margin-top: 6px;
+}
+
+.css5CVM{
+    margin-top: 13px;
+}
+
+.css6CVM{
+    margin-top: 13px;
+}
+
+.css7CVM{
+    margin-top: 10px;
+}
+
+.cssMaster{
+    margin-left: 75px;
+}
+
+.buttonCV{
+    margin-left: 20px;
+    margin-right: 5px;
+}
+
+.css1CVM{
+    border: 1.5px solid #cccccc; 
+    box-shadow: 0 0px 3px 0 rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+
+
+
+
+
+
+
+

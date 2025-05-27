@@ -1,0 +1,204 @@
+<mvc:View
+    controllerName="com.ingenx.qms.billingcreation.controller.BillingCreation"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:filterbar="sap.ui.comp.filterbar"
+    xmlns:tnt="sap.tnt"
+    xmlns:t="sap.ui.table"
+>
+    <tnt:ToolHeader
+        id="_IDGenToolHeader1"
+        class="sapUiTinyMarginTop sapUiTinyMarginEnd sapUiTinyMarginBegin"
+    >
+        <HBox id="_IDGenHBox1"
+            justifyContent="Center"
+            width="100%"
+        >
+            <Title
+                id="_IDGenText1"
+                text="Billing Creation"
+                level="H3"
+                textAlign="Center"
+            />
+        </HBox>
+    </tnt:ToolHeader>
+    
+
+        <HBox id="_IDGenHBox2" justifyContent="Center" class="sapUiSmallMarginTop headercss sapUiTinyMarginEnd sapUiTinyMarginBegin"  >
+            <FlexBox id="_IDGenFlexBox">
+                <FlexBox id="_IDGenFlexBox1" direction="Column">
+                    <Label id="_IDGenLabel"
+                        text="Parking No "
+                        class="flexParking"
+                        design="Bold"
+                    />
+                    <Label id="_IDGenLabel1"
+                        text="Vehicle No "
+                        class="flexVehicle"
+                        design="Bold"
+                    />
+                </FlexBox>
+
+                <FlexBox id="_IDGenFlexBox2" direction="Column">
+                    <Input
+                        submit="onHandleParkingNo"
+                        id="onParkingSearch"
+                        class="sapUiTinyMarginBegin"
+                    />
+                    <Input
+                        submit="onHandleVehicle"
+                        id="onVehicleSearch"
+                        class="sapUiTinyMarginBegin"
+                    />
+                </FlexBox>
+            </FlexBox>
+
+            <FlexBox id="_IDGenFlexBox3" direction="Column" class="sapUiSmallMarginBegin">
+                <Button id="_IDGenButton"
+                    text="Create Billing"
+                    width="100px"
+                    press="createBilling"
+                />
+                <Button id="_IDGenButton1"
+                    text="Empty Out"
+                    width="100px"
+                    press="EmptyOut"
+                />
+            </FlexBox>
+        </HBox>
+
+    <FlexBox
+        id="_IDGenFlexBox9"
+        class="tableHeader"
+    >
+        <t:Table
+            id="billingTable"
+            visibleRowCount="5"
+            rows="{dataModel>/}"
+            rowSelectionChange="onSelectTable"
+            class="sapUiSmallMarginTop sapUiTinyMarginEnd sapUiTinyMarginBegin mainTable" 
+        >
+            <t:columns>
+                <t:Column id="_IDGenClumn4">
+                    <t:label>
+                        <Label
+                            id="_IDGenabel4"
+                            text="Parking No."
+                        />
+                    </t:label>
+
+                    <t:template>
+                        <Text
+                            id="_IDGenText6"
+                            text="{dataModel>ParkingNo}"
+                            textAlign="Right"
+                        />
+                    </t:template>
+                </t:Column>
+
+                <t:Column id="_IDGeClumn4">
+                    <t:label>
+                        <Label
+                            id="_IDGenbel4"
+                            text="Vehicle No."
+                        />
+                    </t:label>
+
+                    <t:template>
+                        <Text
+                            id="_IDGenText7"
+                            text="{dataModel>VehicleNumber}"
+                            textAlign="Right"
+                        />
+                    </t:template>
+                </t:Column>
+
+                <t:Column id="_IDGenColumn5">
+                    <t:label>
+                        <Label
+                            id="_IDGenLabel6"
+                            text="Vehicle Type"
+                        />
+                    </t:label>
+
+                    <t:template>
+                        <Text
+                            id="_IDGenText8"
+                            text="{dataModel>vehicleType}"
+                            textAlign="Right"
+                        />
+                    </t:template>
+                </t:Column>
+
+                <t:Column id="_IDGenColumn6">
+                    <t:label>
+                        <Label
+                            id="_IDGenLabel7"
+                            text="Status"
+                        />
+                    </t:label>
+
+                    <t:template>
+                        <Text
+                            id="_IDGenText9"
+                            text="{dataModel>Status}"
+                            textAlign="Right"
+                        />
+                    </t:template>
+                </t:Column>
+
+                <t:Column id="_IDGenColumn7">
+                    <t:label>
+                        <Label
+                            id="_IDGenLabel8"
+                            text="Delivery"
+                        />
+                    </t:label>
+
+                    <t:template>
+                        <Text
+                            id="_IDGenText10"
+                            text="{dataModel>DeliveryNo}"
+                            textAlign="Right"
+                        />
+                    </t:template>
+                </t:Column>
+
+                <t:Column id="_IDGenColumn8">
+                    <t:label>
+                        <Label
+                            id="_IDGenLabel9"
+                            text="Shipment No."
+                        />
+                    </t:label>
+
+                    <t:template>
+                        <Text
+                            id="_IDGenText11"
+                            text="{dataModel>ShipmentNo}"
+                            textAlign="Right"
+                        />
+                    </t:template>
+                </t:Column>
+
+                <t:Column id="_IDGenColun8">
+                    <t:label>
+                        <Label
+                            id="_IDGeLabel9"
+                            text="Good Issue Qty"
+                        />
+                    </t:label>
+
+                    <t:template>
+                        <Text
+                            id="_IDGeText11"
+                            text="{dataModel>quantity}"
+                            textAlign="Right"
+                        />
+                    </t:template>
+                </t:Column>
+            </t:columns>
+        </t:Table>
+    </FlexBox>
+</mvc:View>

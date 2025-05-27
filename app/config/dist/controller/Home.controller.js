@@ -1,0 +1,2 @@
+sap.ui.define(["sap/ui/core/mvc/Controller"],e=>{"use strict";return e.extend("com.ingenx.qms.config.controller.Home",{onInit(){},onConfigTile:function(){let e=this.getOwnerComponent().getRouter();e.navTo("RouteConfigHome")},onStatusTile:function(){let e=this.getOwnerComponent().getRouter();e.navTo("RouteStatusHome")}})});
+//# sourceMappingURL=Home.controller.js.map

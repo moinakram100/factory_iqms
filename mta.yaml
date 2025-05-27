@@ -1,49 +1,242 @@
 _schema-version: 3.3.0
 ID: factory_IQMS
+description: A simple CAP project.
 version: 1.0.0
-description: "A simple CAP project."
+modules:
+- name: factory_IQMS-srv
+  type: nodejs
+  path: gen/srv
+  requires:
+  - name: factory_IQMS-destination
+  - name: factory_IQMS-db
+  - name: factory_IQMS-auth
+  - name: factory_IQMS-connectivity
+  - name: factory_IQMS-destination-service
+  provides:
+  - name: srv-api
+    properties:
+      srv-url: ${default-url}
+  parameters:
+    buildpack: nodejs_buildpack
+    readiness-health-check-http-endpoint: /health
+    readiness-health-check-type: http
+  build-parameters:
+    builder: npm
+- name: factory_IQMS-db-deployer
+  type: hdb
+  path: gen/db
+  requires:
+  - name: factory_IQMS-db
+  parameters:
+    buildpack: nodejs_buildpack
+- name: factory_IQMS-destination-content
+  type: com.sap.application.content
+  requires:
+  - name: factory_IQMS-destination-service
+    parameters:
+      content-target: true
+  - name: factory_IQMS_html_repo_host
+    parameters:
+      service-key:
+        name: factory_IQMS_html_repo_host-key
+  - name: factory_IQMS-auth
+    parameters:
+      service-key:
+        name: factory_IQMS-auth-key
+  parameters:
+    content:
+      instance:
+        destinations:
+        - Name: factoryiqmsCloudSrv_factory_IQMS_html_repo_host
+          ServiceInstanceName: factory_IQMS-html5-app-host-service
+          ServiceKeyName: factory_IQMS_html_repo_host-key
+          sap.cloud.service: factoryiqmsCloudSrv
+        - Authentication: OAuth2UserTokenExchange
+          Name: factoryiqmsCloudSrv_factory_IQMS_auth
+          ServiceInstanceName: factory_IQMS-auth
+          ServiceKeyName: factory_IQMS-auth-key
+          sap.cloud.service: factoryiqmsCloudSrv
+        existing_destinations_policy: ignore
+  build-parameters:
+    no-source: true
+- name: factory_IQMS-app-content
+  type: com.sap.application.content
+  path: .
+  requires:
+  - name: factory_IQMS_html_repo_host
+    parameters:
+      content-target: true
+  build-parameters:
+    build-result: resources
+    requires:
+    - artifacts:
+      - comingenxqmsparking.zip
+      name: comingenxqmsparking
+      target-path: resources/
+    - artifacts:
+      - comingenxqmsanalytics.zip
+      name: comingenxqmsanalytics
+      target-path: resources/
+    - artifacts:
+      - comingenxqmsbillingcreationfactory.zip
+      name: comingenxqmsbillingcreationfactory
+      target-path: resources/
+    - artifacts:
+      - comingenxqmsconfigfactory.zip
+      name: comingenxqmsconfigfactory
+      target-path: resources/
+    - artifacts:
+      - comingenxqmsfangenerationfactory.zip
+      name: comingenxqmsfangenerationfactory
+      target-path: resources/
+    - artifacts:
+      - comingenxqmsschedulingfactory.zip
+      name: comingenxqmsschedulingfactory
+      target-path: resources/
+    - artifacts:
+      - comingenxqmstruckassignmentfactory.zip
+      name: comingenxqmstruckassignmentfactory
+      target-path: resources/
+- name: comingenxqmsparking
+  type: html5
+  path: app/parking
+  build-parameters:
+    build-result: dist
+    supported-platforms: []
+- name: comingenxqmsanalytics
+  type: html5
+  path: app/analytics
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+- name: comingenxqmsbillingcreationfactory
+  type: html5
+  path: app/billingcreation
+  build-parameters:
+    build-result: dist
+    supported-platforms: []
+- name: comingenxqmsconfigfactory
+  type: html5
+  path: app/config
+  build-parameters:
+    build-result: dist
+    supported-platforms: []
+- name: comingenxqmsfangenerationfactory
+  type: html5
+  path: app/fangeneration
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+- name: comingenxqmsschedulingfactory
+  type: html5
+  path: app/scheduling
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+- name: comingenxqmstruckassignmentfactory
+  type: html5
+  path: app/truckassignment
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+resources:
+- name: factory_IQMS-destination-service
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      HTML5Runtime_enabled: true
+      init_data:
+        instance:
+          destinations:
+          - Authentication: NoAuthentication
+            Name: ui5
+            ProxyType: Internet
+            Type: HTTP
+            URL: https://ui5.sap.com
+          - Authentication: NoAuthentication
+            HTML5.DynamicDestination: true
+            HTML5.ForwardAuthToken: true
+            Name: factory_IQMS-srv-api
+            ProxyType: Internet
+            Type: HTTP
+            URL: ~{srv-api/srv-url}
+          existing_destinations_policy: update
+    service: destination
+    service-plan: lite
+  requires:
+  - name: srv-api
+- name: factory_IQMS-destination
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      HTML5Runtime_enabled: true
+      init_data:
+        instance:
+          destinations:
+          - Authentication: NoAuthentication
+            Name: ui5
+            ProxyType: Internet
+            Type: HTTP
+            URL: https://ui5.sap.com
+          - Authentication: NoAuthentication
+            HTML5.DynamicDestination: true
+            HTML5.ForwardAuthToken: true
+            Name: factory_IQMS-srv-api
+            ProxyType: Internet
+            Type: HTTP
+            URL: ~{srv-api/srv-url}
+          existing_destinations_policy: update
+    service: destination
+    service-plan: lite
+  requires:
+  - name: srv-api
+- name: factory_IQMS-db
+  type: com.sap.xs.hdi-container
+  parameters:
+    service: hana
+    service-plan: hdi-shared
+- name: factory_IQMS-auth
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      tenant-mode: dedicated
+      xsappname: factory_IQMS-${org}-${space}
+    path: ./xs-security.json
+    service: xsuaa
+    service-plan: application
+- name: factory_IQMS-connectivity
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: connectivity
+    service-plan: lite
+- name: factory_IQMS_html_repo_host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-name: factory_IQMS-html5-app-host-service
+    service-plan: app-host
 parameters:
+  deploy_mode: html5-repo
   enable-parallel-deployments: true
 build-parameters:
   before-all:
-    - builder: custom
-      commands:
-        - npm ci
-        - npx cds build --production
-modules:
-  - name: factory_IQMS-srv
-    type: nodejs
-    path: gen/srv
-    parameters:
-      buildpack: nodejs_buildpack
-      readiness-health-check-type: http
-      readiness-health-check-http-endpoint: /health
-    build-parameters:
-      builder: npm
-    provides:
-      - name: srv-api # required by consumers of CAP services (e.g. approuter)
-        properties:
-          srv-url: ${default-url}
-    requires:
-      - name: factory_IQMS-destination
-      - name: factory_IQMS-db
-
-  - name: factory_IQMS-db-deployer
-    type: hdb
-    path: gen/db
-    parameters:
-      buildpack: nodejs_buildpack
-    requires:
-      - name: factory_IQMS-db
-
-resources:
-  - name: factory_IQMS-destination
-    type: org.cloudfoundry.managed-service
-    parameters:
-      service: destination
-      service-plan: lite
-  - name: factory_IQMS-db
-    type: com.sap.xs.hdi-container
-    parameters:
-      service: hana
-      service-plan: hdi-shared
+  - builder: custom
+    commands:
+    - npm ci
+    - npx cds build --production

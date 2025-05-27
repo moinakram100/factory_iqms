@@ -1,0 +1,135 @@
+<mvc:View
+    controllerName="com.ingenx.qms.parking.controller.VehicleChecklist"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt"
+    xmlns:t="sap.ui.table"
+    xmlns:filterbar="sap.ui.comp.filterbar"
+>
+
+
+    <tnt:ToolHeader
+        id="_IDGenToolHeader3"
+        class="sapUiTinyMarginTop sapUiTinyMarginEnd sapUiTinyMarginBegin"
+    >
+       <HBox
+                justifyContent="Center"
+                width="100%"
+                id="HBoxTitleVC"
+            >
+                <Title
+                    text="Security Checklist"
+                    wrapping="true"
+                    id="SecurityChecklist_Header"
+                    textAlign="Center"
+                    class="headerTitle"
+                />
+            </HBox>
+    </tnt:ToolHeader>
+
+    <FlexBox id="_IDGenFlexBox17"
+        alignItems="Center"
+        class="headerVC"
+    >
+        <FlexBox id="_IDGenFlexBox19" alignItems="Center">
+            <Label id="_IDGenLabel" text="Parking No "  design="Bold"/>
+            <Input
+                id="parking_id"
+                width="200px"
+                editable="false"
+                class="sapUiTinyMarginBegin"
+            />
+        </FlexBox>
+        <FlexBox id="_IDGenFlexBox20" alignItems="Center" >
+            <Label id="_IDGenLabel5" text="Truck No "  design="Bold"/>
+            <Input editable="false" id="truck_id" width="200px"  class="sapUiTinyMarginBegin"/>
+        </FlexBox>
+        <FlexBox id="_IDGenFlexBox21" alignItems="Center">
+            <Label id="_IDGenLabel6" text="Vehicle Type "  design="Bold" />
+            <Input
+                id="VehicleType_id"
+                width="200px"
+                editable="false"
+                class="sapUiTinyMarginBegin"
+            />
+        </FlexBox>
+    </FlexBox>
+
+    <FlexBox
+        id="_IDGenFlexBox18"
+        direction="Row"
+        class="header2VC"
+    >
+        <FlexBox
+            id="_IDGenFlexBox4"
+            class="table"
+        >
+            <t:Table
+                id="_checkListTable"
+                rows="{finalModel>/result}"
+                visibleRowCount="8"
+                selectionMode="None"
+            >
+                <t:columns>
+                    <t:Column
+                        id="_IDGenColumn5"
+                        width="20rem"
+                    >
+                        <t:label>
+                            <Label
+                                id="_IDGenLabel7"
+                                text="Remarks"
+                            />
+                        </t:label>
+                        <t:template>
+                            <Text
+                                id="_IDGenTet124"
+                                text="{finalModel>Remarks}"
+                                textAlign="Right"
+                            />
+                        </t:template>
+                    </t:Column>
+
+                    <t:Column id="_IDGenColumn">
+                        <t:label>
+                            <Label
+                                id="_IDGenabel4"
+                                text="Pass/Fail"
+                            />
+                        </t:label>
+
+                        <t:template>
+                            <RadioButtonGroup id="_IDGenRadioButtonGroup"
+                                columns="2"
+                            >
+                                <buttons>
+                                    <RadioButton id="_IDGenRadioButton"
+                                        text="Pass"
+                                        selected="{finalModel>pass}"
+                                    />
+                                    <RadioButton id="_IDGenRadioButton1" text="Fail" selected="{finalModel>fail}"/>
+                                </buttons>
+                            </RadioButtonGroup>
+                        </t:template>
+                    </t:Column>
+                </t:columns>
+            </t:Table>
+
+        </FlexBox >
+        <FlexBox id="submitbtnContainer" alignItems="End">
+          <Button
+        id="_IDGenButton1"
+        text="Submit"
+        type="Emphasized"
+        press="onSubmit"
+        
+          />
+        </FlexBox>
+        <FlexBox id="_IDGenFlexBox22" >
+        
+        </FlexBox>
+    </FlexBox>
+  
+</mvc:View>

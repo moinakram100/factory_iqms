@@ -1,0 +1,137 @@
+<mvc:View
+    controllerName="com.ingenx.qms.config.controller.VehicleDefinition"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:tnt="sap.tnt"
+>
+    <Page
+        id="vehicleCheck_page"
+        showHeader="false"
+    >
+        <tnt:ToolHeader
+            id="vehicleCheck_ToolHeader"
+            class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiSmallMarginTop"
+        >
+        
+            <Title
+                text="Vehicle Type and Definition Mapping"
+                wrapping="true"
+                id="vehicleCheck_Title"
+                level="H3"
+            />
+            <ToolbarSpacer id="VehicleDef_ToolbarSpacer2" />
+         
+            <HBox id="vehicleCheck_HBox1">
+                <Button
+                    id="addVehicleDefBtn"
+                    text="Create"
+                    width="100px"
+                    press="onCreateVehicle"
+                    type="Emphasized"
+                    visible="true"
+                    class="sapUiTinyMarginEnd"
+                />
+                <Button
+                    id="deleteVehicleDefBtn"
+                    text="Delete"
+                    width="100px"
+                    press="onDeleteVehicleBtn"
+                    type="Emphasized"
+                    visible="true"
+                />
+                <Button
+                    id="deleteVehicleCnfrmBtn"
+                    text="Confirm"
+                    width="100px"
+                    press="onConfirmVehicleDeletionBtn"
+                    type="Emphasized"
+                    visible="false"
+                    class="sapUiTinyMarginEnd"
+                />
+                <Button
+                    id="cancelVehicleDefBtn"
+                    text="Cancel"
+                    width="100px"
+                    press="onCancelVehicleBtn"
+                    type="Emphasized"
+                    visible="false"
+                />
+            </HBox>
+        </tnt:ToolHeader>
+
+        <l:VerticalLayout
+            id="vehicleCheck_VerticalLayout1"
+            width="100%"
+        >
+            <l:BlockLayout
+                id="vehicleCheck_BlockLayout1"
+                background="Dashboard"
+            >
+                <l:BlockLayoutRow id="vehicleCheck_BlockLayoutRow1">
+                    <l:BlockLayoutCell
+                        id="vehicleCheck_BlockLayoutCell1"
+                        width="90%"
+                    >
+                        <ScrollContainer
+                            id="vehicleCheck_scrollcont1"
+                            width="100%"
+                            height="calc(100vh - 110px)"
+                            horizontal="false"
+                            vertical="true"
+                        >
+                            <Table
+                                items="{/VehicleTypeDefinition}"
+                                id="tableVehicleDef"
+                                selectionChange="onSelect"
+                                mode="None"
+                                sticky="ColumnHeaders"
+                            >
+                                <columns>
+                                 
+                                    <Column id="vehicleCheck_Col_Definition">
+                                        <header>
+                                            <Label
+                                                wrapping="true"
+                                                text="Vehicle Definition"
+                                            />
+                                        </header>
+                                    </Column>
+                                    <Column id="vehicleCheck_Col_Type">
+                                        <header>
+                                            <Label
+                                                wrapping="true"
+                                                text="Vehicle Type"
+                                            />
+                                        </header>
+                                    </Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem
+                                        type="Active"
+                                        id="vehicleCheck_ColListItem1"
+                                    >
+                                        <cells>
+                                          
+                                            <Text text="{VehicleDefinition}" />
+                                            <Text text="{VehicleType}" />
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                                <noData>
+                                    <IllustratedMessage
+                                        id="vehicleCheck_IllustratedMessage1"
+                                        enableVerticalResponsiveness="true"
+                                        title="No Data Found"
+                                        description="There are no items in this Table"
+                                    />
+                                </noData>
+                            </Table>
+                        </ScrollContainer>
+                    </l:BlockLayoutCell>
+                </l:BlockLayoutRow>
+            </l:BlockLayout>
+        </l:VerticalLayout>
+    </Page>
+</mvc:View>

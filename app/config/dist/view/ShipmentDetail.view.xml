@@ -1,0 +1,148 @@
+<mvc:View
+    controllerName="com.ingenx.qms.config.controller.ShipmentDetail"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:tnt="sap.tnt"
+>
+    <Page
+        id="ShipmentDetail_Page"
+        showHeader="false"
+    >
+        <tnt:ToolHeader
+            id="ShipmentDetail_ToolHeader"
+            class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiSmallMarginTop"
+        >
+         
+            <Title
+                text="Shipment Detail"
+                wrapping="true"
+                id="ShipmentDetail_Title"
+                level="H3"
+            />
+            <ToolbarSpacer id="ShipmentDetail_ToolbarSpacer2" />
+            <HBox id="ShipmentDetail_HBox1">
+                <Button
+                    id="ShipmentDetail_Create"
+                    text="Create"
+                    width="100px"
+                    press="onAddMap"
+                    type="Emphasized"
+                    visible="true"
+                    class="sapUiTinyMarginEnd"
+                />
+                <Button
+                    id="ShipmentDetail_Delete"
+                    text="Delete"
+                    width="100px"
+                    press="onDeleteMap"
+                    type="Emphasized"
+                    visible="true"
+                />
+                <Button
+                    id="ShipmentDetail_Confirm"
+                    text="Confirm"
+                    width="100px"
+                    press="onConfirmMapDeletion"
+                    type="Emphasized"
+                    visible="false"
+                    class="sapUiTinyMarginEnd"
+                />
+                <Button
+                    id="ShipmentDetail_Cancel"
+                    text="Cancel"
+                    width="100px"
+                    press="onCancelMapDeletion"
+                    type="Emphasized"
+                    visible="false"
+                />
+            </HBox>
+        </tnt:ToolHeader>
+
+        <l:VerticalLayout
+            id="ShipmentDetail_VerticalLayout1"
+            width="100%"
+        >
+            <l:BlockLayout
+                id="ShipmentDetail_BlockLayout1"
+                background="Dashboard"
+            >
+                <l:BlockLayoutRow id="ShipmentDetail_BlockLayoutRow1">
+                    <l:BlockLayoutCell
+                        id="ShipmentDetail_BlockLayoutCell1"
+                        width="90%"
+                    >
+                        <ScrollContainer
+                            id="ShipmentDetail_ScrollContainer1"
+                            width="100%"
+                            height="calc(100vh - 110px)"
+                            horizontal="false"
+                            vertical="true"
+                        >
+                            <Table
+                                items="{/ShipmentDetails}"
+                                id="ShipmentDetail_Table"
+                                selectionChange="onSelect"
+                                mode="None"
+                                sticky="ColumnHeaders"
+                            >
+                                <columns>
+                                    <Column id="ShipmentDetail_Col_Division">
+                                        <header>
+                                            <Label
+                                                wrapping="true"
+                                                text="Division"
+                                            />
+                                        </header>
+                                    </Column>
+                                    <Column id="ShipmentDetail_Col_IncoTerm">
+                                        <header>
+                                            <Label
+                                                wrapping="true"
+                                                text="IncoTerm"
+                                            />
+                                        </header>
+                                    </Column>
+                                    <Column id="ShipmentDetail_Col_Type">
+                                        <header>
+                                            <Label
+                                                wrapping="true"
+                                                text="Shipment Type"
+                                            />
+                                        </header>
+                                    </Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem
+                                        type="Active"
+                                        id="ShipmentDetail_ColListItem1"
+                                        press="onSelectServiceProfile"
+                                    >
+                                        <cells>
+                                            <CheckBox
+                                                id="ShipmentDetail_CheckBox"
+                                                select="onDeleteMapArray"
+                                            />
+                                            <Text text="{Division}" />
+                                            <Text text="{IncoTerm}" />
+                                            <Text text="{ShipmentType}" />
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                                <noData>
+                                    <IllustratedMessage
+                                        id="ShipmentDetail_IllustratedMessage1"
+                                        enableVerticalResponsiveness="true"
+                                        title="No Data Found"
+                                        description="There are no items in this Table"
+                                    />
+                                </noData>
+                            </Table>
+                        </ScrollContainer>
+                    </l:BlockLayoutCell>
+                </l:BlockLayoutRow>
+            </l:BlockLayout>
+        </l:VerticalLayout>
+    </Page>
+</mvc:View>

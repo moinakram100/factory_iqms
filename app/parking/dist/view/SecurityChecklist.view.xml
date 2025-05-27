@@ -1,0 +1,168 @@
+<mvc:View
+    controllerName="com.ingenx.qms.parking.controller.SecurityChecklist"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt"
+>
+    <tnt:ToolHeader
+        id="_IDGenToolHeader2"
+        class="sapUiTinyMarginTop sapUiTinyMarginEnd sapUiTinyMarginBegin"
+    >
+       <HBox
+                justifyContent="Center"
+                width="100%"
+                id="HBoxSCTitle"
+            >
+                <Title
+                    text="Security Checklist"
+                    wrapping="true"
+                    id="SecurityHome_Header"
+                    textAlign="Center"
+                    class="headerTitle"
+                />
+            </HBox>
+    </tnt:ToolHeader>
+
+    <FlexBox
+        id="_IDGenFlexBox14"
+        direction="Column"
+        class="headerSC"
+    >
+        <FlexBox
+            id="_IDGenFlexBox15"
+            class="css1SC"
+            alignItems="Center"
+        >
+            <FlexBox
+                id="_IDGenFlexBox3"
+                class="css2SC"
+            >
+                <Button
+                    id="_IDGenButton"
+                    text="Park-Out"
+                    icon="sap-icon://arrow-right"
+                    press="onParkOut"
+                />
+
+                <Button
+                    id="_IDGenButton2"
+                    icon="sap-icon://search"
+                    text="Checklist"
+                    press="onCheckListPress"
+                />
+            </FlexBox>
+        </FlexBox>
+
+        <FlexBox
+            id="_IDGenFlexBox5"
+            direction="Row"
+            class="css3SC"
+        >
+            <FlexBox
+                id="_IDGenFlexBox6"
+                direction="Column"
+                alignItems="Center"
+            >
+                <Label
+                    id="_IDGenLabel1"
+                    text="Parking Gate :"
+                    design="Bold"
+                    class="cssPG"
+                />
+                <Label
+                    id="_IDGenLabel2"
+                    text="Parking Area :"
+                    design="Bold"
+                    class="cssPA"
+                />
+            </FlexBox>
+
+            <FlexBox
+                id="_IDGenFlexBox16"
+                direction="Column"
+                alignItems="Center"
+            >
+                <Input
+                    width="70px"
+                    id="parkingGate_id"
+                    editable="false"
+                />
+                <Input
+                    width="70px"
+                    id="parkingArea_id"
+                    editable="false"
+                />
+            </FlexBox>
+        </FlexBox>
+
+        <FlexBox
+            id="_IDGenFlexBox9"
+            direction="Row"
+            class="css4SC"
+        >
+            <FlexBox
+                id="_IDGenFlexBox10"
+                direction="Column"
+                alignItems="Center"
+            >
+                <RadioButtonGroup
+                    id="radioGroup"
+                    select="onRadioSelect"
+                >
+                    <RadioButton
+                        id="_IDGenRadioBtton1"
+                        text="Parking No"
+                    />
+                    <RadioButton
+                        id="_IDGenRadioButon2"
+                        text="Parking List"
+                    />
+                </RadioButtonGroup>
+            </FlexBox>
+
+            <FlexBox
+                id="_IDGenFlexBox11"
+                direction="Column"
+                alignItems="Center"
+            >
+                <Input
+                    id="_InputParkingNo"
+                    width="150px"
+                    showValueHelp="false"
+                    valueHelpRequest="onParkingNo"
+                    placeholder="e.g 0000000020"
+                    type="Number"
+                    liveChange="onInputLiveChange1"
+                    
+                    submit="onPakingInputSubmit"
+                />
+            </FlexBox>
+
+            <FlexBox
+                id="_IDGenFlexBox12"
+                direction="Column"
+                alignItems="Center"
+                class="css5SC"
+            >
+                <Label
+                    id="_IDLabelRemark"
+                    text="Remark :"
+                    design="Bold"
+                />
+            </FlexBox>
+
+            <FlexBox
+                id="_IDGenFlexBox13"
+                direction="Column"
+                alignItems="Center"
+            >
+                <Input
+                    id="remark_id"
+                    width="300px"
+                    editable="false"
+                />
+            </FlexBox>
+        </FlexBox>
+    </FlexBox>
+</mvc:View>

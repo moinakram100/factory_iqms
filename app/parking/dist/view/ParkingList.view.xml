@@ -1,0 +1,223 @@
+<mvc:View
+    controllerName="com.ingenx.qms.parking.controller.ParkingList"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt"
+    xmlns:core="sap.ui.core"
+    xmlns:t="sap.ui.table"
+>
+    <tnt:ToolHeader
+        id="_IDGenToolHeader1"
+        class="sapUiTinyMarginTop sapUiTinyMarginEnd sapUiTinyMarginBegin"
+    >
+        <!-- <Text
+            id="_IDGenText1"
+            text="Security Checklist"
+            class="headerTextPL"
+        /> -->
+        <HBox
+                justifyContent="Center"
+                width="100%"
+                id="HBoxTitle"
+            >
+                <Title
+                    text="Parking List - Security Status"
+                    wrapping="true"
+                    id="FANMaterial_Header"
+                    textAlign="Center"
+                    class="headerTitle"
+                />
+            </HBox>
+    </tnt:ToolHeader>
+    <FlexBox
+        id="_IDGenFlexBox1"
+        direction="Column"
+        class="header2"
+    >
+        <FlexBox
+            id="_IDGenFlexBox2"
+            alignItems="Center"
+            class="css1PL"
+        >
+            <Button
+                id="_IDGenText2"
+                icon="sap-icon://arrow-right"
+                text="Park-Out"
+                press="onParkOutPress"
+            />
+            <Button
+                id="_IDGenText3"
+                text="Checklist"
+                icon="sap-icon://search"
+                press="onCheckListPress"
+            />
+        </FlexBox>
+        <FlexBox
+            id="_IDGenFlexBox7"
+            class="css2PL"
+            alignItems="Center"
+        >
+            <Label
+                id="_IDGenLabel3"
+                text="Parking Number:"
+                design="Bold"
+            />
+            <Input
+                id="_ParkingNoInput"
+                width="150px"
+                submit="onEnterParkingNumber"
+                type="Number"
+            />
+            <Label
+                id="_IDGenLabel4"
+                text="Vehicle Number:"
+                design="Bold"
+            />
+            <Input
+                id="_VehicleNoInput"
+                width="150px"
+                submit="onEnterVehicleNumber"
+            />
+            <Label
+                text="Status:"
+                design="Bold"
+            />
+            <Select
+                width="240px"
+                id="selectStatus"
+                forceSelection="false"
+                change="onStatusSelect"
+                items="{
+                    path: '/SecurityStatus',
+                    filters: [{
+                        path: 'MessageText',
+                        operator: 'Contains',
+                        value1: 'Security'
+                    }]
+                }"
+            >
+                <core:Item
+                    key="{MsgNo}"
+                    text="{MessageText}"
+                />
+            </Select>
+            <Button
+                text="Reset"
+                icon="sap-icon://reset"
+                press="onReset"
+            />
+        </FlexBox>
+        <FlexBox
+            id="_IDGenFlexBox8"
+            class="tablePL"
+            alignItems="Center"
+        >
+            <t:Table
+                id="_parkListTable"
+                rows="{mergedData>/}"
+                visibleRowCount="8"
+                selectionMode="MultiToggle"
+                width="auto"
+                rowSelectionChange="onSelectTable"
+                showNoData="false"
+                noData="Loading data ..."
+            >
+                <t:columns>
+                    <t:Column
+                        id="_IDGenColumn4"
+                        width="auto"
+                    >
+                        <t:label>
+                            <Label
+                                id="_IDGeLabel4"
+                                text="Parking No"
+                            />
+                        </t:label>
+                        <t:template>
+                            <Text
+                                id="_IDGenTet123"
+                                text="{mergedData>ParkingNo}"
+                                textAlign="Right"
+                            />
+                        </t:template>
+                    </t:Column>
+                    <t:Column
+                        id="_IDGenColun4"
+                        width="auto"
+                    >
+                        <t:label>
+                            <Label
+                                id="_IDGeLbel4"
+                                text="Vehicle No"
+                            />
+                        </t:label>
+                        <t:template>
+                            <Text
+                                id="_IDGenTt123"
+                                text="{mergedData>VehicleNumber}"
+                                textAlign="Right"
+                            />
+                        </t:template>
+                    </t:Column>
+                    <t:Column
+                        id="_IDGenClumn4"
+                        width="auto"
+                    >
+                        <t:label>
+                            <Label
+                                id="_IDGeLael4"
+                                text="Vehicle Type"
+                            />
+                        </t:label>
+                        <t:template>
+                            <Text
+                                id="_IDGeTt123"
+                                text="{mergedData>VehicleDefinition}"
+                                textAlign="Right"
+                            />
+                        </t:template>
+                    </t:Column>
+                    <t:Column
+                        id="_IDGenCumn4"
+                        width="auto"
+                    >
+                        <t:label>
+                            <Label
+                                id="_IDGeael4"
+                                text="Material"
+                            />
+                        </t:label>
+                        <t:template>
+                            <Text
+                                id="_IDGeTt13"
+                                text="{mergedData>Product}"
+                                textAlign="Right"
+                            />
+                        </t:template>
+                    </t:Column>
+                    <t:Column
+                        id="_IDGenClun4"
+                        width="300px"
+                    >
+                        <t:label>
+                            <Label
+                                id="_IDGael4"
+                                text="Vehicle Status"
+                            />
+                        </t:label>
+                        <t:template>
+                            <Text
+                                id="_IDGet123"
+                                text="{= ${mergedData>Status} === '' ? 'Unknown' : ${mergedData>Status} }"
+                                textAlign="Begin"
+                            />
+                            <!-- text="{path: 'mergedData>items', formatter: '.formatter.getStatus'}" -->
+                        </t:template>
+                    </t:Column>
+                </t:columns>
+            </t:Table>
+        </FlexBox>
+    </FlexBox>
+</mvc:View>

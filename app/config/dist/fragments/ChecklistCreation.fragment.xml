@@ -1,0 +1,66 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+>
+    <Dialog
+        id="CheckCre_Dialog"
+        title="Remarks for vehicle type"
+        class="sapUiSmallMargin"
+        afterClose="afterCloseCheckCre_Dialog"
+        closeOnNavigation="true"
+        beforeOpen="beforeopenCreateDialog"
+    >
+        <Table
+            id="CheckCre_Frag_Table"
+            fixedLayout="false"
+            class="customTa"
+            items="{CheckCreRemark_Model>/}"
+            mode="None"
+        >
+            <columns>
+                <Column>
+                    <Label text="Remarks" />
+                </Column>
+                <Column>
+                    <Button
+                        id="_IDGenton1"
+                        icon="sap-icon://add"
+                        press="createRow"
+                    />
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem>
+                    <cells>
+                        <Input
+                            width="300px"
+                            id="checklistItems"
+                            value="{CheckCreRemark_Model>Remarks}"
+                        />
+                        <Button
+                            id="removeRowId"
+                            icon="sap-icon://decline"
+                            press="removeRow"
+                        />
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+
+        <footer>
+            <OverflowToolbar>
+                <ToolbarSpacer />
+
+                <Button
+                    text="Submit"
+                    press="onSubmit"
+                />
+                <Button
+                    text="Cancel"
+                    press="onChecklistFragmentCancel"
+                />
+            </OverflowToolbar>
+        </footer>
+    </Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,37 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <QuickView id="IDGenQuickView1"
+       pages="{ path : 'pModel>/', templateShareable : true }"
+    >
+        <QuickViewPage id="_IDGenQuickViewPage1"
+            
+        >
+            <avatar>
+                <Avatar id="_IDGenAvatar1"
+                    src=""
+                    displayShape="Square"
+                />
+            </avatar>
+            <QuickViewGroup id="_IDGenQuickViewGroup1" heading="Details">
+                <QuickViewGroupElement id="_IDGenQuickViewGroupElement1"
+                    label="Vehicle Number"
+                     value="{pModel>vehicleNumber}"
+                />
+                <QuickViewGroupElement id="_IDGenQuickViewGroupElement2"
+                    label="Driver Name"
+                    value="{pModel>driverName}"
+                />
+                <QuickViewGroupElement id="_IDGenQuickViewGroupElement3"
+                    label="Cleaner Name"
+                    value="{pModel>cleanerName}"
+                />
+                <QuickViewGroupElement id="_IDGenQuickViewGroupElement4"
+                    label="Status"
+                    value="{pModel>Status}"
+                />
+            </QuickViewGroup>
+        </QuickViewPage>
+    </QuickView>
+</core:FragmentDefinition>

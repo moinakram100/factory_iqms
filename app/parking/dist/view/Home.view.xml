@@ -1,0 +1,40 @@
+<mvc:View controllerName="com.ingenx.qms.parking.controller.Home"
+    xmlns:mvc="sap.ui.core.mvc"
+     xmlns:tnt="sap.tnt"
+    xmlns="sap.m">
+
+
+       <Page
+        id="parkingPage"
+        showHeader="false"
+    >
+        <content>
+            <GenericTile
+                id="parkingCreationTile"
+                class="sapUiSmallMarginBegin sapUiSmallMarginTop tileLayout"
+                header="Create Parking"
+                press="onCreateParkingTile"
+            >
+               
+            </GenericTile>
+
+            <GenericTile
+                id="parkingSecurityTile"
+                class="sapUiSmallMarginBegin sapUiSmallMarginTop tileLayout"
+                header="Security Clearance"
+                press="onSecurityClearanceTile"
+            >
+
+            </GenericTile>
+
+            <GenericTile
+                id="parkingExitTile"
+                class="sapUiSmallMarginBegin sapUiSmallMarginTop tileLayout"
+                header="Exit"
+                press="onExitTile"
+            >
+                
+            </GenericTile>
+        </content>
+    </Page>
+</mvc:View>

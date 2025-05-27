@@ -1,0 +1,2 @@
+sap.ui.define(["sap/ui/core/mvc/Controller","sap/ui/model/json/JSONModel"],(e,n)=>{"use strict";return e.extend("com.ingenx.qms.parking.controller.Home",{onInit:function(){},onCreateParkingTile:function(){let e=this.getOwnerComponent().getRouter();e.navTo("RouteParkingCreation")},onSecurityClearanceTile:function(){let e=this.getOwnerComponent().getRouter();e.navTo("RouteSecurityClearance")},onExitTile:function(){let e=this.getOwnerComponent().getRouter();e.navTo("RouteExit")}})});
+//# sourceMappingURL=Home.controller.js.map

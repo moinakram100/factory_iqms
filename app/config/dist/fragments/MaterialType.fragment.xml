@@ -1,0 +1,22 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+    <SelectDialog
+        id="MaterialTypeDialog"
+        title="Select Material Type"
+        search="materialVavlueHelpSearch"
+        confirm="materialVavlueHelpClose"
+        cancel="materialVavlueHelpClose"
+         growing="false"
+         
+        items="{/xIQMSxMaterial_n}">
+        <StandardListItem id="MaterialStandardListItem"
+            title="{matnr}"
+            description="{spart}"
+            iconDensityAware="false"
+            iconInset="false"
+            type="Active" />
+    </SelectDialog>
+   
+
+</core:FragmentDefinition>

@@ -1,0 +1,2 @@
+sap.ui.define(["sap/ui/core/mvc/Controller","sap/m/MessageToast"],function(t,e){"use strict";return t.extend("com.ingenx.qms.config.controller.BayStatus",{onInit:function(){this.updatedEntries=[]},onStatusChange:function(t){let n=this.byId("statusTable");let s=t.getSource().getBindingContext();let i=s.getPath();let o=s.getModel();let a=o.getProperty(i);if(!this.updatedEntries.some(t=>t.Id===a.Id)){this.updatedEntries.push(a)}e.show("Status updated for "+a.BayLabel)}})});
+//# sourceMappingURL=BayStatus.controller.js.map

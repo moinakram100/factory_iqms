@@ -1,0 +1,112 @@
+/* Enter your custom styles here */
+
+.btn{
+    display: flex;
+    flex-direction: row;
+}
+.sapTntToolHeader .sapMTitle {
+
+    font-family: "72-Bold", "72-Boldfull", "72", "72full", Arial, Helvetica, sans-serif !important;
+    color: black !important;
+
+
+}
+.sapTntToolHeader.sapMTB {
+    border-radius: 0.5rem;
+}
+    
+.sapUiBlockCellContent {
+    padding: 0.5rem !important;
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
+}
+ 
+.toolHeaderShadow {
+    box-shadow: 4px 8px 16px 4px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+}
+ 
+.toolHeaderShadow:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.tileLayout {
+    box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+    margin: 10px;
+}
+ 
+.tileLayout:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* CONFIG ITEM LABEL */
+
+/* .configTypeLabel{
+    margin: 7px;
+ } */
+.vboxmargin{
+    margin-bottom: 8%;
+  }
+
+.vboxparam{
+    margin-bottom: 3%;
+}
+.cssContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    gap: 10px; 
+    margin-top: 20px;
+}
+
+.cssCard {
+    flex: 1; /* Ensures both cards take equal space */
+    max-width: 600px; /* Ensures cards don't grow too large */
+}
+
+.responsiveTable {
+    overflow-x: auto; /* Enables horizontal scrolling */
+}
+
+/* status css */
+
+/* Enter your custom styles here */
+.sapTntToolHeader .sapMTitle {
+
+    font-family: "72-Bold", "72-Boldfull", "72", "72full", Arial, Helvetica, sans-serif !important;
+    color: black !important;
+    font-size: 1.5rem !important;
+    
+    
+}
+.sapTntToolHeader.sapMTB {
+    border-radius: 0.5rem;
+    justify-content: center !important;
+}
+    
+    
+.sapUiBlockCellContent {
+    padding: 0.5rem !important;
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
+}
+
+.tileLayout {
+    box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+    margin: 10px;
+}
+ 
+.tileLayout:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+ 
+.toolHeaderShadow {
+    box-shadow: 4px 8px 16px 4px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+}
+ 
+.toolHeaderShadow:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}

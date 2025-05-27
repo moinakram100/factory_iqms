@@ -1,0 +1,91 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:mvc="sap.ui.core.mvc"
+>
+    <Dialog
+        id="addMaterialDialog"
+        title="New Material Mapping"
+        class="sapUiSmallMargin"
+    >
+        <VBox
+            id="_IDnVx1"
+            class="sapUiContentPadding sapUiSmallMargin"
+        >
+            <Label
+                id="_IDnLel1"
+                text="Material Code :"
+                design="Bold"
+            />
+            <Input
+                id="_InputMaterialCode"
+                width="280px"
+                value="{materialModel>/Material}"
+                showValueHelp="true"
+                valueHelpRequest="onMaterialValueHelp"
+                valueHelpOnly="true"
+            />
+            <Label
+                id="_IDnLel11"
+                text="Division :"
+                design="Bold"
+            />
+            <Input
+                id="_InputMaterialDiv"
+                width="280px"
+                editable="false"
+                value="{materialModel>/Division}"
+                
+            />
+            <Label
+                id="_IDGLel2"
+                text="Material Definition :"
+                design="Bold"
+            />
+            <Input
+                id="_InputMaterailDef"
+                width="280px"
+                value="{materialModel>/MaterialDefinition}"
+            />
+            <Label
+                id="_IDGLl21"
+                text="Material Type:"
+                design="Bold"
+            />
+            <Select id="_IDGenSelect1" width="280px" forceSelection="false" selectedKey="{materialModel>/MaterialType}">
+                <core:Item
+                    key="Solid"
+                    text="Solid"
+                />
+                 <core:Item
+                    key="Liquid"
+                    text="Liquid"
+                />
+                 <core:Item
+                    key="Gas"
+                    text="Gas"
+                />
+            </Select>
+        </VBox>
+
+        <footer>
+            <OverflowToolbar id="otbFter">
+                <ToolbarSpacer />
+
+                <Button
+                    id="_IDGenBuon1"
+                    type="Accept"
+                    text="Save"
+                    press="onSavePress"
+                />
+                <Button
+                    id="_IDGenBton2"
+                    type="Reject"
+                    text="Cancel"
+                    press="cancelMatDialog"
+                />
+            </OverflowToolbar>
+        </footer>
+    </Dialog>
+</core:FragmentDefinition>

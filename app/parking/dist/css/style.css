@@ -1,0 +1,306 @@
+/* create parking css */
+.sapTntToolHeader .sapMTitle {
+
+    font-family: "72-Bold", "72-Boldfull", "72", "72full", Arial, Helvetica, sans-serif !important;
+    color: black !important;
+    font-size: 1.5rem !important;
+
+
+}
+.sapTntToolHeader.sapMTB {
+    border-radius: 0.5rem;
+}
+.sapTntToolHeader {
+    /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 6px 0px; */
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 6px 0px;
+
+    transition: 0.3s;
+}
+
+.headerTitle{
+    font-size: 1.5rem !important;
+    font-weight: bold;
+    align-items: center;
+}
+    
+.sapUiBlockCellContent {
+    padding: 0.5rem !important;
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
+}
+ 
+.toolHeaderShadow {
+    box-shadow: 4px 8px 16px 4px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+}
+ 
+.toolHeaderShadow:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.tileLayout {
+    box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+    margin: 10px;
+}
+ 
+.tileLayout:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+/* .headerText{
+    font-size: 2rem;
+    font-weight: bold;
+    padding-left: 27rem;
+} */
+
+.headerFlexBox{
+    background-color: white;
+    padding: 15px 0px 15px 65px;
+    margin: 10px 10px 10px 10px;
+    border-radius: 10px;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+
+.parkGateText{
+    margin-top: 7px;
+}
+
+.parkAreaText{
+    margin-top: 12px;
+}
+
+.BottoFlexBox{
+    background-color: white;
+    margin: 10px 10px 10px 10px;
+    border-radius: 10px;
+    gap: 1.5rem;
+    height: 300px;
+    padding: 50px 0px 0px 40px;
+    flex-wrap: wrap;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    
+}
+
+.radioButton{
+    margin-left: 30px;
+    border-right: 1px solid gray;
+    padding-right: 30px;
+    margin-bottom: 20px;
+}
+
+.css7{
+    gap: 1rem;
+    border-right: 1px solid gray;
+    margin-bottom: 20px;
+    
+    padding-right: 55px;
+}
+
+.css5{
+    gap: 0.75rem;
+    margin-left: 2rem;
+    align-items: flex-end;
+    
+}
+
+.transportCode{
+    margin-top: 5px;
+}
+
+.css11{
+    padding-right: 30px;
+}
+
+.submit{
+    margin-left: 67rem;
+}
+
+
+.radioButtonWithGap {
+    margin-right: 25px; /* Adjust this value according to your preference */
+    display: inline-block; /* Enable setting margin */
+}
+
+.scantext{
+   margin-top: 8px;
+   margin-left: 5px;
+}
+.customHBox {
+  
+    gap: 1.5rem;
+}
+
+/* security clearance css */
+
+/* Css For Security Clearance Screen */
+.sapTntToolHeader .sapMTitle {
+
+    font-family: "72-Bold", "72-Boldfull", "72", "72full", Arial, Helvetica, sans-serif !important;
+    color: black !important;
+
+
+}
+.sapTntToolHeader {
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 6px 0px;
+    transition: 0.3s;
+}
+.sapTntToolHeader.sapMTB {
+    border-radius: 0.5rem;
+}
+    
+.sapUiBlockCellContent {
+    padding: 0.5rem !important;
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
+}
+ 
+.toolHeaderShadow {
+    box-shadow: 4px 8px 16px 4px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+}
+ 
+.toolHeaderShadow:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+.headerTitle{
+    font-size: 1.5rem !important;
+    font-weight: bold;
+    align-items: center;
+}
+
+
+.headerTextSC {
+    font-size: 2rem;
+    font-weight: bold;
+    padding-left: 32rem;
+}
+
+.headerSC {
+    background-color: white;
+    margin: 10px 10px 10px 10px;
+    border-radius: 10px;
+    gap: 3rem;
+    height: 320px;
+    padding: 20px 0px 0px 40px;
+}
+
+.css1SC {
+    border-bottom: 1px solid black;
+    gap: 2rem;
+}
+
+.css2SC {
+    gap: 5px;
+}
+
+.css3SC {
+    gap: 2rem
+}
+
+.cssPG {
+    margin-top: 5px;
+}
+
+.cssPA {
+    margin-top: 15px;
+}
+
+.css4SC{
+    gap: 1rem;
+
+}
+
+.css5SC{
+    margin-top: 7px;
+}
+
+/* Css For Vehicle Check Screen */
+
+.headerTextVC{
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding-left: 32rem;
+}
+
+.headerVC {
+    background-color: white;
+    padding: 20px 20px 20px 50px;
+    margin: 10px 10px 10px 10px;
+    border-radius: 10px;
+    gap: 2rem;
+}
+
+.header2VC {
+    background-color: white;
+    margin: 10px 10px 10px 10px;
+    border-radius: 10px;
+    gap: 3rem;
+    height: 340px;
+    padding: 10px 0px 0px 40px;
+}
+
+.table {
+    width: 45rem;
+    border: 1px solid black;
+    margin-left: 100px;
+    border: 1.5px solid #cccccc;
+    box-shadow: 0 0px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+
+.submit{
+    margin-left: 72rem;
+}
+
+/* Css For Parking List Screen */
+
+.headerTextPL {
+    font-size: 2rem;
+    font-weight: bold;
+    padding-left: 32rem;
+}
+
+.header2 {
+    background-color: white;
+    padding: 45px 0px 25px 10px;
+    margin: 10px 10px 10px 10px;
+    border-radius: 10px;
+    gap: 1.5rem;
+    height: 500px;
+    padding: 20px 0px 0px 40px;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 2px 8px;
+}
+
+.css1PL {
+    background-color: white;
+    border-bottom: 1px solid black;
+    padding: 10px 0px 0px 10px;
+    margin: 10px 10px 0px 10px;
+    gap: 0.5rem;
+}
+
+
+.css2PL {
+    gap: 1rem;
+    border: 1.5px solid #cccccc;
+    box-shadow: 0 0px 3px 0 rgba(0, 0, 0, 0.1);
+    margin-right: 20px;
+    border-radius: 10px;
+    padding: 10px 0 10px 10px;
+}
+
+.tablePL{
+    border: 1.5px solid #cccccc;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 2px 8px;
+    padding: 10px 0 10px 10px;
+    margin-right: 20px;
+    border-radius: 10px;
+}
+
+#sap-ui-static-firstfe {
+    display: none; /* or visibility: hidden;  Choose the appropriate one */
+}
+

@@ -1,0 +1,325 @@
+<!-- <core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <Dialog
+        title="Create Vehicle Master"
+        id="VehicleMasterDialog"
+    >
+        <FlexBox class="css1CVM">
+            <Table
+                id="_IDTable"
+                width="55rem"
+            >
+                <columns>
+                    <Column
+                        id="_IDColumn1"
+                        width="150px"
+                        demandPopin="true"
+                    >
+                        <Label
+                            id="_IDLabel1"
+                            text="Compartment Details"
+                        />
+                    </Column>
+                    <Column
+                        id="_IDColumn2"
+                        width="auto"
+                        demandPopin="true"
+                    >
+                        <Label
+                            id="_IDLabel2"
+                            text="Comp 1"
+                        />
+                    </Column>
+                    <Column
+                        id="_IDColumn3"
+                        width="auto"
+                        demandPopin="true"
+                    >
+                        <Label
+                            id="_IDLabel3"
+                            text="Comp 2"
+                        />
+                    </Column>
+                    <Column
+                        id="_IDColumn4"
+                        width="auto"
+                        demandPopin="true"
+                    >
+                        <Label
+                            id="_IDLabel4"
+                            text="Comp 3"
+                        />
+                    </Column>
+                    <Column
+                        id="_IDColm4"
+                        width="auto"
+                        demandPopin="true"
+                    >
+                        <Label
+                            id="_IDLel4"
+                            text="Comp 4"
+                        />
+                    </Column>
+                    <Column
+                        id="_IDComn4"
+                        width="auto"
+                        demandPopin="true"
+                    >
+                        <Label
+                            id="_IDabel4"
+                            text="Comp 5"
+                        />
+                    </Column>
+                    <Column
+                        id="_IDColmn4"
+                        width="auto"
+                    >
+                        <Label
+                            id="_IDLael4"
+                            text="Comp 6"
+                            textAlign="End"
+                        />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem id="_IDColumnListItem1">
+                        <cells>
+                            <Text
+                                id="_IDTex4"
+                                text="Max Qty(KL)"
+                            />
+                           <Input id="comp1Input" width="100px" liveChange="onInputChange"  />
+                            <Input id="comp2Input" width="100px" liveChange="onInputChange"  />
+                            <Input id="comp3Input" width="100px" liveChange="onInputChange" />
+                            <Input id="comp4Input" width="100px" liveChange="onInputChange" />
+                            <Input id="comp5Input" width="100px" liveChange="onInputChange" />
+                            <Input id="comp6Input" width="100px" liveChange="onInputChange" />
+                        </cells>
+                    </ColumnListItem>
+                    <ColumnListItem id="_IDColunListItem1">
+                        <cells>
+                            <Text
+                                id="_IDTx4"
+                                text="Min Qty(KL)"
+                            />
+                            <Input id="comp1InputMin" width="100px" liveChange="onInputChangeMin"  />
+                            <Input id="comp2InputMin" width="100px" liveChange="onInputChangeMin"/>
+                            <Input id="comp3InputMin" width="100px" liveChange="onInputChangeMin"/>
+                            <Input id="comp4InputMin" width="100px" liveChange="onInputChangeMin"/>
+                            <Input id="comp5InputMin" width="100px" liveChange="onInputChangeMin"/>
+                            <Input id="comp6InputMin" width="100px" liveChange="onInputChangeMin"/>
+                        </cells>
+                    </ColumnListItem>
+                    
+                </items>
+            </Table>
+        </FlexBox>
+
+        <FlexBox class="css2CVM">
+            <Label
+                text="Vehicle Details"
+                design="Bold"
+            />
+        </FlexBox>
+
+        <FlexBox
+            direction="Row"
+            class="css3CVM"
+        >
+            <FlexBox
+                direction="Column"
+                alignItems="Center"
+            >
+                <Label
+                    text="Vehicle No :"
+                    class="css4CVM"
+                />
+                <Label
+                    text="Type:"
+                    class="css5CVM"
+                />
+                <Label
+                    text="TU Number :"
+                    class="css6CVM"
+                />
+                <Label
+                    text="Description :"
+                    class="css7CVM"
+                />
+                <Label
+                    text="Total Max Weight(KL) :"
+                    class="css7CVM"
+                />
+                <Label
+                    text="Total Min Weight(KL) :"
+                    class="css7CVM"
+                />
+            </FlexBox>
+            <FlexBox
+                direction="Column"
+                alignItems="Center"
+                class="cssMaster"
+            >
+                <Input
+                    width="150px"
+                    id="vehicleNoMaster_id"
+                    editable="false"
+                />
+                <Input
+                    width="150px"
+                    id="Type_id"
+                    editable="false"
+                />
+                <Input
+                    width="150px"
+                    id="TUnumber_id"
+                />
+                <Input
+                    width="150px"
+                    id="Description_id"
+                />
+                <Input
+                    width="150px"
+                    id="Maxwt_id"
+                    editable="false"
+                />
+                <Input
+                    width="150px"
+                    id="Minwt_id"
+                    editable="false"
+                />
+            </FlexBox>
+        </FlexBox>
+
+        <Button
+            text="Back"
+            class="buttonCV"
+            press="onBackVehicleMaster"
+        />
+        <Button text="Submit" press = "SubmitTuVehicleMaster" />
+    </Dialog>
+</core:FragmentDefinition> -->
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <Dialog
+        title="Create Vehicle Master"
+        id="VehicleMasterDialog"
+    >
+        <FlexBox class="css1CVM">
+            <Table
+                id="_IDTable"
+                width="28rem"
+            >
+                <columns>
+                    <Column
+                        id="_IDColumn1"
+                        width="180px"
+                        demandPopin="true"
+                    >
+                        <Label
+                            id="_IDLabel1"
+                            text="Compartment Details"
+                        />
+                    </Column>
+                    <Column
+                        id="_IDColumn2"
+                        width="auto"
+                        demandPopin="true"
+                    >
+                        <Label
+                            id="_IDLabel2"
+                            text="Comp 1"
+                        />
+                    </Column>
+                   
+                </columns>
+                <items>
+                    <ColumnListItem id="_IDColumnListItem1">
+                        <cells>
+                            <Text
+                                id="_IDTex4"
+                                text="Max Qty(KL)"
+                            />
+                            <Input width="100px" id="Maxwt_id" />
+                           
+                        </cells>
+                    </ColumnListItem>
+                    <ColumnListItem id="_IDColunListItem1">
+                        <cells>
+                            <Text
+                                id="_IDTx4"
+                                text="Min Qty(KL)"
+                            />
+                            <Input width="100px" />
+                           
+ 
+                        </cells>
+                    </ColumnListItem>
+                   
+                </items>
+            </Table>
+        </FlexBox>
+ 
+        <FlexBox class="css2CVM">
+            <Label
+                text="Vehicle Details"
+                design="Bold"
+            />
+        </FlexBox>
+ 
+        <FlexBox
+            direction="Row"
+            class="css3CVM"
+        >
+            <FlexBox
+                direction="Column"
+                alignItems="Center"
+            >
+                 <Label
+                    text="Vehicle No :"
+                    class="css4CVM"
+                />
+                <Label
+                    text="Type:"
+                    class="css5CVM"
+                />
+                <Label
+                    text="TU Number :"
+                    class="css6CVM"
+                />
+                <Label
+                    text="Description :"
+                    class = "css7CVM"
+                   
+                />
+               
+            </FlexBox>
+            <FlexBox
+                direction="Column"
+                alignItems="Center"
+                class="cssMaster"
+            >
+ 
+                <Input width="150px" id="vehicleNoMaster_id" editable="false"/>
+                <Input width="150px" id="Type_id" editable="false"/>
+                <Input width="150px" id="TUnumber_id"/>
+                <Input width="150px" id="Description_id"/>
+               
+            </FlexBox>
+        </FlexBox>
+ 
+        <Button
+            text="Back"
+            class="buttonCV"
+            press = "onBackVehicleMaster"
+        />
+        <Button
+            text="Submit"
+            press="SubmitTuVehicleMaster"
+        />
+    </Dialog>
+</core:FragmentDefinition>
