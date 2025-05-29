@@ -1,0 +1,200 @@
+{
+  "_version": "1.65.0",
+  "sap.app": {
+    "id": "com.ingenx.qms.parkingfactory",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.17.6",
+      "toolsId": "c7b6eb8f-2bbd-4af0-b572-d571a06c026b"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/odata/v4/factory/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "odataVersion": "4.0"
+        }
+      }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "parkingFactoryObj-manage": {
+          "semanticObject": "parkingFactoryObj",
+          "action": "manage",
+          "title": "{{parkingFactoryObj-manage.flpTitle}}",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.136.1",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "com.ingenx.qms.parkingfactory.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "transition": "slide",
+        "type": "View",
+        "viewType": "XML",
+        "path": "com.ingenx.qms.parkingfactory.view",
+        "async": true,
+        "viewPath": "com.ingenx.qms.parkingfactory.view"
+      },
+      "routes": [
+        {
+          "name": "RouteHome",
+          "pattern": ":?query:",
+          "target": [
+            "TargetHome"
+          ]
+        },
+        {
+          "name": "RouteParkingCreation",
+          "pattern": "createparking",
+          "target": [
+            "TargetParkingCreation"
+          ]
+        },
+        {
+          "name": "RouteSecurityClearance",
+          "pattern": "security",
+          "target": [
+            "TargetSecurityClearance"
+          ]
+        },
+        {
+          "name": "RouteExit",
+          "pattern": "exit",
+          "target": [
+            "TargetExit"
+          ]
+        },
+        {
+          "name": "RouteSecuriyChecklist",
+          "pattern": "checklist",
+          "target": [
+            "TargetSecuriyChecklist"
+          ]
+        },
+        {
+          "name": "RouteParkinglist",
+          "pattern": "parkingList",
+          "target": [
+            "TargetPakringlist"
+          ]
+        },
+        {
+          "name": "RouteVehicleChecklist",
+          "pattern": "vehicleList",
+          "target": [
+            "TargetVehicleCheckList"
+          ]
+        }
+      ],
+      "targets": {
+        "TargetHome": {
+          "id": "Home",
+          "name": "Home"
+        },
+        "TargetParkingCreation": {
+          "id": "parkingCreation",
+          "name": "CreateParking"
+        },
+        "TargetSecurityClearance": {
+          "id": "securityClearance",
+          "name": "SecurityChecklist"
+        },
+        "TargetExit": {
+          "id": "exit",
+          "name": "Exit"
+        },
+        "TargetSecuriyChecklist": {
+          "id": "securityChecklist",
+          "name": "SecurityChecklist"
+        },
+        "TargetPakringlist": {
+          "id": "parkinglist",
+          "name": "ParkingList"
+        },
+        "TargetVehicleCheckList": {
+          "id": "vehiclelist",
+          "name": "VehicleChecklist"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "com.ingenx.qms.parkingfactory.view.App",
+      "type": "XML",
+      "id": "App",
+      "async": true
+    }
+  },
+  "sap.cloud": {
+    "public": true,
+    "service": "factoryiqmsCloudSrv"
+  }
+}

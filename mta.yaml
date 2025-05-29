@@ -70,24 +70,8 @@ modules:
     build-result: resources
     requires:
     - artifacts:
-      - comingenxqmsparking.zip
-      name: comingenxqmsparking
-      target-path: resources/
-    - artifacts:
-      - comingenxqmsanalytics.zip
-      name: comingenxqmsanalytics
-      target-path: resources/
-    - artifacts:
-      - comingenxqmsbillingcreationfactory.zip
-      name: comingenxqmsbillingcreationfactory
-      target-path: resources/
-    - artifacts:
-      - comingenxqmsconfigfactory.zip
-      name: comingenxqmsconfigfactory
-      target-path: resources/
-    - artifacts:
-      - comingenxqmsfangenerationfactory.zip
-      name: comingenxqmsfangenerationfactory
+      - comingenxqmsparkingfactory.zip
+      name: comingenxqmsparkingfactory
       target-path: resources/
     - artifacts:
       - comingenxqmsschedulingfactory.zip
@@ -97,57 +81,65 @@ modules:
       - comingenxqmstruckassignmentfactory.zip
       name: comingenxqmstruckassignmentfactory
       target-path: resources/
-- name: comingenxqmsparking
+    - artifacts:
+      - comingenxqmsconfigfactory.zip
+      name: comingenxqmsconfigfactory
+      target-path: resources/
+    - artifacts:
+      - comingenxqmspgigrbilling.zip
+      name: comingenxqmspgigrbilling
+      target-path: resources/
+    - artifacts:
+      - comingenxqmsanalyticsfactory.zip
+      name: comingenxqmsanalyticsfactory
+      target-path: resources/
+    - artifacts:
+      - comingenxqmsfangenerationfactory.zip
+      name: comingenxqmsfangenerationfactory
+      target-path: resources/
+- name: comingenxqmsparkingfactory
   type: html5
-  path: app/parking
+  path: app/parkingfactory
   build-parameters:
     build-result: dist
     supported-platforms: []
-- name: comingenxqmsanalytics
+- name: comingenxqmsschedulingfactory
   type: html5
-  path: app/analytics
+  path: app/schedulingfactory
   build-parameters:
     build-result: dist
-    builder: custom
-    commands:
-    - npm install
-    - npm run build:cf
     supported-platforms: []
-- name: comingenxqmsbillingcreationfactory
+- name: comingenxqmstruckassignmentfactory
   type: html5
-  path: app/billingcreation
+  path: app/truckassignmentfactory
   build-parameters:
     build-result: dist
     supported-platforms: []
 - name: comingenxqmsconfigfactory
   type: html5
-  path: app/config
+  path: app/configfactory
   build-parameters:
     build-result: dist
+    supported-platforms: []
+- name: comingenxqmspgigrbilling
+  type: html5
+  path: app/pgi_gr_billing
+  build-parameters:
+    build-result: dist
+    supported-platforms: []
+- name: comingenxqmsanalyticsfactory
+  type: html5
+  path: app/analyticsfactory
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
     supported-platforms: []
 - name: comingenxqmsfangenerationfactory
   type: html5
-  path: app/fangeneration
-  build-parameters:
-    build-result: dist
-    builder: custom
-    commands:
-    - npm install
-    - npm run build:cf
-    supported-platforms: []
-- name: comingenxqmsschedulingfactory
-  type: html5
-  path: app/scheduling
-  build-parameters:
-    build-result: dist
-    builder: custom
-    commands:
-    - npm install
-    - npm run build:cf
-    supported-platforms: []
-- name: comingenxqmstruckassignmentfactory
-  type: html5
-  path: app/truckassignment
+  path: app/fangenerationfactory
   build-parameters:
     build-result: dist
     builder: custom
@@ -185,7 +177,7 @@ resources:
   type: org.cloudfoundry.managed-service
   parameters:
     config:
-      HTML5Runtime_enabled: true
+      HTML5Runtime_enabled: false
       init_data:
         instance:
           destinations:

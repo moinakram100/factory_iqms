@@ -82,9 +82,14 @@ module.exports = async (srv) => {
     srv.on('READ', 'xIQMSxstodeliv', req => IQMSQUEUEMANAGE_VALUEHELP_SRV.run(req.query));
     srv.on('READ', 'xIQMSxfetch_sto', req => IQMSQUEUEMANAGE_VALUEHELP_SRV.run(req.query));
     srv.on('READ', 'xIQMSxschfac_fetch', req => IQMSQUEUEMANAGE_VALUEHELP_SRV.run(req.query));
+
     srv.on('READ', 'PARKST_FACSet', req => IQMSFACTORY_SRV.run(req.query)); 
+    // srv.on('CREATE', 'PARKST_FACSet', req => IQMSFACTORY_SRV.run(req.query)); 
+    srv.on('UPDATE', 'PARKST_FACSet', req => {IQMSFACTORY_SRV.run(req.query)}); 
+
     srv.on('READ', 'Park_facSet', req => IQMSFACTORY_SRV.run(req.query));
     srv.on('CREATE', 'Park_facSet', req => IQMSFACTORY_SRV.run(req.query));
+    srv.on('UPDATE', 'Park_facSet', req => {IQMSFACTORY_SRV.run(req.query) });
 
     // new delivery api 
 
@@ -574,7 +579,7 @@ module.exports = async (srv) => {
 
     srv.on('getCustomizedParkingData', async (req) => {
         try {
-            console.log("called getCustomizedParkingData");
+            console.log("called fetchVehType");
 
             // Step 1: Fetch park header data with status directly
             const parkHeaderQuery = SELECT.from('Park_headerSet')

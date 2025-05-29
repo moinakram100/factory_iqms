@@ -1,2 +1,0 @@
-sap.ui.define(["sap/ui/core/mvc/Controller","sap/ui/model/json/JSONModel","sap/ui/core/Fragment","sap/ui/model/odata/v4/ODataModel"],function(e,o,n,t,i){"use strict";return e.extend("com.ingenx.qms.config.controller.ShipmentDetail",{formatter:t,onInit:function(){}})});
-//# sourceMappingURL=ShipmentDetail.controller.js.map

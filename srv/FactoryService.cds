@@ -102,9 +102,16 @@ service factoryService {
                 Changedtime
         }
 
+
     entity PARKST_FACSet                  as
         projection on IQMSFACTORY_SRV.PARKST_FACSet {
+                Description,
+                Driver,
+                TruckType,
+                Purpose,
             key Parkingno,
+                Cleaner,
+                Destination,
                 Vehicleno,
                 SalesOrder,
                 Stockorder,
@@ -115,7 +122,6 @@ service factoryService {
                 Uom,
                 Bayno,
                 Plant,
-                PlantText,
                 Soldtoparty,
                 DeliveryNo,
                 DelivDate,

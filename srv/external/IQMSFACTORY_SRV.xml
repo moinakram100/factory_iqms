@@ -54,7 +54,13 @@
                 <Key>
                     <PropertyRef Name="Parkingno"/>
                 </Key>
+                <Property Name="Description" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TruckType" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="Truck Type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Driver" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Driver" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Purpose" Type="Edm.String" Nullable="false" MaxLength="7" sap:unicode="false" sap:label="Purpose" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Parkingno" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="ParkingNo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Cleaner" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Cleaner" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Destination" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Destination" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Vehicleno" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Vehicle" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="SalesOrder" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Sales document" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Stockorder" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="STOCKTRAN" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
@@ -65,7 +71,6 @@
                 <Property Name="Uom" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Unit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
                 <Property Name="Bayno" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="BAYNO" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Plant" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="PlantText" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Planttxt" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Soldtoparty" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Customer" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="DeliveryNo" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Deliveryno" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="DelivDate" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="DelivDt" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>

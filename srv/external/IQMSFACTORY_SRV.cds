@@ -1,4 +1,4 @@
-/* checksum : 237278a7542d0676a1b6324513ccd54b */
+/* checksum : 6d12dc739709b13511fb7053b23d949d */
 @cds.external : true
 @m.IsDefaultEntityContainer : 'true'
 @sap.supported.formats : 'atom json xlsx'
@@ -266,6 +266,48 @@ entity IQMSFACTORY_SRV.PARKST_FACSet {
   @sap.filterable : 'false'
   key Parkingno : String(10) not null;
   @sap.unicode : 'false'
+  @sap.label : 'Description'
+  @sap.creatable : 'false'
+  @sap.updatable : 'false'
+  @sap.sortable : 'false'
+  @sap.filterable : 'false'
+  Description : String(30) not null;
+  @sap.unicode : 'false'
+  @sap.label : 'Truck Type'
+  @sap.creatable : 'false'
+  @sap.updatable : 'false'
+  @sap.sortable : 'false'
+  @sap.filterable : 'false'
+  TruckType : String(5) not null;
+  @sap.unicode : 'false'
+  @sap.label : 'Driver'
+  @sap.creatable : 'false'
+  @sap.updatable : 'false'
+  @sap.sortable : 'false'
+  @sap.filterable : 'false'
+  Driver : String(30) not null;
+  @sap.unicode : 'false'
+  @sap.label : 'Purpose'
+  @sap.creatable : 'false'
+  @sap.updatable : 'false'
+  @sap.sortable : 'false'
+  @sap.filterable : 'false'
+  Purpose : String(7) not null;
+  @sap.unicode : 'false'
+  @sap.label : 'Cleaner'
+  @sap.creatable : 'false'
+  @sap.updatable : 'false'
+  @sap.sortable : 'false'
+  @sap.filterable : 'false'
+  Cleaner : String(30) not null;
+  @sap.unicode : 'false'
+  @sap.label : 'Destination'
+  @sap.creatable : 'false'
+  @sap.updatable : 'false'
+  @sap.sortable : 'false'
+  @sap.filterable : 'false'
+  Destination : String(20) not null;
+  @sap.unicode : 'false'
   @sap.label : 'Vehicle'
   @sap.creatable : 'false'
   @sap.updatable : 'false'
@@ -338,13 +380,6 @@ entity IQMSFACTORY_SRV.PARKST_FACSet {
   @sap.sortable : 'false'
   @sap.filterable : 'false'
   Plant : String(4) not null;
-  @sap.unicode : 'false'
-  @sap.label : 'Planttxt'
-  @sap.creatable : 'false'
-  @sap.updatable : 'false'
-  @sap.sortable : 'false'
-  @sap.filterable : 'false'
-  PlantText : String(30) not null;
   @sap.unicode : 'false'
   @sap.label : 'Customer'
   @sap.creatable : 'false'

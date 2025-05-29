@@ -16,3 +16,23 @@ Content-Type: application/json
 
 ###
 GET http://localhost:4004/odata/v4/factory/fetchSO_STO_PR_Data(docType='Sales Order')
+
+
+###
+GET http://localhost:4004/odata/v4/factory/Park_facSet
+
+###
+POST http://localhost:4004/odata/v4/factory/Park_facSet
+Content-Type: application/json
+
+{
+  "ParkDate": "2025-05-29T00:00:00Z",
+  "ParkTime": "15:30:00",
+  "ParkingNo": "0000000079",
+  "ParkingGate": "1A",
+  "ParkingArea": "2B",
+  "VehicleNumber": "UP14T6767",
+  "Status": 7,
+  "StatusDesc": "Security Cleared, Vehicle Master Missing",
+  "park_tostatus":[]
+}

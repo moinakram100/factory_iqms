@@ -1,0 +1,2 @@
+sap.ui.define(["sap/ui/core/mvc/Controller"],t=>{"use strict";return t.extend("com.ingenx.qms.analyticsfactory.controller.Home",{onInit(){this.Router=this.getOwnerComponent().getRouter()},onanalyticsDashboardTile:function(){this.Router.navTo("RouteanalyticsDashboard")},onanalyticsAnalyticsTile:function(){this.Router.navTo("RouteanalyticsAnalytics")},onanalyticsAnalysisReport:function(){this.Router.navTo("RouteAnalysisReport")}})});
+//# sourceMappingURL=Home.controller.js.map

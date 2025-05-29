@@ -1,0 +1,57 @@
+<mvc:View controllerName="com.ingenx.qms.analyticsfactory.controller.Home"
+    xmlns:mvc="sap.ui.core.mvc"
+     xmlns:tnt="sap.tnt"
+    xmlns="sap.m">
+    
+
+       <Page
+        id="analyticsPage"
+        showHeader="false"
+    >
+        <content>
+            <GenericTile
+                id="analyticsDashboardTile"
+                class="sapUiSmallMarginBegin sapUiSmallMarginTop tileLayout"
+                header="Dashboard"
+                press="onanalyticsDashboardTile"
+            >
+                <!-- <TileContent id="analyticsDashboardTileContent">
+                    <ImageContent
+                        id="analyticsDashboardImage"
+                        src="sap-icon://decision"
+                    />
+                </TileContent> -->
+            </GenericTile>
+
+            <GenericTile
+                id="analyticsAnalyticsTile"
+                class="sapUiSmallMarginBegin sapUiSmallMarginTop tileLayout"
+                header="Analytics"
+                press="onanalyticsAnalyticsTile"
+            >
+                <!-- <TileContent id="analyticsAnalyticsTileContent">
+                    <ImageContent
+                        id="analyticsAnalyticsImage"
+                        src="sap-icon://edit"
+                    />
+                </TileContent> -->
+            </GenericTile>
+                <GenericTile
+                id="AnalyticsReportTile"
+                class="sapUiSmallMarginBegin sapUiSmallMarginTop tileLayout"
+                header="Time Analytics"
+                press="onanalyticsAnalysisReport"
+            >
+                <!-- <TileContent id="analyticsAnalyticsTileContent">
+                    <ImageContent
+                        id="analyticsAnalyticsImage"
+                        src="sap-icon://edit"
+                    />
+                </TileContent> -->
+            </GenericTile>
+
+
+           
+        </content>
+    </Page>
+</mvc:View>
